@@ -1,0 +1,24 @@
+---
+type: lesson
+title: Poveži podatkovna vira
+slug: povezi-vira
+meta:
+  description: 'Povežite razred občine in štiri pare primerkov v virih CRP in SURS.'
+---
+
+import Exercise from '@components/Exercise';
+
+# Poveži podatkovna vira
+
+**Raven 5 ★**
+
+Podatkov ni treba kopirati v eno datoteko. Razred `sursTBox:Obcina` povežite kot podrazred `crp:Obcina` z `rdfs:subClassOf`. Nato z `owl:sameAs` povežite štiri pare primerkov, ki predstavljajo iste občine:
+
+| Občina | Primerek CRP | Primerek SURS |
+| --- | --- | --- |
+| Ajdovščina | `crp:Obcina_1` | `sursABox:ajdovscina` |
+| Celje | `crp:Obcina_11` | `sursABox:celje` |
+| Ljubljana | `crp:Obcina_61` | `sursABox:ljubljana` |
+| Maribor | `crp:Obcina_70` | `sursABox:maribor` |
+
+<Exercise client:load lessonId="povezi-vira" />

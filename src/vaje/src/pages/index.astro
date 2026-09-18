@@ -1,0 +1,50 @@
+---
+import PortalHome from '../components/PortalHome';
+import '../styles/site.css';
+
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#131e29" />
+    <meta name="description" content="Šest vodenih vaj za prehod od TSV do RDF, ontologij, povezanih podatkov in SPARQL." />
+    <link rel="icon" type="image/png" href={`${base}branding/kcui-symbol-white.png`} />
+    <title>Interaktivne vaje | Semantična priprava podatkov</title>
+  </head>
+  <body class="portal-body">
+    <header class="portal-header" style={`--portal-network: url("${base}branding/background-network.png")`}>
+      <nav class="portal-nav" aria-label="Glavna navigacija">
+        <a href={base} class="portal-logo"><img src={`${base}branding/kcui-logo-horizontal.png`} alt="KCUI" /></a>
+        <a href="/semantic-data/" class="presentation-link">Odpri predstavitev <span aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker">Semantična priprava podatkov</p>
+          <h1>Od tabele do<br /><span>povezanega grafa.</span></h1>
+          <p class="hero-lead">Kratke vodene vaje. Brez nameščanja orodij — Turtle, RDF in SPARQL preizkusite neposredno v brskalniku.</p>
+          <div class="hero-meta" aria-label="Podrobnosti portala">
+            <span>6 vaj</span>
+          </div>
+        </div>
+        <div class="hero-mark" aria-hidden="true"><span>RDF</span><strong>→</strong><span>SPARQL</span></div>
+      </div>
+    </header>
+
+    <main class="portal-main">
+      <div class="section-heading">
+        <div><p class="section-kicker">Praktično delo</p><h2>Izberite naslednji korak</h2></div>
+        <p>Napredek se shranjuje samo v tem brskalniku. Vaje lahko rešujete po vrsti ali se vrnete neposredno k izbrani temi.</p>
+      </div>
+      <PortalHome client:load baseUrl={base} />
+    </main>
+
+    <footer class="portal-footer">
+      <span>UL FRI · Kompetenčni center za umetno inteligenco</span>
+      <img src={`${base}branding/gzs-logo-white.png`} alt="Gospodarska zbornica Slovenije" />
+    </footer>
+  </body>
+</html>

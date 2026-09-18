@@ -1,0 +1,1750 @@
+@prefix : <https://onto.mdp.gov.si/shema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix shema: <https://onto.mdp.gov.si/shema/> .
+@prefix obcina: <https://onto.mdp.gov.si/obcina/> .
+@base <https://onto.mdp.gov.si/shema/> .
+
+<https://onto.mdp.gov.si/shema/> rdf:type owl:Ontology .
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://onto.mdp.gov.si/shema/idObcinaSurs
+shema:idObcinaSurs rdf:type owl:DatatypeProperty ;
+                   rdfs:domain shema:Obcina ;
+                   rdfs:range xsd:string .
+
+shema:naziv a owl:DatatypeProperty ;
+            rdfs:domain shema:Obcina ;
+            rdfs:range xsd:string ;
+            rdfs:label "naziv"@sl .
+
+shema:steviloPrebivalcev a owl:DatatypeProperty ;
+                         rdfs:domain shema:Obcina ;
+                         rdfs:range xsd:integer ;
+                         rdfs:label "število prebivalcev"@sl .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://onto.mdp.gov.si/shema/Obcina
+shema:Obcina rdf:type owl:Class ;
+             rdfs:label "Municipality"@en ,
+                        "Municipio"@es ,
+                        "Občina"@sl .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://onto.mdp.gov.si/obcina/ajdovscina
+obcina:ajdovscina rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "001" ;
+                  shema:naziv "Ajdovščina" ;
+                  shema:steviloPrebivalcev 19895 .
+
+
+###  https://onto.mdp.gov.si/obcina/ankaran
+obcina:ankaran rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "213" ;
+               shema:naziv "Ankaran" ;
+               shema:steviloPrebivalcev 3446 .
+
+
+###  https://onto.mdp.gov.si/obcina/apace
+obcina:apace rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "195" ;
+             shema:naziv "Apače" ;
+             shema:steviloPrebivalcev 3563 .
+
+
+###  https://onto.mdp.gov.si/obcina/beltinci
+obcina:beltinci rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "002" ;
+                shema:naziv "Beltinci" ;
+                shema:steviloPrebivalcev 8129 .
+
+
+###  https://onto.mdp.gov.si/obcina/benedikt
+obcina:benedikt rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "148" ;
+                shema:naziv "Benedikt" ;
+                shema:steviloPrebivalcev 2738 .
+
+
+###  https://onto.mdp.gov.si/obcina/bistrica-ob-sotli
+obcina:bistrica-ob-sotli rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "149" ;
+                         shema:naziv "Bistrica ob Sotli" ;
+                         shema:steviloPrebivalcev 1335 .
+
+
+###  https://onto.mdp.gov.si/obcina/bled
+obcina:bled rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "003" ;
+            shema:naziv "Bled" ;
+            shema:steviloPrebivalcev 8154 .
+
+
+###  https://onto.mdp.gov.si/obcina/bloke
+obcina:bloke rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "150" ;
+             shema:naziv "Bloke" ;
+             shema:steviloPrebivalcev 1554 .
+
+
+###  https://onto.mdp.gov.si/obcina/bohinj
+obcina:bohinj rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "004" ;
+              shema:naziv "Bohinj" ;
+              shema:steviloPrebivalcev 5238 .
+
+
+###  https://onto.mdp.gov.si/obcina/borovnica
+obcina:borovnica rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "005" ;
+                 shema:naziv "Borovnica" ;
+                 shema:steviloPrebivalcev 4706 .
+
+
+###  https://onto.mdp.gov.si/obcina/bovec
+obcina:bovec rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "006" ;
+             shema:naziv "Bovec" ;
+             shema:steviloPrebivalcev 3004 .
+
+
+###  https://onto.mdp.gov.si/obcina/braslovce
+obcina:braslovce rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "151" ;
+                 shema:naziv "Braslovče" ;
+                 shema:steviloPrebivalcev 5919 .
+
+
+###  https://onto.mdp.gov.si/obcina/brda
+obcina:brda rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "007" ;
+            shema:naziv "Brda" ;
+            shema:steviloPrebivalcev 5584 .
+
+
+###  https://onto.mdp.gov.si/obcina/brezice
+obcina:brezice rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "009" ;
+               shema:naziv "Brežice" ;
+               shema:steviloPrebivalcev 24402 .
+
+
+###  https://onto.mdp.gov.si/obcina/brezovica
+obcina:brezovica rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "008" ;
+                 shema:naziv "Brezovica" ;
+                 shema:steviloPrebivalcev 13133 .
+
+
+###  https://onto.mdp.gov.si/obcina/cankova
+obcina:cankova rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "152" ;
+               shema:naziv "Cankova" ;
+               shema:steviloPrebivalcev 1754 .
+
+
+###  https://onto.mdp.gov.si/obcina/celje
+obcina:celje rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "011" ;
+             shema:naziv "Celje" ;
+             shema:steviloPrebivalcev 49628 .
+
+
+###  https://onto.mdp.gov.si/obcina/cerklje-na-gorenjskem
+obcina:cerklje-na-gorenjskem rdf:type owl:NamedIndividual ,
+                                      shema:Obcina ;
+                             shema:idObcinaSurs "012" ;
+                             shema:naziv "Cerklje na Gorenjskem" ;
+                             shema:steviloPrebivalcev 7944 .
+
+
+###  https://onto.mdp.gov.si/obcina/cerknica
+obcina:cerknica rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "013" ;
+                shema:naziv "Cerknica" ;
+                shema:steviloPrebivalcev 11848 .
+
+
+###  https://onto.mdp.gov.si/obcina/cerkno
+obcina:cerkno rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "014" ;
+              shema:naziv "Cerkno" ;
+              shema:steviloPrebivalcev 4423 .
+
+
+###  https://onto.mdp.gov.si/obcina/cerkvenjak
+obcina:cerkvenjak rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "153" ;
+                  shema:naziv "Cerkvenjak" ;
+                  shema:steviloPrebivalcev 2254 .
+
+
+###  https://onto.mdp.gov.si/obcina/cirkulane
+obcina:cirkulane rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "196" ;
+                 shema:naziv "Cirkulane" ;
+                 shema:steviloPrebivalcev 2364 .
+
+
+###  https://onto.mdp.gov.si/obcina/crensovci
+obcina:crensovci rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "015" ;
+                 shema:naziv "Črenšovci" ;
+                 shema:steviloPrebivalcev 3899 .
+
+
+###  https://onto.mdp.gov.si/obcina/crna-na-koroskem
+obcina:crna-na-koroskem rdf:type owl:NamedIndividual ,
+                                 shema:Obcina ;
+                        shema:idObcinaSurs "016" ;
+                        shema:naziv "Črna na Koroškem" ;
+                        shema:steviloPrebivalcev 3012 .
+
+
+###  https://onto.mdp.gov.si/obcina/crnomelj
+obcina:crnomelj rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "017" ;
+                shema:naziv "Črnomelj" ;
+                shema:steviloPrebivalcev 14213 .
+
+
+###  https://onto.mdp.gov.si/obcina/destrnik
+obcina:destrnik rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "018" ;
+                shema:naziv "Destrnik" ;
+                shema:steviloPrebivalcev 2695 .
+
+
+###  https://onto.mdp.gov.si/obcina/divaca
+obcina:divaca rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "019" ;
+              shema:naziv "Divača" ;
+              shema:steviloPrebivalcev 4535 .
+
+
+###  https://onto.mdp.gov.si/obcina/dobje
+obcina:dobje rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "154" ;
+             shema:naziv "Dobje" ;
+             shema:steviloPrebivalcev 960 .
+
+
+###  https://onto.mdp.gov.si/obcina/dobrepolje
+obcina:dobrepolje rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "020" ;
+                  shema:naziv "Dobrepolje" ;
+                  shema:steviloPrebivalcev 3937 .
+
+
+###  https://onto.mdp.gov.si/obcina/dobrna
+obcina:dobrna rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "155" ;
+              shema:naziv "Dobrna" ;
+              shema:steviloPrebivalcev 2324 .
+
+
+###  https://onto.mdp.gov.si/obcina/dobrova-polhov-gradec
+obcina:dobrova-polhov-gradec rdf:type owl:NamedIndividual ,
+                                      shema:Obcina ;
+                             shema:idObcinaSurs "021" ;
+                             shema:naziv "Dobrova-Polhov Gradec" ;
+                             shema:steviloPrebivalcev 8064 .
+
+
+###  https://onto.mdp.gov.si/obcina/dobrovnik
+obcina:dobrovnik rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "156" ;
+                 shema:naziv "Dobrovnik" ;
+                 shema:steviloPrebivalcev 1238 .
+
+
+###  https://onto.mdp.gov.si/obcina/dol-pri-ljubljani
+obcina:dol-pri-ljubljani rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "022" ;
+                         shema:naziv "Dol pri Ljubljani" ;
+                         shema:steviloPrebivalcev 6420 .
+
+
+###  https://onto.mdp.gov.si/obcina/dolenjske-toplice
+obcina:dolenjske-toplice rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "157" ;
+                         shema:naziv "Dolenjske Toplice" ;
+                         shema:steviloPrebivalcev 3680 .
+
+
+###  https://onto.mdp.gov.si/obcina/domzale
+obcina:domzale rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "023" ;
+               shema:naziv "Domžale" ;
+               shema:steviloPrebivalcev 38190 .
+
+
+###  https://onto.mdp.gov.si/obcina/dornava
+obcina:dornava rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "024" ;
+               shema:naziv "Dornava" ;
+               shema:steviloPrebivalcev 2937 .
+
+
+###  https://onto.mdp.gov.si/obcina/dravograd
+obcina:dravograd rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "025" ;
+                 shema:naziv "Dravograd" ;
+                 shema:steviloPrebivalcev 8816 .
+
+
+###  https://onto.mdp.gov.si/obcina/duplek
+obcina:duplek rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "026" ;
+              shema:naziv "Duplek" ;
+              shema:steviloPrebivalcev 7057 .
+
+
+###  https://onto.mdp.gov.si/obcina/gorenja-vas-poljane
+obcina:gorenja-vas-poljane rdf:type owl:NamedIndividual ,
+                                    shema:Obcina ;
+                           shema:idObcinaSurs "027" ;
+                           shema:naziv "Gorenja vas-Poljane" ;
+                           shema:steviloPrebivalcev 7724 .
+
+
+###  https://onto.mdp.gov.si/obcina/gorisnica
+obcina:gorisnica rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "028" ;
+                 shema:naziv "Gorišnica" ;
+                 shema:steviloPrebivalcev 4213 .
+
+
+###  https://onto.mdp.gov.si/obcina/gorje
+obcina:gorje rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "207" ;
+             shema:naziv "Gorje" ;
+             shema:steviloPrebivalcev 2732 .
+
+
+###  https://onto.mdp.gov.si/obcina/gornja-radgona
+obcina:gornja-radgona rdf:type owl:NamedIndividual ,
+                               shema:Obcina ;
+                      shema:idObcinaSurs "029" ;
+                      shema:naziv "Gornja Radgona" ;
+                      shema:steviloPrebivalcev 8519 .
+
+
+###  https://onto.mdp.gov.si/obcina/gornji-grad
+obcina:gornji-grad rdf:type owl:NamedIndividual ,
+                            shema:Obcina ;
+                   shema:idObcinaSurs "030" ;
+                   shema:naziv "Gornji Grad" ;
+                   shema:steviloPrebivalcev 2549 .
+
+
+###  https://onto.mdp.gov.si/obcina/gornji-petrovci
+obcina:gornji-petrovci rdf:type owl:NamedIndividual ,
+                                shema:Obcina ;
+                       shema:idObcinaSurs "031" ;
+                       shema:naziv "Gornji Petrovci" ;
+                       shema:steviloPrebivalcev 1964 .
+
+
+###  https://onto.mdp.gov.si/obcina/grad
+obcina:grad rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "158" ;
+            shema:naziv "Grad" ;
+            shema:steviloPrebivalcev 1969 .
+
+
+###  https://onto.mdp.gov.si/obcina/grosuplje
+obcina:grosuplje rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "032" ;
+                 shema:naziv "Grosuplje" ;
+                 shema:steviloPrebivalcev 22050 .
+
+
+###  https://onto.mdp.gov.si/obcina/hajdina
+obcina:hajdina rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "159" ;
+               shema:naziv "Hajdina" ;
+               shema:steviloPrebivalcev 4059 .
+
+
+###  https://onto.mdp.gov.si/obcina/hoce-slivnica
+obcina:hoce-slivnica rdf:type owl:NamedIndividual ,
+                              shema:Obcina ;
+                     shema:idObcinaSurs "160" ;
+                     shema:naziv "Hoče-Slivnica" ;
+                     shema:steviloPrebivalcev 11913 .
+
+
+###  https://onto.mdp.gov.si/obcina/hodos
+obcina:hodos rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "161" ;
+             shema:naziv "Hodoš" ;
+             shema:steviloPrebivalcev 335 .
+
+
+###  https://onto.mdp.gov.si/obcina/horjul
+obcina:horjul rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "162" ;
+              shema:naziv "Horjul" ;
+              shema:steviloPrebivalcev 3051 .
+
+
+###  https://onto.mdp.gov.si/obcina/hrastnik
+obcina:hrastnik rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "034" ;
+                shema:naziv "Hrastnik" ;
+                shema:steviloPrebivalcev 8820 .
+
+
+###  https://onto.mdp.gov.si/obcina/hrpelje-kozina
+obcina:hrpelje-kozina rdf:type owl:NamedIndividual ,
+                               shema:Obcina ;
+                      shema:idObcinaSurs "035" ;
+                      shema:naziv "Hrpelje-Kozina" ;
+                      shema:steviloPrebivalcev 5356 .
+
+
+###  https://onto.mdp.gov.si/obcina/idrija
+obcina:idrija rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "036" ;
+              shema:naziv "Idrija" ;
+              shema:steviloPrebivalcev 11673 .
+
+
+###  https://onto.mdp.gov.si/obcina/ig
+obcina:ig rdf:type owl:NamedIndividual ,
+                   shema:Obcina ;
+          shema:idObcinaSurs "037" ;
+          shema:naziv "Ig" ;
+          shema:steviloPrebivalcev 7926 .
+
+
+###  https://onto.mdp.gov.si/obcina/ilirska-bistrica
+obcina:ilirska-bistrica rdf:type owl:NamedIndividual ,
+                                 shema:Obcina ;
+                        shema:idObcinaSurs "038" ;
+                        shema:naziv "Ilirska Bistrica" ;
+                        shema:steviloPrebivalcev 13255 .
+
+
+###  https://onto.mdp.gov.si/obcina/ivancna-gorica
+obcina:ivancna-gorica rdf:type owl:NamedIndividual ,
+                               shema:Obcina ;
+                      shema:idObcinaSurs "039" ;
+                      shema:naziv "Ivančna Gorica" ;
+                      shema:steviloPrebivalcev 18267 .
+
+
+###  https://onto.mdp.gov.si/obcina/izola
+obcina:izola rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "040" ;
+             shema:naziv "Izola" ;
+             shema:steviloPrebivalcev 16500 .
+
+
+###  https://onto.mdp.gov.si/obcina/jesenice
+obcina:jesenice rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "041" ;
+                shema:naziv "Jesenice" ;
+                shema:steviloPrebivalcev 21895 .
+
+
+###  https://onto.mdp.gov.si/obcina/jezersko
+obcina:jezersko rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "163" ;
+                shema:naziv "Jezersko" ;
+                shema:steviloPrebivalcev 681 .
+
+
+###  https://onto.mdp.gov.si/obcina/jursinci
+obcina:jursinci rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "042" ;
+                shema:naziv "Juršinci" ;
+                shema:steviloPrebivalcev 2478 .
+
+
+###  https://onto.mdp.gov.si/obcina/kamnik
+obcina:kamnik rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "043" ;
+              shema:naziv "Kamnik" ;
+              shema:steviloPrebivalcev 29885 .
+
+
+###  https://onto.mdp.gov.si/obcina/kanal
+obcina:kanal rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "044" ;
+             shema:naziv "Kanal" ;
+             shema:steviloPrebivalcev 5099 .
+
+
+###  https://onto.mdp.gov.si/obcina/kidricevo
+obcina:kidricevo rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "045" ;
+                 shema:naziv "Kidričevo" ;
+                 shema:steviloPrebivalcev 6673 .
+
+
+###  https://onto.mdp.gov.si/obcina/kobarid
+obcina:kobarid rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "046" ;
+               shema:naziv "Kobarid" ;
+               shema:steviloPrebivalcev 4026 .
+
+
+###  https://onto.mdp.gov.si/obcina/kobilje
+obcina:kobilje rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "047" ;
+               shema:naziv "Kobilje" ;
+               shema:steviloPrebivalcev 507 .
+
+
+###  https://onto.mdp.gov.si/obcina/kocevje
+obcina:kocevje rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "048" ;
+               shema:naziv "Kočevje" ;
+               shema:steviloPrebivalcev 15555 .
+
+
+###  https://onto.mdp.gov.si/obcina/komen
+obcina:komen rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "049" ;
+             shema:naziv "Komen" ;
+             shema:steviloPrebivalcev 3518 .
+
+
+###  https://onto.mdp.gov.si/obcina/komenda
+obcina:komenda rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "164" ;
+               shema:naziv "Komenda" ;
+               shema:steviloPrebivalcev 6761 .
+
+
+###  https://onto.mdp.gov.si/obcina/koper
+obcina:koper rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "050" ;
+             shema:naziv "Koper" ;
+             shema:steviloPrebivalcev 54430 .
+
+
+###  https://onto.mdp.gov.si/obcina/kostanjevica-na-krki
+obcina:kostanjevica-na-krki rdf:type owl:NamedIndividual ,
+                                     shema:Obcina ;
+                            shema:idObcinaSurs "197" ;
+                            shema:naziv "Kostanjevica na Krki" ;
+                            shema:steviloPrebivalcev 2448 .
+
+
+###  https://onto.mdp.gov.si/obcina/kostel
+obcina:kostel rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "165" ;
+              shema:naziv "Kostel" ;
+              shema:steviloPrebivalcev 610 .
+
+
+###  https://onto.mdp.gov.si/obcina/kozje
+obcina:kozje rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "051" ;
+             shema:naziv "Kozje" ;
+             shema:steviloPrebivalcev 3002 .
+
+
+###  https://onto.mdp.gov.si/obcina/kranj
+obcina:kranj rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "052" ;
+             shema:naziv "Kranj" ;
+             shema:steviloPrebivalcev 57384 .
+
+
+###  https://onto.mdp.gov.si/obcina/kranjska-gora
+obcina:kranjska-gora rdf:type owl:NamedIndividual ,
+                              shema:Obcina ;
+                     shema:idObcinaSurs "053" ;
+                     shema:naziv "Kranjska Gora" ;
+                     shema:steviloPrebivalcev 5214 .
+
+
+###  https://onto.mdp.gov.si/obcina/krizevci
+obcina:krizevci rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "166" ;
+                shema:naziv "Križevci" ;
+                shema:steviloPrebivalcev 3528 .
+
+
+###  https://onto.mdp.gov.si/obcina/krsko
+obcina:krsko rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "054" ;
+             shema:naziv "Krško" ;
+             shema:steviloPrebivalcev 26175 .
+
+
+###  https://onto.mdp.gov.si/obcina/kungota
+obcina:kungota rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "055" ;
+               shema:naziv "Kungota" ;
+               shema:steviloPrebivalcev 5072 .
+
+
+###  https://onto.mdp.gov.si/obcina/kuzma
+obcina:kuzma rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "056" ;
+             shema:naziv "Kuzma" ;
+             shema:steviloPrebivalcev 1630 .
+
+
+###  https://onto.mdp.gov.si/obcina/lasko
+obcina:lasko rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "057" ;
+             shema:naziv "Laško" ;
+             shema:steviloPrebivalcev 13047 .
+
+
+###  https://onto.mdp.gov.si/obcina/lenart
+obcina:lenart rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "058" ;
+              shema:naziv "Lenart" ;
+              shema:steviloPrebivalcev 8574 .
+
+
+###  https://onto.mdp.gov.si/obcina/lendava
+obcina:lendava rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "059" ;
+               shema:naziv "Lendava" ;
+               shema:steviloPrebivalcev 10125 .
+
+
+###  https://onto.mdp.gov.si/obcina/litija
+obcina:litija rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "060" ;
+              shema:naziv "Litija" ;
+              shema:steviloPrebivalcev 15882 .
+
+
+###  https://onto.mdp.gov.si/obcina/ljubljana
+obcina:ljubljana rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "061" ;
+                 shema:naziv "Ljubljana" ;
+                 shema:steviloPrebivalcev 300354 .
+
+
+###  https://onto.mdp.gov.si/obcina/ljubno
+obcina:ljubno rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "062" ;
+              shema:naziv "Ljubno" ;
+              shema:steviloPrebivalcev 2524 .
+
+
+###  https://onto.mdp.gov.si/obcina/ljutomer
+obcina:ljutomer rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "063" ;
+                shema:naziv "Ljutomer" ;
+                shema:steviloPrebivalcev 10955 .
+
+
+###  https://onto.mdp.gov.si/obcina/log-dragomer
+obcina:log-dragomer rdf:type owl:NamedIndividual ,
+                             shema:Obcina ;
+                    shema:idObcinaSurs "208" ;
+                    shema:naziv "Log-Dragomer" ;
+                    shema:steviloPrebivalcev 3860 .
+
+
+###  https://onto.mdp.gov.si/obcina/logatec
+obcina:logatec rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "064" ;
+               shema:naziv "Logatec" ;
+               shema:steviloPrebivalcev 15071 .
+
+
+###  https://onto.mdp.gov.si/obcina/loska-dolina
+obcina:loska-dolina rdf:type owl:NamedIndividual ,
+                             shema:Obcina ;
+                    shema:idObcinaSurs "065" ;
+                    shema:naziv "Loška dolina" ;
+                    shema:steviloPrebivalcev 3506 .
+
+
+###  https://onto.mdp.gov.si/obcina/loski-potok
+obcina:loski-potok rdf:type owl:NamedIndividual ,
+                            shema:Obcina ;
+                   shema:idObcinaSurs "066" ;
+                   shema:naziv "Loški Potok" ;
+                   shema:steviloPrebivalcev 1835 .
+
+
+###  https://onto.mdp.gov.si/obcina/lovrenc-na-pohorju
+obcina:lovrenc-na-pohorju rdf:type owl:NamedIndividual ,
+                                   shema:Obcina ;
+                          shema:idObcinaSurs "167" ;
+                          shema:naziv "Lovrenc na Pohorju" ;
+                          shema:steviloPrebivalcev 2944 .
+
+
+###  https://onto.mdp.gov.si/obcina/luce
+obcina:luce rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "067" ;
+            shema:naziv "Luče" ;
+            shema:steviloPrebivalcev 1419 .
+
+
+###  https://onto.mdp.gov.si/obcina/lukovica
+obcina:lukovica rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "068" ;
+                shema:naziv "Lukovica" ;
+                shema:steviloPrebivalcev 6186 .
+
+
+###  https://onto.mdp.gov.si/obcina/majsperk
+obcina:majsperk rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "069" ;
+                shema:naziv "Majšperk" ;
+                shema:steviloPrebivalcev 3983 .
+
+
+###  https://onto.mdp.gov.si/obcina/makole
+obcina:makole rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "198" ;
+              shema:naziv "Makole" ;
+              shema:steviloPrebivalcev 2058 .
+
+
+###  https://onto.mdp.gov.si/obcina/maribor
+obcina:maribor rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "070" ;
+               shema:naziv "Maribor" ;
+               shema:steviloPrebivalcev 114301 .
+
+
+###  https://onto.mdp.gov.si/obcina/markovci
+obcina:markovci rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "168" ;
+                shema:naziv "Markovci" ;
+                shema:steviloPrebivalcev 4073 .
+
+
+###  https://onto.mdp.gov.si/obcina/medvode
+obcina:medvode rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "071" ;
+               shema:naziv "Medvode" ;
+               shema:steviloPrebivalcev 17296 .
+
+
+###  https://onto.mdp.gov.si/obcina/menges
+obcina:menges rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "072" ;
+              shema:naziv "Mengeš" ;
+              shema:steviloPrebivalcev 8684 .
+
+
+###  https://onto.mdp.gov.si/obcina/metlika
+obcina:metlika rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "073" ;
+               shema:naziv "Metlika" ;
+               shema:steviloPrebivalcev 8572 .
+
+
+###  https://onto.mdp.gov.si/obcina/mezica
+obcina:mezica rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "074" ;
+              shema:naziv "Mežica" ;
+              shema:steviloPrebivalcev 3518 .
+
+
+###  https://onto.mdp.gov.si/obcina/miklavz-na-dravskem-polju
+obcina:miklavz-na-dravskem-polju rdf:type owl:NamedIndividual ,
+                                          shema:Obcina ;
+                                 shema:idObcinaSurs "169" ;
+                                 shema:naziv "Miklavž na Dravskem polju" ;
+                                 shema:steviloPrebivalcev 7261 .
+
+
+###  https://onto.mdp.gov.si/obcina/miren-kostanjevica
+obcina:miren-kostanjevica rdf:type owl:NamedIndividual ,
+                                   shema:Obcina ;
+                          shema:idObcinaSurs "075" ;
+                          shema:naziv "Miren-Kostanjevica" ;
+                          shema:steviloPrebivalcev 5060 .
+
+
+###  https://onto.mdp.gov.si/obcina/mirna
+obcina:mirna rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "212" ;
+             shema:naziv "Mirna" ;
+             shema:steviloPrebivalcev 2822 .
+
+
+###  https://onto.mdp.gov.si/obcina/mirna-pec
+obcina:mirna-pec rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "170" ;
+                 shema:naziv "Mirna Peč" ;
+                 shema:steviloPrebivalcev 3203 .
+
+
+###  https://onto.mdp.gov.si/obcina/mislinja
+obcina:mislinja rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "076" ;
+                shema:naziv "Mislinja" ;
+                shema:steviloPrebivalcev 4521 .
+
+
+###  https://onto.mdp.gov.si/obcina/mokronog-trebelno
+obcina:mokronog-trebelno rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "199" ;
+                         shema:naziv "Mokronog-Trebelno" ;
+                         shema:steviloPrebivalcev 3270 .
+
+
+###  https://onto.mdp.gov.si/obcina/moravce
+obcina:moravce rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "077" ;
+               shema:naziv "Moravče" ;
+               shema:steviloPrebivalcev 5670 .
+
+
+###  https://onto.mdp.gov.si/obcina/moravske-toplice
+obcina:moravske-toplice rdf:type owl:NamedIndividual ,
+                                 shema:Obcina ;
+                        shema:idObcinaSurs "078" ;
+                        shema:naziv "Moravske Toplice" ;
+                        shema:steviloPrebivalcev 5957 .
+
+
+###  https://onto.mdp.gov.si/obcina/mozirje
+obcina:mozirje rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "079" ;
+               shema:naziv "Mozirje" ;
+               shema:steviloPrebivalcev 4503 .
+
+
+###  https://onto.mdp.gov.si/obcina/murska-sobota
+obcina:murska-sobota rdf:type owl:NamedIndividual ,
+                              shema:Obcina ;
+                     shema:idObcinaSurs "080" ;
+                     shema:naziv "Murska Sobota" ;
+                     shema:steviloPrebivalcev 18429 .
+
+
+###  https://onto.mdp.gov.si/obcina/muta
+obcina:muta rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "081" ;
+            shema:naziv "Muta" ;
+            shema:steviloPrebivalcev 3363 .
+
+
+###  https://onto.mdp.gov.si/obcina/naklo
+obcina:naklo rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "082" ;
+             shema:naziv "Naklo" ;
+             shema:steviloPrebivalcev 5478 .
+
+
+###  https://onto.mdp.gov.si/obcina/nazarje
+obcina:nazarje rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "083" ;
+               shema:naziv "Nazarje" ;
+               shema:steviloPrebivalcev 2686 .
+
+
+###  https://onto.mdp.gov.si/obcina/nova-gorica
+obcina:nova-gorica rdf:type owl:NamedIndividual ,
+                            shema:Obcina ;
+                   shema:idObcinaSurs "084" ;
+                   shema:naziv "Nova Gorica" ;
+                   shema:steviloPrebivalcev 31906 .
+
+
+###  https://onto.mdp.gov.si/obcina/novo-mesto
+obcina:novo-mesto rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "085" ;
+                  shema:naziv "Novo mesto" ;
+                  shema:steviloPrebivalcev 38669 .
+
+
+###  https://onto.mdp.gov.si/obcina/odranci
+obcina:odranci rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "086" ;
+               shema:naziv "Odranci" ;
+               shema:steviloPrebivalcev 1600 .
+
+
+###  https://onto.mdp.gov.si/obcina/oplotnica
+obcina:oplotnica rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "171" ;
+                 shema:naziv "Oplotnica" ;
+                 shema:steviloPrebivalcev 4203 .
+
+
+###  https://onto.mdp.gov.si/obcina/ormoz
+obcina:ormoz rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "087" ;
+             shema:naziv "Ormož" ;
+             shema:steviloPrebivalcev 11849 .
+
+
+###  https://onto.mdp.gov.si/obcina/osilnica
+obcina:osilnica rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "088" ;
+                shema:naziv "Osilnica" ;
+                shema:steviloPrebivalcev 329 .
+
+
+###  https://onto.mdp.gov.si/obcina/pesnica
+obcina:pesnica rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "089" ;
+               shema:naziv "Pesnica" ;
+               shema:steviloPrebivalcev 7819 .
+
+
+###  https://onto.mdp.gov.si/obcina/piran
+obcina:piran rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "090" ;
+             shema:naziv "Piran" ;
+             shema:steviloPrebivalcev 18113 .
+
+
+###  https://onto.mdp.gov.si/obcina/pivka
+obcina:pivka rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "091" ;
+             shema:naziv "Pivka" ;
+             shema:steviloPrebivalcev 6131 .
+
+
+###  https://onto.mdp.gov.si/obcina/podcetrtek
+obcina:podcetrtek rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "092" ;
+                  shema:naziv "Podčetrtek" ;
+                  shema:steviloPrebivalcev 3653 .
+
+
+###  https://onto.mdp.gov.si/obcina/podlehnik
+obcina:podlehnik rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "172" ;
+                 shema:naziv "Podlehnik" ;
+                 shema:steviloPrebivalcev 1821 .
+
+
+###  https://onto.mdp.gov.si/obcina/podvelka
+obcina:podvelka rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "093" ;
+                shema:naziv "Podvelka" ;
+                shema:steviloPrebivalcev 2228 .
+
+
+###  https://onto.mdp.gov.si/obcina/poljcane
+obcina:poljcane rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "200" ;
+                shema:naziv "Poljčane" ;
+                shema:steviloPrebivalcev 4398 .
+
+
+###  https://onto.mdp.gov.si/obcina/polzela
+obcina:polzela rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "173" ;
+               shema:naziv "Polzela" ;
+               shema:steviloPrebivalcev 6629 .
+
+
+###  https://onto.mdp.gov.si/obcina/postojna
+obcina:postojna rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "094" ;
+                shema:naziv "Postojna" ;
+                shema:steviloPrebivalcev 17532 .
+
+
+###  https://onto.mdp.gov.si/obcina/prebold
+obcina:prebold rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "174" ;
+               shema:naziv "Prebold" ;
+               shema:steviloPrebivalcev 5317 .
+
+
+###  https://onto.mdp.gov.si/obcina/preddvor
+obcina:preddvor rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "095" ;
+                shema:naziv "Preddvor" ;
+                shema:steviloPrebivalcev 3934 .
+
+
+###  https://onto.mdp.gov.si/obcina/prevalje
+obcina:prevalje rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "175" ;
+                shema:naziv "Prevalje" ;
+                shema:steviloPrebivalcev 6701 .
+
+
+###  https://onto.mdp.gov.si/obcina/ptuj
+obcina:ptuj rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "096" ;
+            shema:naziv "Ptuj" ;
+            shema:steviloPrebivalcev 23920 .
+
+
+###  https://onto.mdp.gov.si/obcina/puconci
+obcina:puconci rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "097" ;
+               shema:naziv "Puconci" ;
+               shema:steviloPrebivalcev 5818 .
+
+
+###  https://onto.mdp.gov.si/obcina/race-fram
+obcina:race-fram rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "098" ;
+                 shema:naziv "Rače-Fram" ;
+                 shema:steviloPrebivalcev 8167 .
+
+
+###  https://onto.mdp.gov.si/obcina/radece
+obcina:radece rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "099" ;
+              shema:naziv "Radeče" ;
+              shema:steviloPrebivalcev 4078 .
+
+
+###  https://onto.mdp.gov.si/obcina/radenci
+obcina:radenci rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "100" ;
+               shema:naziv "Radenci" ;
+               shema:steviloPrebivalcev 5065 .
+
+
+###  https://onto.mdp.gov.si/obcina/radlje-ob-dravi
+obcina:radlje-ob-dravi rdf:type owl:NamedIndividual ,
+                                shema:Obcina ;
+                       shema:idObcinaSurs "101" ;
+                       shema:naziv "Radlje ob Dravi" ;
+                       shema:steviloPrebivalcev 6221 .
+
+
+###  https://onto.mdp.gov.si/obcina/radovljica
+obcina:radovljica rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "102" ;
+                  shema:naziv "Radovljica" ;
+                  shema:steviloPrebivalcev 19373 .
+
+
+###  https://onto.mdp.gov.si/obcina/ravne-na-koroskem
+obcina:ravne-na-koroskem rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "103" ;
+                         shema:naziv "Ravne na Koroškem" ;
+                         shema:steviloPrebivalcev 11191 .
+
+
+###  https://onto.mdp.gov.si/obcina/razkrizje
+obcina:razkrizje rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "176" ;
+                 shema:naziv "Razkrižje" ;
+                 shema:steviloPrebivalcev 1216 .
+
+
+###  https://onto.mdp.gov.si/obcina/recica-ob-savinji
+obcina:recica-ob-savinji rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "209" ;
+                         shema:naziv "Rečica ob Savinji" ;
+                         shema:steviloPrebivalcev 2326 .
+
+
+###  https://onto.mdp.gov.si/obcina/rence-vogrsko
+obcina:rence-vogrsko rdf:type owl:NamedIndividual ,
+                              shema:Obcina ;
+                     shema:idObcinaSurs "201" ;
+                     shema:naziv "Renče-Vogrsko" ;
+                     shema:steviloPrebivalcev 4414 .
+
+
+###  https://onto.mdp.gov.si/obcina/ribnica
+obcina:ribnica rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "104" ;
+               shema:naziv "Ribnica" ;
+               shema:steviloPrebivalcev 9854 .
+
+
+###  https://onto.mdp.gov.si/obcina/ribnica-na-pohorju
+obcina:ribnica-na-pohorju rdf:type owl:NamedIndividual ,
+                                   shema:Obcina ;
+                          shema:idObcinaSurs "177" ;
+                          shema:naziv "Ribnica na Pohorju" ;
+                          shema:steviloPrebivalcev 1099 .
+
+
+###  https://onto.mdp.gov.si/obcina/rogaska-slatina
+obcina:rogaska-slatina rdf:type owl:NamedIndividual ,
+                                shema:Obcina ;
+                       shema:idObcinaSurs "106" ;
+                       shema:naziv "Rogaška Slatina" ;
+                       shema:steviloPrebivalcev 11674 .
+
+
+###  https://onto.mdp.gov.si/obcina/rogasovci
+obcina:rogasovci rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "105" ;
+                 shema:naziv "Rogašovci" ;
+                 shema:steviloPrebivalcev 3046 .
+
+
+###  https://onto.mdp.gov.si/obcina/rogatec
+obcina:rogatec rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "107" ;
+               shema:naziv "Rogatec" ;
+               shema:steviloPrebivalcev 3088 .
+
+
+###  https://onto.mdp.gov.si/obcina/ruse
+obcina:ruse rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "108" ;
+            shema:naziv "Ruše" ;
+            shema:steviloPrebivalcev 7175 .
+
+
+###  https://onto.mdp.gov.si/obcina/salovci
+obcina:salovci rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "033" ;
+               shema:naziv "Šalovci" ;
+               shema:steviloPrebivalcev 1343 .
+
+
+###  https://onto.mdp.gov.si/obcina/selnica-ob-dravi
+obcina:selnica-ob-dravi rdf:type owl:NamedIndividual ,
+                                 shema:Obcina ;
+                        shema:idObcinaSurs "178" ;
+                        shema:naziv "Selnica ob Dravi" ;
+                        shema:steviloPrebivalcev 4402 .
+
+
+###  https://onto.mdp.gov.si/obcina/semic
+obcina:semic rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "109" ;
+             shema:naziv "Semič" ;
+             shema:steviloPrebivalcev 3816 .
+
+
+###  https://onto.mdp.gov.si/obcina/sempeter-vrtojba
+obcina:sempeter-vrtojba rdf:type owl:NamedIndividual ,
+                                 shema:Obcina ;
+                        shema:idObcinaSurs "183" ;
+                        shema:naziv "Šempeter-Vrtojba" ;
+                        shema:steviloPrebivalcev 6383 .
+
+
+###  https://onto.mdp.gov.si/obcina/sencur
+obcina:sencur rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "117" ;
+              shema:naziv "Šenčur" ;
+              shema:steviloPrebivalcev 8875 .
+
+
+###  https://onto.mdp.gov.si/obcina/sentilj
+obcina:sentilj rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "118" ;
+               shema:naziv "Šentilj" ;
+               shema:steviloPrebivalcev 8386 .
+
+
+###  https://onto.mdp.gov.si/obcina/sentjernej
+obcina:sentjernej rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "119" ;
+                  shema:naziv "Šentjernej" ;
+                  shema:steviloPrebivalcev 7438 .
+
+
+###  https://onto.mdp.gov.si/obcina/sentjur
+obcina:sentjur rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "120" ;
+               shema:naziv "Šentjur" ;
+               shema:steviloPrebivalcev 19646 .
+
+
+###  https://onto.mdp.gov.si/obcina/sentrupert
+obcina:sentrupert rdf:type owl:NamedIndividual ,
+                           shema:Obcina ;
+                  shema:idObcinaSurs "211" ;
+                  shema:naziv "Šentrupert" ;
+                  shema:steviloPrebivalcev 2936 .
+
+
+###  https://onto.mdp.gov.si/obcina/sevnica
+obcina:sevnica rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "110" ;
+               shema:naziv "Sevnica" ;
+               shema:steviloPrebivalcev 17555 .
+
+
+###  https://onto.mdp.gov.si/obcina/sezana
+obcina:sezana rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "111" ;
+              shema:naziv "Sežana" ;
+              shema:steviloPrebivalcev 13729 .
+
+
+###  https://onto.mdp.gov.si/obcina/skocjan
+obcina:skocjan rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "121" ;
+               shema:naziv "Škocjan" ;
+               shema:steviloPrebivalcev 3577 .
+
+
+###  https://onto.mdp.gov.si/obcina/skofja-loka
+obcina:skofja-loka rdf:type owl:NamedIndividual ,
+                            shema:Obcina ;
+                   shema:idObcinaSurs "122" ;
+                   shema:naziv "Škofja Loka" ;
+                   shema:steviloPrebivalcev 23884 .
+
+
+###  https://onto.mdp.gov.si/obcina/skofljica
+obcina:skofljica rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "123" ;
+                 shema:naziv "Škofljica" ;
+                 shema:steviloPrebivalcev 12124 .
+
+
+###  https://onto.mdp.gov.si/obcina/slovenj-gradec
+obcina:slovenj-gradec rdf:type owl:NamedIndividual ,
+                               shema:Obcina ;
+                      shema:idObcinaSurs "112" ;
+                      shema:naziv "Slovenj Gradec" ;
+                      shema:steviloPrebivalcev 17067 .
+
+
+###  https://onto.mdp.gov.si/obcina/slovenska-bistrica
+obcina:slovenska-bistrica rdf:type owl:NamedIndividual ,
+                                   shema:Obcina ;
+                          shema:idObcinaSurs "113" ;
+                          shema:naziv "Slovenska Bistrica" ;
+                          shema:steviloPrebivalcev 26265 .
+
+
+###  https://onto.mdp.gov.si/obcina/slovenske-konjice
+obcina:slovenske-konjice rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "114" ;
+                         shema:naziv "Slovenske Konjice" ;
+                         shema:steviloPrebivalcev 15515 .
+
+
+###  https://onto.mdp.gov.si/obcina/smarje-pri-jelsah
+obcina:smarje-pri-jelsah rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "124" ;
+                         shema:naziv "Šmarje pri Jelšah" ;
+                         shema:steviloPrebivalcev 10512 .
+
+
+###  https://onto.mdp.gov.si/obcina/smarjeske-toplice
+obcina:smarjeske-toplice rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "206" ;
+                         shema:naziv "Šmarješke Toplice" ;
+                         shema:steviloPrebivalcev 3607 .
+
+
+###  https://onto.mdp.gov.si/obcina/smartno-ob-paki
+obcina:smartno-ob-paki rdf:type owl:NamedIndividual ,
+                                shema:Obcina ;
+                       shema:idObcinaSurs "125" ;
+                       shema:naziv "Šmartno ob Paki" ;
+                       shema:steviloPrebivalcev 3407 .
+
+
+###  https://onto.mdp.gov.si/obcina/smartno-pri-litiji
+obcina:smartno-pri-litiji rdf:type owl:NamedIndividual ,
+                                   shema:Obcina ;
+                          shema:idObcinaSurs "194" ;
+                          shema:naziv "Šmartno pri Litiji" ;
+                          shema:steviloPrebivalcev 5810 .
+
+
+###  https://onto.mdp.gov.si/obcina/sodrazica
+obcina:sodrazica rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "179" ;
+                 shema:naziv "Sodražica" ;
+                 shema:steviloPrebivalcev 2318 .
+
+
+###  https://onto.mdp.gov.si/obcina/solcava
+obcina:solcava rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "180" ;
+               shema:naziv "Solčava" ;
+               shema:steviloPrebivalcev 504 .
+
+
+###  https://onto.mdp.gov.si/obcina/sostanj
+obcina:sostanj rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "126" ;
+               shema:naziv "Šoštanj" ;
+               shema:steviloPrebivalcev 9007 .
+
+
+###  https://onto.mdp.gov.si/obcina/sredisce-ob-dravi
+obcina:sredisce-ob-dravi rdf:type owl:NamedIndividual ,
+                                  shema:Obcina ;
+                         shema:idObcinaSurs "202" ;
+                         shema:naziv "Središče ob Dravi" ;
+                         shema:steviloPrebivalcev 1839 .
+
+
+###  https://onto.mdp.gov.si/obcina/starse
+obcina:starse rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "115" ;
+              shema:naziv "Starše" ;
+              shema:steviloPrebivalcev 4128 .
+
+
+###  https://onto.mdp.gov.si/obcina/store
+obcina:store rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "127" ;
+             shema:naziv "Štore" ;
+             shema:steviloPrebivalcev 4481 .
+
+
+###  https://onto.mdp.gov.si/obcina/straza
+obcina:straza rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "203" ;
+              shema:naziv "Straža" ;
+              shema:steviloPrebivalcev 3980 .
+
+
+###  https://onto.mdp.gov.si/obcina/sveta-ana
+obcina:sveta-ana rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "181" ;
+                 shema:naziv "Sveta Ana" ;
+                 shema:steviloPrebivalcev 2376 .
+
+
+###  https://onto.mdp.gov.si/obcina/sveta-trojica-v-slovenskih-goricah
+obcina:sveta-trojica-v-slovenskih-goricah rdf:type owl:NamedIndividual ,
+                                                   shema:Obcina ;
+                                          shema:idObcinaSurs "204" ;
+                                          shema:naziv "Sveta Trojica v Slovenskih goricah" ;
+                                          shema:steviloPrebivalcev 2270 .
+
+
+###  https://onto.mdp.gov.si/obcina/sveti-andraz-v-slov-goricah
+obcina:sveti-andraz-v-slov-goricah rdf:type owl:NamedIndividual ,
+                                            shema:Obcina ;
+                                   shema:idObcinaSurs "182" ;
+                                   shema:naziv "Sveti Andraž v Slov. goricah" ;
+                                   shema:steviloPrebivalcev 1184 .
+
+
+###  https://onto.mdp.gov.si/obcina/sveti-jurij-ob-scavnici
+obcina:sveti-jurij-ob-scavnici rdf:type owl:NamedIndividual ,
+                                        shema:Obcina ;
+                               shema:idObcinaSurs "116" ;
+                               shema:naziv "Sveti Jurij ob Ščavnici" ;
+                               shema:steviloPrebivalcev 2795 .
+
+
+###  https://onto.mdp.gov.si/obcina/sveti-jurij-v-slovenskih-goricah
+obcina:sveti-jurij-v-slovenskih-goricah rdf:type owl:NamedIndividual ,
+                                                 shema:Obcina ;
+                                        shema:idObcinaSurs "210" ;
+                                        shema:naziv "Sveti Jurij v Slovenskih goricah" ;
+                                        shema:steviloPrebivalcev 2180 .
+
+
+###  https://onto.mdp.gov.si/obcina/sveti-tomaz
+obcina:sveti-tomaz rdf:type owl:NamedIndividual ,
+                            shema:Obcina ;
+                   shema:idObcinaSurs "205" ;
+                   shema:naziv "Sveti Tomaž" ;
+                   shema:steviloPrebivalcev 1988 .
+
+
+###  https://onto.mdp.gov.si/obcina/tabor
+obcina:tabor rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "184" ;
+             shema:naziv "Tabor" ;
+             shema:steviloPrebivalcev 1789 .
+
+
+###  https://onto.mdp.gov.si/obcina/tisina
+obcina:tisina rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "010" ;
+              shema:naziv "Tišina" ;
+              shema:steviloPrebivalcev 3905 .
+
+
+###  https://onto.mdp.gov.si/obcina/tolmin
+obcina:tolmin rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "128" ;
+              shema:naziv "Tolmin" ;
+              shema:steviloPrebivalcev 10754 .
+
+
+###  https://onto.mdp.gov.si/obcina/trbovlje
+obcina:trbovlje rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "129" ;
+                shema:naziv "Trbovlje" ;
+                shema:steviloPrebivalcev 16002 .
+
+
+###  https://onto.mdp.gov.si/obcina/trebnje
+obcina:trebnje rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "130" ;
+               shema:naziv "Trebnje" ;
+               shema:steviloPrebivalcev 13695 .
+
+
+###  https://onto.mdp.gov.si/obcina/trnovska-vas
+obcina:trnovska-vas rdf:type owl:NamedIndividual ,
+                             shema:Obcina ;
+                    shema:idObcinaSurs "185" ;
+                    shema:naziv "Trnovska vas" ;
+                    shema:steviloPrebivalcev 1397 .
+
+
+###  https://onto.mdp.gov.si/obcina/trzic
+obcina:trzic rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "131" ;
+             shema:naziv "Tržič" ;
+             shema:steviloPrebivalcev 15110 .
+
+
+###  https://onto.mdp.gov.si/obcina/trzin
+obcina:trzin rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "186" ;
+             shema:naziv "Trzin" ;
+             shema:steviloPrebivalcev 4026 .
+
+
+###  https://onto.mdp.gov.si/obcina/turnisce
+obcina:turnisce rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "132" ;
+                shema:naziv "Turnišče" ;
+                shema:steviloPrebivalcev 3112 .
+
+
+###  https://onto.mdp.gov.si/obcina/velenje
+obcina:velenje rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "133" ;
+               shema:naziv "Velenje" ;
+               shema:steviloPrebivalcev 33930 .
+
+
+###  https://onto.mdp.gov.si/obcina/velika-polana
+obcina:velika-polana rdf:type owl:NamedIndividual ,
+                              shema:Obcina ;
+                     shema:idObcinaSurs "187" ;
+                     shema:naziv "Velika Polana" ;
+                     shema:steviloPrebivalcev 1392 .
+
+
+###  https://onto.mdp.gov.si/obcina/velike-lasce
+obcina:velike-lasce rdf:type owl:NamedIndividual ,
+                             shema:Obcina ;
+                    shema:idObcinaSurs "134" ;
+                    shema:naziv "Velike Lašče" ;
+                    shema:steviloPrebivalcev 4564 .
+
+
+###  https://onto.mdp.gov.si/obcina/verzej
+obcina:verzej rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "188" ;
+              shema:naziv "Veržej" ;
+              shema:steviloPrebivalcev 1379 .
+
+
+###  https://onto.mdp.gov.si/obcina/videm
+obcina:videm rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "135" ;
+             shema:naziv "Videm" ;
+             shema:steviloPrebivalcev 5612 .
+
+
+###  https://onto.mdp.gov.si/obcina/vipava
+obcina:vipava rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "136" ;
+              shema:naziv "Vipava" ;
+              shema:steviloPrebivalcev 5875 .
+
+
+###  https://onto.mdp.gov.si/obcina/vitanje
+obcina:vitanje rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "137" ;
+               shema:naziv "Vitanje" ;
+               shema:steviloPrebivalcev 2202 .
+
+
+###  https://onto.mdp.gov.si/obcina/vodice
+obcina:vodice rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "138" ;
+              shema:naziv "Vodice" ;
+              shema:steviloPrebivalcev 5234 .
+
+
+###  https://onto.mdp.gov.si/obcina/vojnik
+obcina:vojnik rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "139" ;
+              shema:naziv "Vojnik" ;
+              shema:steviloPrebivalcev 9333 .
+
+
+###  https://onto.mdp.gov.si/obcina/vransko
+obcina:vransko rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "189" ;
+               shema:naziv "Vransko" ;
+               shema:steviloPrebivalcev 2763 .
+
+
+###  https://onto.mdp.gov.si/obcina/vrhnika
+obcina:vrhnika rdf:type owl:NamedIndividual ,
+                        shema:Obcina ;
+               shema:idObcinaSurs "140" ;
+               shema:naziv "Vrhnika" ;
+               shema:steviloPrebivalcev 18206 .
+
+
+###  https://onto.mdp.gov.si/obcina/vuzenica
+obcina:vuzenica rdf:type owl:NamedIndividual ,
+                         shema:Obcina ;
+                shema:idObcinaSurs "141" ;
+                shema:naziv "Vuzenica" ;
+                shema:steviloPrebivalcev 2621 .
+
+
+###  https://onto.mdp.gov.si/obcina/zagorje-ob-savi
+obcina:zagorje-ob-savi rdf:type owl:NamedIndividual ,
+                                shema:Obcina ;
+                       shema:idObcinaSurs "142" ;
+                       shema:naziv "Zagorje ob Savi" ;
+                       shema:steviloPrebivalcev 16379 .
+
+
+###  https://onto.mdp.gov.si/obcina/zalec
+obcina:zalec rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "190" ;
+             shema:naziv "Žalec" ;
+             shema:steviloPrebivalcev 21823 .
+
+
+###  https://onto.mdp.gov.si/obcina/zavrc
+obcina:zavrc rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "143" ;
+             shema:naziv "Zavrč" ;
+             shema:steviloPrebivalcev 1471 .
+
+
+###  https://onto.mdp.gov.si/obcina/zelezniki
+obcina:zelezniki rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "146" ;
+                 shema:naziv "Železniki" ;
+                 shema:steviloPrebivalcev 6670 .
+
+
+###  https://onto.mdp.gov.si/obcina/zetale
+obcina:zetale rdf:type owl:NamedIndividual ,
+                       shema:Obcina ;
+              shema:idObcinaSurs "191" ;
+              shema:naziv "Žetale" ;
+              shema:steviloPrebivalcev 1318 .
+
+
+###  https://onto.mdp.gov.si/obcina/ziri
+obcina:ziri rdf:type owl:NamedIndividual ,
+                     shema:Obcina ;
+            shema:idObcinaSurs "147" ;
+            shema:naziv "Žiri" ;
+            shema:steviloPrebivalcev 5106 .
+
+
+###  https://onto.mdp.gov.si/obcina/zirovnica
+obcina:zirovnica rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "192" ;
+                 shema:naziv "Žirovnica" ;
+                 shema:steviloPrebivalcev 4525 .
+
+
+###  https://onto.mdp.gov.si/obcina/zrece
+obcina:zrece rdf:type owl:NamedIndividual ,
+                      shema:Obcina ;
+             shema:idObcinaSurs "144" ;
+             shema:naziv "Zreče" ;
+             shema:steviloPrebivalcev 6654 .
+
+
+###  https://onto.mdp.gov.si/obcina/zuzemberk
+obcina:zuzemberk rdf:type owl:NamedIndividual ,
+                          shema:Obcina ;
+                 shema:idObcinaSurs "193" ;
+                 shema:naziv "Žužemberk" ;
+                 shema:steviloPrebivalcev 4691 .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+shema:idObcinaSurs rdfs:label "SURS ID občine"@sl .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

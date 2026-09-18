@@ -1,0 +1,1063 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix obcina: <https://onto.mdp.gov.si/obcina/> .
+@prefix shema:  <https://onto.mdp.gov.si/shema/> .
+
+obcina:ajdovscina a shema:Obcina ;
+    shema:idObcinaSurs "001" ;
+    shema:naziv "Ajdovščina" ;
+    shema:steviloPrebivalcev 19895 .
+
+obcina:ankaran a shema:Obcina ;
+    shema:idObcinaSurs "213" ;
+    shema:naziv "Ankaran" ;
+    shema:steviloPrebivalcev 3446 .
+
+obcina:apace a shema:Obcina ;
+    shema:idObcinaSurs "195" ;
+    shema:naziv "Apače" ;
+    shema:steviloPrebivalcev 3563 .
+
+obcina:beltinci a shema:Obcina ;
+    shema:idObcinaSurs "002" ;
+    shema:naziv "Beltinci" ;
+    shema:steviloPrebivalcev 8129 .
+
+obcina:benedikt a shema:Obcina ;
+    shema:idObcinaSurs "148" ;
+    shema:naziv "Benedikt" ;
+    shema:steviloPrebivalcev 2738 .
+
+obcina:bistrica-ob-sotli a shema:Obcina ;
+    shema:idObcinaSurs "149" ;
+    shema:naziv "Bistrica ob Sotli" ;
+    shema:steviloPrebivalcev 1335 .
+
+obcina:bled a shema:Obcina ;
+    shema:idObcinaSurs "003" ;
+    shema:naziv "Bled" ;
+    shema:steviloPrebivalcev 8154 .
+
+obcina:bloke a shema:Obcina ;
+    shema:idObcinaSurs "150" ;
+    shema:naziv "Bloke" ;
+    shema:steviloPrebivalcev 1554 .
+
+obcina:bohinj a shema:Obcina ;
+    shema:idObcinaSurs "004" ;
+    shema:naziv "Bohinj" ;
+    shema:steviloPrebivalcev 5238 .
+
+obcina:gornji-grad a shema:Obcina ;
+    shema:idObcinaSurs "030" ;
+    shema:naziv "Gornji Grad" ;
+    shema:steviloPrebivalcev 2549 .
+
+obcina:gornji-petrovci a shema:Obcina ;
+    shema:idObcinaSurs "031" ;
+    shema:naziv "Gornji Petrovci" ;
+    shema:steviloPrebivalcev 1964 .
+
+obcina:grad a shema:Obcina ;
+    shema:idObcinaSurs "158" ;
+    shema:naziv "Grad" ;
+    shema:steviloPrebivalcev 1969 .
+
+obcina:grosuplje a shema:Obcina ;
+    shema:idObcinaSurs "032" ;
+    shema:naziv "Grosuplje" ;
+    shema:steviloPrebivalcev 22050 .
+
+obcina:hajdina a shema:Obcina ;
+    shema:idObcinaSurs "159" ;
+    shema:naziv "Hajdina" ;
+    shema:steviloPrebivalcev 4059 .
+
+obcina:gorisnica a shema:Obcina ;
+    shema:idObcinaSurs "028" ;
+    shema:naziv "Gorišnica" ;
+    shema:steviloPrebivalcev 4213 .
+
+obcina:gorje a shema:Obcina ;
+    shema:idObcinaSurs "207" ;
+    shema:naziv "Gorje" ;
+    shema:steviloPrebivalcev 2732 .
+
+obcina:gornja-radgona a shema:Obcina ;
+    shema:idObcinaSurs "029" ;
+    shema:naziv "Gornja Radgona" ;
+    shema:steviloPrebivalcev 8519 .
+
+obcina:osilnica a shema:Obcina ;
+    shema:idObcinaSurs "088" ;
+    shema:naziv "Osilnica" ;
+    shema:steviloPrebivalcev 329 .
+
+obcina:hoce-slivnica a shema:Obcina ;
+    shema:idObcinaSurs "160" ;
+    shema:naziv "Hoče-Slivnica" ;
+    shema:steviloPrebivalcev 11913 .
+
+obcina:hodos a shema:Obcina ;
+    shema:idObcinaSurs "161" ;
+    shema:naziv "Hodoš" ;
+    shema:steviloPrebivalcev 335 .
+
+obcina:horjul a shema:Obcina ;
+    shema:idObcinaSurs "162" ;
+    shema:naziv "Horjul" ;
+    shema:steviloPrebivalcev 3051 .
+
+obcina:hrastnik a shema:Obcina ;
+    shema:idObcinaSurs "034" ;
+    shema:naziv "Hrastnik" ;
+    shema:steviloPrebivalcev 8820 .
+
+obcina:hrpelje-kozina a shema:Obcina ;
+    shema:idObcinaSurs "035" ;
+    shema:naziv "Hrpelje-Kozina" ;
+    shema:steviloPrebivalcev 5356 .
+
+obcina:idrija a shema:Obcina ;
+    shema:idObcinaSurs "036" ;
+    shema:naziv "Idrija" ;
+    shema:steviloPrebivalcev 11673 .
+
+obcina:ig a shema:Obcina ;
+    shema:idObcinaSurs "037" ;
+    shema:naziv "Ig" ;
+    shema:steviloPrebivalcev 7926 .
+
+obcina:ilirska-bistrica a shema:Obcina ;
+    shema:idObcinaSurs "038" ;
+    shema:naziv "Ilirska Bistrica" ;
+    shema:steviloPrebivalcev 13255 .
+
+obcina:ivancna-gorica a shema:Obcina ;
+    shema:idObcinaSurs "039" ;
+    shema:naziv "Ivančna Gorica" ;
+    shema:steviloPrebivalcev 18267 .
+
+obcina:izola a shema:Obcina ;
+    shema:idObcinaSurs "040" ;
+    shema:naziv "Izola" ;
+    shema:steviloPrebivalcev 16500 .
+
+obcina:ljutomer a shema:Obcina ;
+    shema:idObcinaSurs "063" ;
+    shema:naziv "Ljutomer" ;
+    shema:steviloPrebivalcev 10955 .
+
+obcina:log-dragomer a shema:Obcina ;
+    shema:idObcinaSurs "208" ;
+    shema:naziv "Log-Dragomer" ;
+    shema:steviloPrebivalcev 3860 .
+
+obcina:logatec a shema:Obcina ;
+    shema:idObcinaSurs "064" ;
+    shema:naziv "Logatec" ;
+    shema:steviloPrebivalcev 15071 .
+
+obcina:loska-dolina a shema:Obcina ;
+    shema:idObcinaSurs "065" ;
+    shema:naziv "Loška dolina" ;
+    shema:steviloPrebivalcev 3506 .
+
+obcina:loski-potok a shema:Obcina ;
+    shema:idObcinaSurs "066" ;
+    shema:naziv "Loški Potok" ;
+    shema:steviloPrebivalcev 1835 .
+
+obcina:lovrenc-na-pohorju a shema:Obcina ;
+    shema:idObcinaSurs "167" ;
+    shema:naziv "Lovrenc na Pohorju" ;
+    shema:steviloPrebivalcev 2944 .
+
+obcina:luce a shema:Obcina ;
+    shema:idObcinaSurs "067" ;
+    shema:naziv "Luče" ;
+    shema:steviloPrebivalcev 1419 .
+
+obcina:lukovica a shema:Obcina ;
+    shema:idObcinaSurs "068" ;
+    shema:naziv "Lukovica" ;
+    shema:steviloPrebivalcev 6186 .
+
+obcina:majsperk a shema:Obcina ;
+    shema:idObcinaSurs "069" ;
+    shema:naziv "Majšperk" ;
+    shema:steviloPrebivalcev 3983 .
+
+obcina:makole a shema:Obcina ;
+    shema:idObcinaSurs "198" ;
+    shema:naziv "Makole" ;
+    shema:steviloPrebivalcev 2058 .
+
+obcina:maribor a shema:Obcina ;
+    shema:idObcinaSurs "070" ;
+    shema:naziv "Maribor" ;
+    shema:steviloPrebivalcev 114301 .
+
+obcina:murska-sobota a shema:Obcina ;
+    shema:idObcinaSurs "080" ;
+    shema:naziv "Murska Sobota" ;
+    shema:steviloPrebivalcev 18429 .
+
+obcina:muta a shema:Obcina ;
+    shema:idObcinaSurs "081" ;
+    shema:naziv "Muta" ;
+    shema:steviloPrebivalcev 3363 .
+
+obcina:naklo a shema:Obcina ;
+    shema:idObcinaSurs "082" ;
+    shema:naziv "Naklo" ;
+    shema:steviloPrebivalcev 5478 .
+
+obcina:nazarje a shema:Obcina ;
+    shema:idObcinaSurs "083" ;
+    shema:naziv "Nazarje" ;
+    shema:steviloPrebivalcev 2686 .
+
+obcina:nova-gorica a shema:Obcina ;
+    shema:idObcinaSurs "084" ;
+    shema:naziv "Nova Gorica" ;
+    shema:steviloPrebivalcev 31906 .
+
+obcina:pivka a shema:Obcina ;
+    shema:idObcinaSurs "091" ;
+    shema:naziv "Pivka" ;
+    shema:steviloPrebivalcev 6131 .
+
+obcina:novo-mesto a shema:Obcina ;
+    shema:idObcinaSurs "085" ;
+    shema:naziv "Novo mesto" ;
+    shema:steviloPrebivalcev 38669 .
+
+obcina:odranci a shema:Obcina ;
+    shema:idObcinaSurs "086" ;
+    shema:naziv "Odranci" ;
+    shema:steviloPrebivalcev 1600 .
+
+obcina:oplotnica a shema:Obcina ;
+    shema:idObcinaSurs "171" ;
+    shema:naziv "Oplotnica" ;
+    shema:steviloPrebivalcev 4203 .
+
+obcina:ormoz a shema:Obcina ;
+    shema:idObcinaSurs "087" ;
+    shema:naziv "Ormož" ;
+    shema:steviloPrebivalcev 11849 .
+
+obcina:pesnica a shema:Obcina ;
+    shema:idObcinaSurs "089" ;
+    shema:naziv "Pesnica" ;
+    shema:steviloPrebivalcev 7819 .
+
+obcina:piran a shema:Obcina ;
+    shema:idObcinaSurs "090" ;
+    shema:naziv "Piran" ;
+    shema:steviloPrebivalcev 18113 .
+
+obcina:prebold a shema:Obcina ;
+    shema:idObcinaSurs "174" ;
+    shema:naziv "Prebold" ;
+    shema:steviloPrebivalcev 5317 .
+
+obcina:preddvor a shema:Obcina ;
+    shema:idObcinaSurs "095" ;
+    shema:naziv "Preddvor" ;
+    shema:steviloPrebivalcev 3934 .
+
+obcina:podcetrtek a shema:Obcina ;
+    shema:idObcinaSurs "092" ;
+    shema:naziv "Podčetrtek" ;
+    shema:steviloPrebivalcev 3653 .
+
+obcina:podlehnik a shema:Obcina ;
+    shema:idObcinaSurs "172" ;
+    shema:naziv "Podlehnik" ;
+    shema:steviloPrebivalcev 1821 .
+
+obcina:podvelka a shema:Obcina ;
+    shema:idObcinaSurs "093" ;
+    shema:naziv "Podvelka" ;
+    shema:steviloPrebivalcev 2228 .
+
+obcina:poljcane a shema:Obcina ;
+    shema:idObcinaSurs "200" ;
+    shema:naziv "Poljčane" ;
+    shema:steviloPrebivalcev 4398 .
+
+obcina:polzela a shema:Obcina ;
+    shema:idObcinaSurs "173" ;
+    shema:naziv "Polzela" ;
+    shema:steviloPrebivalcev 6629 .
+
+obcina:postojna a shema:Obcina ;
+    shema:idObcinaSurs "094" ;
+    shema:naziv "Postojna" ;
+    shema:steviloPrebivalcev 17532 .
+
+obcina:prevalje a shema:Obcina ;
+    shema:idObcinaSurs "175" ;
+    shema:naziv "Prevalje" ;
+    shema:steviloPrebivalcev 6701 .
+
+obcina:ptuj a shema:Obcina ;
+    shema:idObcinaSurs "096" ;
+    shema:naziv "Ptuj" ;
+    shema:steviloPrebivalcev 23920 .
+
+obcina:puconci a shema:Obcina ;
+    shema:idObcinaSurs "097" ;
+    shema:naziv "Puconci" ;
+    shema:steviloPrebivalcev 5818 .
+
+obcina:race-fram a shema:Obcina ;
+    shema:idObcinaSurs "098" ;
+    shema:naziv "Rače-Fram" ;
+    shema:steviloPrebivalcev 8167 .
+
+obcina:radece a shema:Obcina ;
+    shema:idObcinaSurs "099" ;
+    shema:naziv "Radeče" ;
+    shema:steviloPrebivalcev 4078 .
+
+obcina:radenci a shema:Obcina ;
+    shema:idObcinaSurs "100" ;
+    shema:naziv "Radenci" ;
+    shema:steviloPrebivalcev 5065 .
+
+obcina:radlje-ob-dravi a shema:Obcina ;
+    shema:idObcinaSurs "101" ;
+    shema:naziv "Radlje ob Dravi" ;
+    shema:steviloPrebivalcev 6221 .
+
+obcina:radovljica a shema:Obcina ;
+    shema:idObcinaSurs "102" ;
+    shema:naziv "Radovljica" ;
+    shema:steviloPrebivalcev 19373 .
+
+obcina:ravne-na-koroskem a shema:Obcina ;
+    shema:idObcinaSurs "103" ;
+    shema:naziv "Ravne na Koroškem" ;
+    shema:steviloPrebivalcev 11191 .
+
+obcina:razkrizje a shema:Obcina ;
+    shema:idObcinaSurs "176" ;
+    shema:naziv "Razkrižje" ;
+    shema:steviloPrebivalcev 1216 .
+
+obcina:recica-ob-savinji a shema:Obcina ;
+    shema:idObcinaSurs "209" ;
+    shema:naziv "Rečica ob Savinji" ;
+    shema:steviloPrebivalcev 2326 .
+
+obcina:ribnica a shema:Obcina ;
+    shema:idObcinaSurs "104" ;
+    shema:naziv "Ribnica" ;
+    shema:steviloPrebivalcev 9854 .
+
+obcina:ribnica-na-pohorju a shema:Obcina ;
+    shema:idObcinaSurs "177" ;
+    shema:naziv "Ribnica na Pohorju" ;
+    shema:steviloPrebivalcev 1099 .
+
+obcina:rogaska-slatina a shema:Obcina ;
+    shema:idObcinaSurs "106" ;
+    shema:naziv "Rogaška Slatina" ;
+    shema:steviloPrebivalcev 11674 .
+
+obcina:rogasovci a shema:Obcina ;
+    shema:idObcinaSurs "105" ;
+    shema:naziv "Rogašovci" ;
+    shema:steviloPrebivalcev 3046 .
+
+obcina:rogatec a shema:Obcina ;
+    shema:idObcinaSurs "107" ;
+    shema:naziv "Rogatec" ;
+    shema:steviloPrebivalcev 3088 .
+
+obcina:ruse a shema:Obcina ;
+    shema:idObcinaSurs "108" ;
+    shema:naziv "Ruše" ;
+    shema:steviloPrebivalcev 7175 .
+
+obcina:selnica-ob-dravi a shema:Obcina ;
+    shema:idObcinaSurs "178" ;
+    shema:naziv "Selnica ob Dravi" ;
+    shema:steviloPrebivalcev 4402 .
+
+obcina:semic a shema:Obcina ;
+    shema:idObcinaSurs "109" ;
+    shema:naziv "Semič" ;
+    shema:steviloPrebivalcev 3816 .
+
+obcina:sevnica a shema:Obcina ;
+    shema:idObcinaSurs "110" ;
+    shema:naziv "Sevnica" ;
+    shema:steviloPrebivalcev 17555 .
+
+obcina:sezana a shema:Obcina ;
+    shema:idObcinaSurs "111" ;
+    shema:naziv "Sežana" ;
+    shema:steviloPrebivalcev 13729 .
+
+obcina:slovenj-gradec a shema:Obcina ;
+    shema:idObcinaSurs "112" ;
+    shema:naziv "Slovenj Gradec" ;
+    shema:steviloPrebivalcev 17067 .
+
+obcina:dravograd a shema:Obcina ;
+    shema:idObcinaSurs "025" ;
+    shema:naziv "Dravograd" ;
+    shema:steviloPrebivalcev 8816 .
+
+obcina:duplek a shema:Obcina ;
+    shema:idObcinaSurs "026" ;
+    shema:naziv "Duplek" ;
+    shema:steviloPrebivalcev 7057 .
+
+obcina:gorenja-vas-poljane a shema:Obcina ;
+    shema:idObcinaSurs "027" ;
+    shema:naziv "Gorenja vas-Poljane" ;
+    shema:steviloPrebivalcev 7724 .
+
+obcina:sveta-trojica-v-slovenskih-goricah a shema:Obcina ;
+    shema:idObcinaSurs "204" ;
+    shema:naziv "Sveta Trojica v Slovenskih goricah" ;
+    shema:steviloPrebivalcev 2270 .
+
+obcina:sveti-andraz-v-slov-goricah a shema:Obcina ;
+    shema:idObcinaSurs "182" ;
+    shema:naziv "Sveti Andraž v Slov. goricah" ;
+    shema:steviloPrebivalcev 1184 .
+
+obcina:sveti-jurij-ob-scavnici a shema:Obcina ;
+    shema:idObcinaSurs "116" ;
+    shema:naziv "Sveti Jurij ob Ščavnici" ;
+    shema:steviloPrebivalcev 2795 .
+
+obcina:sveti-jurij-v-slovenskih-goricah a shema:Obcina ;
+    shema:idObcinaSurs "210" ;
+    shema:naziv "Sveti Jurij v Slovenskih goricah" ;
+    shema:steviloPrebivalcev 2180 .
+
+obcina:sveti-tomaz a shema:Obcina ;
+    shema:idObcinaSurs "205" ;
+    shema:naziv "Sveti Tomaž" ;
+    shema:steviloPrebivalcev 1988 .
+
+obcina:salovci a shema:Obcina ;
+    shema:idObcinaSurs "033" ;
+    shema:naziv "Šalovci" ;
+    shema:steviloPrebivalcev 1343 .
+
+obcina:sempeter-vrtojba a shema:Obcina ;
+    shema:idObcinaSurs "183" ;
+    shema:naziv "Šempeter-Vrtojba" ;
+    shema:steviloPrebivalcev 6383 .
+
+obcina:sencur a shema:Obcina ;
+    shema:idObcinaSurs "117" ;
+    shema:naziv "Šenčur" ;
+    shema:steviloPrebivalcev 8875 .
+
+obcina:sentilj a shema:Obcina ;
+    shema:idObcinaSurs "118" ;
+    shema:naziv "Šentilj" ;
+    shema:steviloPrebivalcev 8386 .
+
+obcina:dobrna a shema:Obcina ;
+    shema:idObcinaSurs "155" ;
+    shema:naziv "Dobrna" ;
+    shema:steviloPrebivalcev 2324 .
+
+obcina:dobrova-polhov-gradec a shema:Obcina ;
+    shema:idObcinaSurs "021" ;
+    shema:naziv "Dobrova-Polhov Gradec" ;
+    shema:steviloPrebivalcev 8064 .
+
+obcina:dobrovnik a shema:Obcina ;
+    shema:idObcinaSurs "156" ;
+    shema:naziv "Dobrovnik" ;
+    shema:steviloPrebivalcev 1238 .
+
+obcina:dol-pri-ljubljani a shema:Obcina ;
+    shema:idObcinaSurs "022" ;
+    shema:naziv "Dol pri Ljubljani" ;
+    shema:steviloPrebivalcev 6420 .
+
+obcina:dolenjske-toplice a shema:Obcina ;
+    shema:idObcinaSurs "157" ;
+    shema:naziv "Dolenjske Toplice" ;
+    shema:steviloPrebivalcev 3680 .
+
+obcina:domzale a shema:Obcina ;
+    shema:idObcinaSurs "023" ;
+    shema:naziv "Domžale" ;
+    shema:steviloPrebivalcev 38190 .
+
+obcina:dornava a shema:Obcina ;
+    shema:idObcinaSurs "024" ;
+    shema:naziv "Dornava" ;
+    shema:steviloPrebivalcev 2937 .
+
+obcina:lasko a shema:Obcina ;
+    shema:idObcinaSurs "057" ;
+    shema:naziv "Laško" ;
+    shema:steviloPrebivalcev 13047 .
+
+obcina:lenart a shema:Obcina ;
+    shema:idObcinaSurs "058" ;
+    shema:naziv "Lenart" ;
+    shema:steviloPrebivalcev 8574 .
+
+obcina:lendava a shema:Obcina ;
+    shema:idObcinaSurs "059" ;
+    shema:naziv "Lendava" ;
+    shema:steviloPrebivalcev 10125 .
+
+obcina:litija a shema:Obcina ;
+    shema:idObcinaSurs "060" ;
+    shema:naziv "Litija" ;
+    shema:steviloPrebivalcev 15882 .
+
+obcina:crna-na-koroskem a shema:Obcina ;
+    shema:idObcinaSurs "016" ;
+    shema:naziv "Črna na Koroškem" ;
+    shema:steviloPrebivalcev 3012 .
+
+obcina:crnomelj a shema:Obcina ;
+    shema:idObcinaSurs "017" ;
+    shema:naziv "Črnomelj" ;
+    shema:steviloPrebivalcev 14213 .
+
+obcina:destrnik a shema:Obcina ;
+    shema:idObcinaSurs "018" ;
+    shema:naziv "Destrnik" ;
+    shema:steviloPrebivalcev 2695 .
+
+obcina:divaca a shema:Obcina ;
+    shema:idObcinaSurs "019" ;
+    shema:naziv "Divača" ;
+    shema:steviloPrebivalcev 4535 .
+
+obcina:dobje a shema:Obcina ;
+    shema:idObcinaSurs "154" ;
+    shema:naziv "Dobje" ;
+    shema:steviloPrebivalcev 960 .
+
+obcina:dobrepolje a shema:Obcina ;
+    shema:idObcinaSurs "020" ;
+    shema:naziv "Dobrepolje" ;
+    shema:steviloPrebivalcev 3937 .
+
+obcina:kranj a shema:Obcina ;
+    shema:idObcinaSurs "052" ;
+    shema:naziv "Kranj" ;
+    shema:steviloPrebivalcev 57384 .
+
+obcina:kranjska-gora a shema:Obcina ;
+    shema:idObcinaSurs "053" ;
+    shema:naziv "Kranjska Gora" ;
+    shema:steviloPrebivalcev 5214 .
+
+obcina:krizevci a shema:Obcina ;
+    shema:idObcinaSurs "166" ;
+    shema:naziv "Križevci" ;
+    shema:steviloPrebivalcev 3528 .
+
+obcina:krsko a shema:Obcina ;
+    shema:idObcinaSurs "054" ;
+    shema:naziv "Krško" ;
+    shema:steviloPrebivalcev 26175 .
+
+obcina:kungota a shema:Obcina ;
+    shema:idObcinaSurs "055" ;
+    shema:naziv "Kungota" ;
+    shema:steviloPrebivalcev 5072 .
+
+obcina:cerkno a shema:Obcina ;
+    shema:idObcinaSurs "014" ;
+    shema:naziv "Cerkno" ;
+    shema:steviloPrebivalcev 4423 .
+
+obcina:cerkvenjak a shema:Obcina ;
+    shema:idObcinaSurs "153" ;
+    shema:naziv "Cerkvenjak" ;
+    shema:steviloPrebivalcev 2254 .
+
+obcina:cirkulane a shema:Obcina ;
+    shema:idObcinaSurs "196" ;
+    shema:naziv "Cirkulane" ;
+    shema:steviloPrebivalcev 2364 .
+
+obcina:crensovci a shema:Obcina ;
+    shema:idObcinaSurs "015" ;
+    shema:naziv "Črenšovci" ;
+    shema:steviloPrebivalcev 3899 .
+
+obcina:koper a shema:Obcina ;
+    shema:idObcinaSurs "050" ;
+    shema:naziv "Koper" ;
+    shema:steviloPrebivalcev 54430 .
+
+obcina:kostanjevica-na-krki a shema:Obcina ;
+    shema:idObcinaSurs "197" ;
+    shema:naziv "Kostanjevica na Krki" ;
+    shema:steviloPrebivalcev 2448 .
+
+obcina:kostel a shema:Obcina ;
+    shema:idObcinaSurs "165" ;
+    shema:naziv "Kostel" ;
+    shema:steviloPrebivalcev 610 .
+
+obcina:kozje a shema:Obcina ;
+    shema:idObcinaSurs "051" ;
+    shema:naziv "Kozje" ;
+    shema:steviloPrebivalcev 3002 .
+
+obcina:mokronog-trebelno a shema:Obcina ;
+    shema:idObcinaSurs "199" ;
+    shema:naziv "Mokronog-Trebelno" ;
+    shema:steviloPrebivalcev 3270 .
+
+obcina:moravce a shema:Obcina ;
+    shema:idObcinaSurs "077" ;
+    shema:naziv "Moravče" ;
+    shema:steviloPrebivalcev 5670 .
+
+obcina:moravske-toplice a shema:Obcina ;
+    shema:idObcinaSurs "078" ;
+    shema:naziv "Moravske Toplice" ;
+    shema:steviloPrebivalcev 5957 .
+
+obcina:mozirje a shema:Obcina ;
+    shema:idObcinaSurs "079" ;
+    shema:naziv "Mozirje" ;
+    shema:steviloPrebivalcev 4503 .
+
+obcina:celje a shema:Obcina ;
+    shema:idObcinaSurs "011" ;
+    shema:naziv "Celje" ;
+    shema:steviloPrebivalcev 49628 .
+
+obcina:cerklje-na-gorenjskem a shema:Obcina ;
+    shema:idObcinaSurs "012" ;
+    shema:naziv "Cerklje na Gorenjskem" ;
+    shema:steviloPrebivalcev 7944 .
+
+obcina:cerknica a shema:Obcina ;
+    shema:idObcinaSurs "013" ;
+    shema:naziv "Cerknica" ;
+    shema:steviloPrebivalcev 11848 .
+
+obcina:kocevje a shema:Obcina ;
+    shema:idObcinaSurs "048" ;
+    shema:naziv "Kočevje" ;
+    shema:steviloPrebivalcev 15555 .
+
+obcina:komen a shema:Obcina ;
+    shema:idObcinaSurs "049" ;
+    shema:naziv "Komen" ;
+    shema:steviloPrebivalcev 3518 .
+
+obcina:komenda a shema:Obcina ;
+    shema:idObcinaSurs "164" ;
+    shema:naziv "Komenda" ;
+    shema:steviloPrebivalcev 6761 .
+
+obcina:mirna a shema:Obcina ;
+    shema:idObcinaSurs "212" ;
+    shema:naziv "Mirna" ;
+    shema:steviloPrebivalcev 2822 .
+
+obcina:mirna-pec a shema:Obcina ;
+    shema:idObcinaSurs "170" ;
+    shema:naziv "Mirna Peč" ;
+    shema:steviloPrebivalcev 3203 .
+
+obcina:mislinja a shema:Obcina ;
+    shema:idObcinaSurs "076" ;
+    shema:naziv "Mislinja" ;
+    shema:steviloPrebivalcev 4521 .
+
+obcina:smarjeske-toplice a shema:Obcina ;
+    shema:idObcinaSurs "206" ;
+    shema:naziv "Šmarješke Toplice" ;
+    shema:steviloPrebivalcev 3607 .
+
+obcina:smartno-ob-paki a shema:Obcina ;
+    shema:idObcinaSurs "125" ;
+    shema:naziv "Šmartno ob Paki" ;
+    shema:steviloPrebivalcev 3407 .
+
+obcina:cankova a shema:Obcina ;
+    shema:idObcinaSurs "152" ;
+    shema:naziv "Cankova" ;
+    shema:steviloPrebivalcev 1754 .
+
+obcina:kobarid a shema:Obcina ;
+    shema:idObcinaSurs "046" ;
+    shema:naziv "Kobarid" ;
+    shema:steviloPrebivalcev 4026 .
+
+obcina:kobilje a shema:Obcina ;
+    shema:idObcinaSurs "047" ;
+    shema:naziv "Kobilje" ;
+    shema:steviloPrebivalcev 507 .
+
+obcina:miklavz-na-dravskem-polju a shema:Obcina ;
+    shema:idObcinaSurs "169" ;
+    shema:naziv "Miklavž na Dravskem polju" ;
+    shema:steviloPrebivalcev 7261 .
+
+obcina:miren-kostanjevica a shema:Obcina ;
+    shema:idObcinaSurs "075" ;
+    shema:naziv "Miren-Kostanjevica" ;
+    shema:steviloPrebivalcev 5060 .
+
+obcina:straza a shema:Obcina ;
+    shema:idObcinaSurs "203" ;
+    shema:naziv "Straža" ;
+    shema:steviloPrebivalcev 3980 .
+
+obcina:sveta-ana a shema:Obcina ;
+    shema:idObcinaSurs "181" ;
+    shema:naziv "Sveta Ana" ;
+    shema:steviloPrebivalcev 2376 .
+
+obcina:skofljica a shema:Obcina ;
+    shema:idObcinaSurs "123" ;
+    shema:naziv "Škofljica" ;
+    shema:steviloPrebivalcev 12124 .
+
+obcina:smarje-pri-jelsah a shema:Obcina ;
+    shema:idObcinaSurs "124" ;
+    shema:naziv "Šmarje pri Jelšah" ;
+    shema:steviloPrebivalcev 10512 .
+
+obcina:trzic a shema:Obcina ;
+    shema:idObcinaSurs "131" ;
+    shema:naziv "Tržič" ;
+    shema:steviloPrebivalcev 15110 .
+
+obcina:verzej a shema:Obcina ;
+    shema:idObcinaSurs "188" ;
+    shema:naziv "Veržej" ;
+    shema:steviloPrebivalcev 1379 .
+
+obcina:videm a shema:Obcina ;
+    shema:idObcinaSurs "135" ;
+    shema:naziv "Videm" ;
+    shema:steviloPrebivalcev 5612 .
+
+obcina:brezovica a shema:Obcina ;
+    shema:idObcinaSurs "008" ;
+    shema:naziv "Brezovica" ;
+    shema:steviloPrebivalcev 13133 .
+
+obcina:brezice a shema:Obcina ;
+    shema:idObcinaSurs "009" ;
+    shema:naziv "Brežice" ;
+    shema:steviloPrebivalcev 24402 .
+
+obcina:kidricevo a shema:Obcina ;
+    shema:idObcinaSurs "045" ;
+    shema:naziv "Kidričevo" ;
+    shema:steviloPrebivalcev 6673 .
+
+obcina:mezica a shema:Obcina ;
+    shema:idObcinaSurs "074" ;
+    shema:naziv "Mežica" ;
+    shema:steviloPrebivalcev 3518 .
+
+obcina:sredisce-ob-dravi a shema:Obcina ;
+    shema:idObcinaSurs "202" ;
+    shema:naziv "Središče ob Dravi" ;
+    shema:steviloPrebivalcev 1839 .
+
+obcina:starse a shema:Obcina ;
+    shema:idObcinaSurs "115" ;
+    shema:naziv "Starše" ;
+    shema:steviloPrebivalcev 4128 .
+
+obcina:skofja-loka a shema:Obcina ;
+    shema:idObcinaSurs "122" ;
+    shema:naziv "Škofja Loka" ;
+    shema:steviloPrebivalcev 23884 .
+
+obcina:trzin a shema:Obcina ;
+    shema:idObcinaSurs "186" ;
+    shema:naziv "Trzin" ;
+    shema:steviloPrebivalcev 4026 .
+
+obcina:velika-polana a shema:Obcina ;
+    shema:idObcinaSurs "187" ;
+    shema:naziv "Velika Polana" ;
+    shema:steviloPrebivalcev 1392 .
+
+obcina:velike-lasce a shema:Obcina ;
+    shema:idObcinaSurs "134" ;
+    shema:naziv "Velike Lašče" ;
+    shema:steviloPrebivalcev 4564 .
+
+obcina:vojnik a shema:Obcina ;
+    shema:idObcinaSurs "139" ;
+    shema:naziv "Vojnik" ;
+    shema:steviloPrebivalcev 9333 .
+
+obcina:vransko a shema:Obcina ;
+    shema:idObcinaSurs "189" ;
+    shema:naziv "Vransko" ;
+    shema:steviloPrebivalcev 2763 .
+
+obcina:brda a shema:Obcina ;
+    shema:idObcinaSurs "007" ;
+    shema:naziv "Brda" ;
+    shema:steviloPrebivalcev 5584 .
+
+obcina:kamnik a shema:Obcina ;
+    shema:idObcinaSurs "043" ;
+    shema:naziv "Kamnik" ;
+    shema:steviloPrebivalcev 29885 .
+
+obcina:kanal a shema:Obcina ;
+    shema:idObcinaSurs "044" ;
+    shema:naziv "Kanal" ;
+    shema:steviloPrebivalcev 5099 .
+
+obcina:menges a shema:Obcina ;
+    shema:idObcinaSurs "072" ;
+    shema:naziv "Mengeš" ;
+    shema:steviloPrebivalcev 8684 .
+
+obcina:metlika a shema:Obcina ;
+    shema:idObcinaSurs "073" ;
+    shema:naziv "Metlika" ;
+    shema:steviloPrebivalcev 8572 .
+
+obcina:solcava a shema:Obcina ;
+    shema:idObcinaSurs "180" ;
+    shema:naziv "Solčava" ;
+    shema:steviloPrebivalcev 504 .
+
+obcina:sentrupert a shema:Obcina ;
+    shema:idObcinaSurs "211" ;
+    shema:naziv "Šentrupert" ;
+    shema:steviloPrebivalcev 2936 .
+
+obcina:skocjan a shema:Obcina ;
+    shema:idObcinaSurs "121" ;
+    shema:naziv "Škocjan" ;
+    shema:steviloPrebivalcev 3577 .
+
+obcina:tisina a shema:Obcina ;
+    shema:idObcinaSurs "010" ;
+    shema:naziv "Tišina" ;
+    shema:steviloPrebivalcev 3905 .
+
+obcina:trebnje a shema:Obcina ;
+    shema:idObcinaSurs "130" ;
+    shema:naziv "Trebnje" ;
+    shema:steviloPrebivalcev 13695 .
+
+obcina:trnovska-vas a shema:Obcina ;
+    shema:idObcinaSurs "185" ;
+    shema:naziv "Trnovska vas" ;
+    shema:steviloPrebivalcev 1397 .
+
+obcina:velenje a shema:Obcina ;
+    shema:idObcinaSurs "133" ;
+    shema:naziv "Velenje" ;
+    shema:steviloPrebivalcev 33930 .
+
+obcina:braslovce a shema:Obcina ;
+    shema:idObcinaSurs "151" ;
+    shema:naziv "Braslovče" ;
+    shema:steviloPrebivalcev 5919 .
+
+obcina:jursinci a shema:Obcina ;
+    shema:idObcinaSurs "042" ;
+    shema:naziv "Juršinci" ;
+    shema:steviloPrebivalcev 2478 .
+
+obcina:medvode a shema:Obcina ;
+    shema:idObcinaSurs "071" ;
+    shema:naziv "Medvode" ;
+    shema:steviloPrebivalcev 17296 .
+
+obcina:sodrazica a shema:Obcina ;
+    shema:idObcinaSurs "179" ;
+    shema:naziv "Sodražica" ;
+    shema:steviloPrebivalcev 2318 .
+
+obcina:sentjur a shema:Obcina ;
+    shema:idObcinaSurs "120" ;
+    shema:naziv "Šentjur" ;
+    shema:steviloPrebivalcev 19646 .
+
+obcina:tabor a shema:Obcina ;
+    shema:idObcinaSurs "184" ;
+    shema:naziv "Tabor" ;
+    shema:steviloPrebivalcev 1789 .
+
+obcina:trbovlje a shema:Obcina ;
+    shema:idObcinaSurs "129" ;
+    shema:naziv "Trbovlje" ;
+    shema:steviloPrebivalcev 16002 .
+
+obcina:turnisce a shema:Obcina ;
+    shema:idObcinaSurs "132" ;
+    shema:naziv "Turnišče" ;
+    shema:steviloPrebivalcev 3112 .
+
+obcina:vitanje a shema:Obcina ;
+    shema:idObcinaSurs "137" ;
+    shema:naziv "Vitanje" ;
+    shema:steviloPrebivalcev 2202 .
+
+obcina:zagorje-ob-savi a shema:Obcina ;
+    shema:idObcinaSurs "142" ;
+    shema:naziv "Zagorje ob Savi" ;
+    shema:steviloPrebivalcev 16379 .
+
+obcina:zrece a shema:Obcina ;
+    shema:idObcinaSurs "144" ;
+    shema:naziv "Zreče" ;
+    shema:steviloPrebivalcev 6654 .
+
+obcina:zelezniki a shema:Obcina ;
+    shema:idObcinaSurs "146" ;
+    shema:naziv "Železniki" ;
+    shema:steviloPrebivalcev 6670 .
+
+obcina:bovec a shema:Obcina ;
+    shema:idObcinaSurs "006" ;
+    shema:naziv "Bovec" ;
+    shema:steviloPrebivalcev 3004 .
+
+obcina:jezersko a shema:Obcina ;
+    shema:idObcinaSurs "163" ;
+    shema:naziv "Jezersko" ;
+    shema:steviloPrebivalcev 681 .
+
+obcina:ljubno a shema:Obcina ;
+    shema:idObcinaSurs "062" ;
+    shema:naziv "Ljubno" ;
+    shema:steviloPrebivalcev 2524 .
+
+obcina:slovenske-konjice a shema:Obcina ;
+    shema:idObcinaSurs "114" ;
+    shema:naziv "Slovenske Konjice" ;
+    shema:steviloPrebivalcev 15515 .
+
+obcina:sentjernej a shema:Obcina ;
+    shema:idObcinaSurs "119" ;
+    shema:naziv "Šentjernej" ;
+    shema:steviloPrebivalcev 7438 .
+
+obcina:store a shema:Obcina ;
+    shema:idObcinaSurs "127" ;
+    shema:naziv "Štore" ;
+    shema:steviloPrebivalcev 4481 .
+
+obcina:tolmin a shema:Obcina ;
+    shema:idObcinaSurs "128" ;
+    shema:naziv "Tolmin" ;
+    shema:steviloPrebivalcev 10754 .
+
+obcina:vipava a shema:Obcina ;
+    shema:idObcinaSurs "136" ;
+    shema:naziv "Vipava" ;
+    shema:steviloPrebivalcev 5875 .
+
+obcina:vodice a shema:Obcina ;
+    shema:idObcinaSurs "138" ;
+    shema:naziv "Vodice" ;
+    shema:steviloPrebivalcev 5234 .
+
+obcina:vuzenica a shema:Obcina ;
+    shema:idObcinaSurs "141" ;
+    shema:naziv "Vuzenica" ;
+    shema:steviloPrebivalcev 2621 .
+
+obcina:zavrc a shema:Obcina ;
+    shema:idObcinaSurs "143" ;
+    shema:naziv "Zavrč" ;
+    shema:steviloPrebivalcev 1471 .
+
+obcina:zalec a shema:Obcina ;
+    shema:idObcinaSurs "190" ;
+    shema:naziv "Žalec" ;
+    shema:steviloPrebivalcev 21823 .
+
+obcina:borovnica a shema:Obcina ;
+    shema:idObcinaSurs "005" ;
+    shema:naziv "Borovnica" ;
+    shema:steviloPrebivalcev 4706 .
+
+obcina:jesenice a shema:Obcina ;
+    shema:idObcinaSurs "041" ;
+    shema:naziv "Jesenice" ;
+    shema:steviloPrebivalcev 21895 .
+
+obcina:kuzma a shema:Obcina ;
+    shema:idObcinaSurs "056" ;
+    shema:naziv "Kuzma" ;
+    shema:steviloPrebivalcev 1630 .
+
+obcina:ljubljana a shema:Obcina ;
+    shema:idObcinaSurs "061" ;
+    shema:naziv "Ljubljana" ;
+    shema:steviloPrebivalcev 300354 .
+
+obcina:markovci a shema:Obcina ;
+    shema:idObcinaSurs "168" ;
+    shema:naziv "Markovci" ;
+    shema:steviloPrebivalcev 4073 .
+
+obcina:rence-vogrsko a shema:Obcina ;
+    shema:idObcinaSurs "201" ;
+    shema:naziv "Renče-Vogrsko" ;
+    shema:steviloPrebivalcev 4414 .
+
+obcina:slovenska-bistrica a shema:Obcina ;
+    shema:idObcinaSurs "113" ;
+    shema:naziv "Slovenska Bistrica" ;
+    shema:steviloPrebivalcev 26265 .
+
+obcina:smartno-pri-litiji a shema:Obcina ;
+    shema:idObcinaSurs "194" ;
+    shema:naziv "Šmartno pri Litiji" ;
+    shema:steviloPrebivalcev 5810 .
+
+obcina:sostanj a shema:Obcina ;
+    shema:idObcinaSurs "126" ;
+    shema:naziv "Šoštanj" ;
+    shema:steviloPrebivalcev 9007 .
+
+obcina:vrhnika a shema:Obcina ;
+    shema:idObcinaSurs "140" ;
+    shema:naziv "Vrhnika" ;
+    shema:steviloPrebivalcev 18206 .
+
+obcina:zetale a shema:Obcina ;
+    shema:idObcinaSurs "191" ;
+    shema:naziv "Žetale" ;
+    shema:steviloPrebivalcev 1318 .
+
+obcina:ziri a shema:Obcina ;
+    shema:idObcinaSurs "147" ;
+    shema:naziv "Žiri" ;
+    shema:steviloPrebivalcev 5106 .
+
+obcina:zirovnica a shema:Obcina ;
+    shema:idObcinaSurs "192" ;
+    shema:naziv "Žirovnica" ;
+    shema:steviloPrebivalcev 4525 .
+
+obcina:zuzemberk a shema:Obcina ;
+    shema:idObcinaSurs "193" ;
+    shema:naziv "Žužemberk" ;
+    shema:steviloPrebivalcev 4691 .

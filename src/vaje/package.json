@@ -1,0 +1,44 @@
+{
+  "name": "semanticne-vaje",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "astro": "astro",
+    "build": "astro check && astro build",
+    "postbuild": "node scripts/postbuild.mjs",
+    "dev": "astro dev",
+    "prepreview": "npm run build",
+    "preview": "astro preview",
+    "start": "astro dev",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:chromium": "playwright test --project=chromium"
+  },
+  "dependencies": {
+    "@comunica/query-sparql": "5.3.0",
+    "@tutorialkit/react": "1.6.0",
+    "@uiw/react-codemirror": "4.25.11",
+    "cytoscape": "3.34.3",
+    "n3": "2.7.12",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/react": "^3.6.0",
+    "@playwright/test": "1.63.0",
+    "@tutorialkit/astro": "1.6.0",
+    "@tutorialkit/theme": "1.6.0",
+    "@tutorialkit/types": "1.6.0",
+    "@types/cytoscape": "^3.21.9",
+    "@types/n3": "^1.26.4",
+    "@types/node": "^20.14.6",
+    "@types/react": "^18.3.3",
+    "astro": "^4.15.0",
+    "esbuild": "0.28.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.4.5",
+    "vitest": "4.1.11"
+  }
+}

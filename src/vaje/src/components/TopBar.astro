@@ -1,0 +1,14 @@
+---
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
+---
+
+<nav class="kcui-topbar" aria-label="Glavna navigacija">
+  <a class="kcui-brand" href={base} aria-label="Interaktivne vaje — domov">
+    <img src={`${base}branding/kcui-logo-horizontal.png`} alt="KCUI" />
+    <span>Interaktivne vaje</span>
+  </a>
+  <div class="kcui-topbar-links">
+    <a href={base}>Vse vaje</a>
+    <a href="/semantic-data/">Predstavitev</a>
+  </div>
+</nav>

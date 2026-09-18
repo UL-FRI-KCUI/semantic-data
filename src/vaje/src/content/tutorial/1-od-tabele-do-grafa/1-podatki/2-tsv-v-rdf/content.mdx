@@ -1,0 +1,25 @@
+---
+type: lesson
+title: TSV v RDF-trojčke
+slug: tsv-v-rdf
+meta:
+  description: 'Pretvorite vrstico za Ajdovščino v štiri preverljive RDF-trojčke.'
+---
+
+import Exercise from '@components/Exercise';
+
+# TSV v RDF-trojčke
+
+**Raven 4 ★**
+
+Iz vrstice `001 · Ajdovščina · 19895` zapišite štiri ločene RDF-trojčke. V vsakem ponovite subjekt `<https://onto.mdp.gov.si/obcina/ajdovscina>`, polne URI-je zapišite v kotnih oklepajih in trditev zaključite s piko. Za tip uporabite `<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>` in razred `<https://onto.mdp.gov.si/shema/Obcina>`.
+
+Za stolpce TSV uporabite naslednje lastnosti:
+
+| Stolpec | Ime lastnosti | Polni URI lastnosti |
+| --- | --- | --- |
+| `ob_id` | `idObcinaSurs` | `<https://onto.mdp.gov.si/shema/idObcinaSurs>` |
+| `ob_ime` | `naziv` | `<https://onto.mdp.gov.si/shema/naziv>` |
+| `tot_p` | `steviloPrebivalcev` | `<https://onto.mdp.gov.si/shema/steviloPrebivalcev>` |
+
+<Exercise client:load lessonId="tsv-v-rdf" />

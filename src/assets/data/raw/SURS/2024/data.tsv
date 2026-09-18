@@ -1,0 +1,213 @@
+ob_id	ob_ime	tot_p
+001	Ajdovščina	19891
+213	Ankaran	3325
+195	Apače	3580
+002	Beltinci	8071
+148	Benedikt	2728
+149	"Bistrica ob Sotli"	1348
+003	Bled	8157
+150	Bloke	1566
+004	Bohinj	5275
+030	"Gornji Grad"	2595
+031	"Gornji Petrovci"	2002
+158	Grad	1985
+032	Grosuplje	21870
+159	Hajdina	4001
+028	Gorišnica	4188
+207	Gorje	2744
+029	"Gornja Radgona"	8503
+088	Osilnica	331
+160	Hoče-Slivnica	11981
+161	Hodoš	346
+162	Horjul	3044
+034	Hrastnik	8939
+035	Hrpelje-Kozina	5181
+036	Idrija	11706
+037	Ig	7793
+038	"Ilirska Bistrica"	13313
+039	"Ivančna Gorica"	18114
+040	Izola	16479
+063	Ljutomer	11000
+208	Log-Dragomer	3812
+064	Logatec	15046
+065	"Loška dolina"	3526
+066	"Loški Potok"	1803
+167	"Lovrenc na Pohorju"	2951
+067	Luče	1421
+068	Lukovica	6131
+069	Majšperk	4011
+198	Makole	2028
+070	Maribor	113747
+080	"Murska Sobota"	18577
+081	Muta	3358
+082	Naklo	5471
+083	Nazarje	2691
+084	"Nova Gorica"	31956
+091	Pivka	6162
+085	"Novo mesto"	38348
+086	Odranci	1592
+171	Oplotnica	4176
+087	Ormož	11813
+089	Pesnica	7709
+090	Piran	18119
+174	Prebold	5329
+095	Preddvor	3865
+092	Podčetrtek	3618
+172	Podlehnik	1831
+093	Podvelka	2258
+200	Poljčane	4396
+173	Polzela	6469
+094	Postojna	17672
+175	Prevalje	6737
+096	Ptuj	23872
+097	Puconci	5882
+098	Rače-Fram	8036
+099	Radeče	4114
+100	Radenci	5104
+101	"Radlje ob Dravi"	6180
+102	Radovljica	19406
+103	"Ravne na Koroškem"	11170
+176	Razkrižje	1232
+209	"Rečica ob Savinji"	2328
+104	Ribnica	9807
+177	"Ribnica na Pohorju"	1085
+106	"Rogaška Slatina"	11594
+105	Rogašovci	3076
+107	Rogatec	3049
+108	Ruše	7149
+178	"Selnica ob Dravi"	4469
+109	Semič	3834
+110	Sevnica	17632
+111	Sežana	13839
+112	"Slovenj Gradec"	17062
+025	Dravograd	8815
+026	Duplek	6999
+027	"Gorenja vas-Poljane"	7656
+204	"Sveta Trojica v Slovenskih goricah"	2222
+182	"Sveti Andraž v Slov. goricah"	1196
+116	"Sveti Jurij ob Ščavnici"	2790
+210	"Sveti Jurij v Slovenskih goricah"	2186
+205	"Sveti Tomaž"	1978
+033	Šalovci	1334
+183	Šempeter-Vrtojba	6267
+117	Šenčur	8786
+118	Šentilj	8475
+155	Dobrna	2313
+021	"Dobrova-Polhov Gradec"	8039
+156	Dobrovnik	1258
+022	"Dol pri Ljubljani"	6432
+157	"Dolenjske Toplice"	3618
+023	Domžale	37821
+024	Dornava	2891
+057	Laško	13002
+058	Lenart	8591
+059	Lendava	10180
+060	Litija	15834
+016	"Črna na Koroškem"	3061
+017	Črnomelj	14232
+018	Destrnik	2694
+019	Divača	4501
+154	Dobje	970
+020	Dobrepolje	3934
+052	Kranj	57138
+053	"Kranjska Gora"	5247
+166	Križevci	3536
+054	Krško	26019
+055	Kungota	5032
+014	Cerkno	4452
+153	Cerkvenjak	2247
+196	Cirkulane	2378
+015	Črenšovci	3928
+050	Koper	54252
+197	"Kostanjevica na Krki"	2464
+165	Kostel	624
+051	Kozje	2993
+199	Mokronog-Trebelno	3223
+077	Moravče	5651
+078	"Moravske Toplice"	5964
+079	Mozirje	4532
+011	Celje	49289
+012	"Cerklje na Gorenjskem"	7825
+013	Cerknica	11870
+048	Kočevje	15661
+049	Komen	3509
+164	Komenda	6739
+212	Mirna	2753
+170	"Mirna Peč"	3192
+076	Mislinja	4571
+206	"Šmarješke Toplice"	3583
+125	"Šmartno ob Paki"	3379
+152	Cankova	1769
+046	Kobarid	4045
+047	Kobilje	511
+169	"Miklavž na Dravskem polju"	7189
+075	Miren-Kostanjevica	5058
+203	Straža	3905
+181	"Sveta Ana"	2360
+123	Škofljica	12017
+124	"Šmarje pri Jelšah"	10573
+131	Tržič	15120
+188	Veržej	1358
+135	Videm	5598
+008	Brezovica	13004
+009	Brežice	24450
+045	Kidričevo	6594
+074	Mežica	3554
+202	"Središče ob Dravi"	1867
+115	Starše	4148
+122	"Škofja Loka"	23901
+186	Trzin	4073
+187	"Velika Polana"	1394
+134	"Velike Lašče"	4537
+139	Vojnik	9219
+189	Vransko	2725
+007	Brda	5573
+043	Kamnik	30020
+044	Kanal	5106
+072	Mengeš	8654
+073	Metlika	8439
+180	Solčava	514
+121	Škocjan	3478
+010	Tišina	3948
+130	Trebnje	13574
+185	"Trnovska vas"	1398
+133	Velenje	33775
+138	Vodice	5201
+151	Braslovče	5819
+042	Juršinci	2458
+071	Medvode	17213
+179	Sodražica	2308
+120	Šentjur	19579
+211	Šentrupert	2995
+184	Tabor	1750
+129	Trbovlje	16000
+132	Turnišče	3123
+137	Vitanje	2238
+142	"Zagorje ob Savi"	16470
+144	Zreče	6653
+006	Bovec	3054
+163	Jezersko	662
+062	Ljubno	2512
+114	"Slovenske Konjice"	15485
+119	Šentjernej	7418
+127	Štore	4452
+128	Tolmin	10838
+136	Vipava	5891
+141	Vuzenica	2641
+143	Zavrč	1478
+190	Žalec	21788
+146	Železniki	6672
+005	Borovnica	4726
+041	Jesenice	21944
+056	Kuzma	1625
+061	Ljubljana	297575
+168	Markovci	4090
+201	Renče-Vogrsko	4417
+113	"Slovenska Bistrica"	26129
+194	"Šmartno pri Litiji"	5756
+126	Šoštanj	9132
+140	Vrhnika	18151
+191	Žetale	1288
+147	Žiri	5047
+192	Žirovnica	4535
+193	Žužemberk	4663

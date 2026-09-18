@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Vizual za interaktivno vajo</title>
+  <desc id="desc">Podatkovna tabela s povecevalnim steklom in vprasalnim znakom</desc>
+  <rect x="62" y="64" width="850" height="438" rx="12" fill="#131e29"/>
+  <rect x="62" y="64" width="850" height="58" rx="12" fill="#f9423a"/>
+  <circle cx="96" cy="93" r="9" fill="#ffffff" opacity=".9"/>
+  <circle cx="126" cy="93" r="9" fill="#ffffff" opacity=".65"/>
+  <circle cx="156" cy="93" r="9" fill="#ffffff" opacity=".4"/>
+  <rect x="112" y="160" width="750" height="292" fill="#ffffff"/>
+  <rect x="112" y="160" width="750" height="56" fill="#d6dee0"/>
+  <g stroke="#b9c4c9" stroke-width="2">
+    <path d="M112 216h750M112 275h750M112 334h750M112 393h750M302 160v292M574 160v292M728 160v292"/>
+  </g>
+  <g fill="#1d2f40">
+    <rect x="139" y="181" width="102" height="13" rx="6"/>
+    <rect x="329" y="181" width="170" height="13" rx="6"/>
+    <rect x="601" y="181" width="92" height="13" rx="6"/>
+    <rect x="755" y="181" width="71" height="13" rx="6"/>
+    <rect x="139" y="237" width="92" height="11" rx="5" opacity=".8"/>
+    <rect x="329" y="237" width="126" height="11" rx="5" opacity=".55"/>
+    <rect x="601" y="237" width="74" height="11" rx="5" opacity=".8"/>
+    <rect x="755" y="237" width="51" height="11" rx="5" opacity=".55"/>
+    <rect x="139" y="296" width="78" height="11" rx="5" opacity=".55"/>
+    <rect x="329" y="296" width="154" height="11" rx="5" opacity=".8"/>
+    <rect x="601" y="296" width="62" height="11" rx="5" opacity=".55"/>
+    <rect x="755" y="296" width="61" height="11" rx="5" opacity=".8"/>
+    <rect x="139" y="355" width="108" height="11" rx="5" opacity=".8"/>
+    <rect x="329" y="355" width="112" height="11" rx="5" opacity=".55"/>
+    <rect x="601" y="355" width="83" height="11" rx="5" opacity=".8"/>
+    <rect x="755" y="355" width="43" height="11" rx="5" opacity=".55"/>
+    <rect x="139" y="414" width="88" height="11" rx="5" opacity=".55"/>
+    <rect x="329" y="414" width="142" height="11" rx="5" opacity=".8"/>
+    <rect x="601" y="414" width="68" height="11" rx="5" opacity=".55"/>
+    <rect x="755" y="414" width="58" height="11" rx="5" opacity=".8"/>
+  </g>
+  <circle cx="938" cy="376" r="137" fill="#f9423a"/>
+  <circle cx="938" cy="376" r="91" fill="#ffffff" stroke="#131e29" stroke-width="16"/>
+  <path d="M1004 442l104 104" fill="none" stroke="#131e29" stroke-linecap="round" stroke-width="30"/>
+  <path d="M938 326v71" fill="none" stroke="#c5003e" stroke-linecap="round" stroke-width="18"/>
+  <circle cx="938" cy="431" r="10" fill="#c5003e"/>
+</svg>

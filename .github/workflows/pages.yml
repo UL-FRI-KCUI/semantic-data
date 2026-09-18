@@ -1,0 +1,109 @@
+name: Build and deploy presentation to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: src/vaje/package-lock.json
+
+      - name: Install exercise portal dependencies
+        working-directory: src/vaje
+        run: npm ci --include=optional
+
+      - name: Run exercise portal unit tests
+        working-directory: src/vaje
+        run: npm test
+
+      - name: Install browsers for end-to-end tests
+        working-directory: src/vaje
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Run exercise portal end-to-end tests
+        working-directory: src/vaje
+        run: npm run test:e2e
+
+      - name: Build exercise portal
+        working-directory: src/vaje
+        run: npm run build
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.5.2"
+          use-public-rspm: true
+
+      - name: Set up Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            rmarkdown@2.32
+            revealjs@0.10.0
+
+      - name: Render presentation
+        working-directory: src
+        run: rmarkdown::render("predstavitev.Rmd")
+        shell: Rscript {0}
+
+      - name: Assemble Pages site
+        run: |
+          mkdir _site
+          cp src/predstavitev.html _site/index.html
+          cp -R src/predstavitev_files _site/
+          cp -R src/assets _site/
+          cp -R src/gradivo _site/
+          mkdir -p _site/vaje
+          cp -R src/vaje/dist/. _site/vaje/
+          touch _site/.nojekyll
+
+      - name: Smoke test assembled Pages site
+        run: node src/vaje/scripts/smoke-pages.mjs _site
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

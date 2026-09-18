@@ -1,0 +1,430 @@
+:root {
+  --kcui-navy: #131e29;
+  --kcui-navy-soft: #1d2f40;
+  --kcui-coral: #f9423a;
+  --kcui-burgundy: #c5003e;
+  --kcui-light: #d6dee0;
+  --kcui-white: #ffffff;
+  --kcui-rail: 132px;
+}
+
+html,
+body {
+  background: var(--kcui-navy);
+}
+
+.reveal {
+  color: var(--kcui-navy);
+  font-family: Calibri, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+}
+
+.reveal .slides section.present {
+  display: block;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: Calibri, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  text-transform: none;
+}
+
+.reveal h2 {
+  color: var(--kcui-burgundy);
+  font-size: 46px;
+  margin: 0 0 42px;
+  max-width: 1240px;
+}
+
+.reveal h2::before {
+  background: var(--kcui-coral);
+  content: "";
+  display: block;
+  height: 3px;
+  margin-bottom: 14px;
+  width: 160px;
+}
+
+.reveal h3 {
+  color: var(--kcui-burgundy);
+  font-size: 32px;
+}
+
+.reveal p,
+.reveal li {
+  line-height: 1.28;
+}
+
+.reveal p {
+  margin: 0.45em 0;
+}
+
+.reveal ul,
+.reveal ol {
+  margin: 0.4em 0 0.4em 1.2em;
+}
+
+.reveal li {
+  margin: 0.18em 0;
+}
+
+.reveal ul li::marker {
+  color: var(--kcui-burgundy);
+}
+
+.reveal a {
+  color: var(--kcui-burgundy);
+  text-decoration-color: color-mix(in srgb, var(--kcui-burgundy), transparent 45%);
+  transition: color 0.18s ease, text-decoration-color 0.18s ease, opacity 0.18s ease;
+}
+
+.reveal a:hover,
+.reveal a:focus,
+.reveal a:active {
+  color: var(--kcui-coral);
+  text-decoration-color: color-mix(in srgb, var(--kcui-coral), transparent 26%);
+  opacity: 1;
+}
+
+.reveal strong {
+  color: var(--kcui-burgundy);
+}
+
+.reveal .slides section.slide.level2 .exercise-promo {
+  align-items: flex-start;
+  margin-top: 100px;  
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  left: 190px;
+  max-width: 760px;
+  position: absolute;
+  text-align: left;
+  transform: none;
+  width: calc(100% - 280px);
+  z-index: 2;
+}
+
+.reveal .exercise-promo > a {
+  display: block;
+}
+
+.reveal .exercise-promo img {
+  filter: drop-shadow(0 10px 16px rgba(19, 30, 41, 0.16));
+  display: block;
+  margin: 0;
+  max-height: 160px;
+  max-width: 520px;
+  object-fit: contain;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  width: 100%;
+}
+
+.reveal .exercise-promo > a:hover img,
+.reveal .exercise-promo > a:focus img {
+  filter: drop-shadow(0 14px 22px rgba(19, 30, 41, 0.22));
+  transform: translateY(-3px);
+}
+
+.reveal .exercise-promo p {
+  margin: 0;
+}
+
+.reveal .exercise-promo-label {
+  margin: 0 0 6px !important;
+}
+
+.reveal .exercise-promo-title {
+  margin: 8px 0 0 !important;
+}
+
+.reveal .exercise-promo strong {
+  color: var(--kcui-coral);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+}
+
+/* Naslovnica: rdeče ozadje, mreža in podpisniki iz uradne KCUI predloge. */
+.reveal .slides #title-slide {
+  background-color: var(--kcui-coral);
+  background-image:
+    url("../branding/funding-logos.png"),
+    url("../branding/background-network.png"),
+    url("../branding/background-gradient.png");
+  background-position:
+    left 560px bottom 44px,
+    center center,
+    center center;
+  background-repeat: no-repeat;
+  background-size:
+    950px auto,
+    cover,
+    cover;
+  color: var(--kcui-white);
+  padding: 292px 90px 120px 560px;
+}
+
+.reveal .slides #title-slide::before {
+  background: url("../branding/kcui-logo-stacked.png") center / contain no-repeat;
+  content: "";
+  height: 570px;
+  left: 38px;
+  position: absolute;
+  top: 145px;
+  width: 390px;
+}
+
+.reveal .slides #title-slide::after {
+  background-color: var(--kcui-navy);
+  background-image: url("../branding/gzs-logo-white.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 220px auto;
+  content: "";
+  height: 235px;
+  left: 560px;
+  position: absolute;
+  top: 0;
+  width: 320px;
+}
+
+.reveal #title-slide .title {
+  color: var(--kcui-white);
+  font-size: 64px;
+  margin: 0 0 24px;
+  max-width: 950px;
+}
+
+.reveal #title-slide .title::before {
+  background: var(--kcui-navy);
+  content: "";
+  display: block;
+  height: 4px;
+  margin-bottom: 18px;
+  width: 160px;
+}
+
+.reveal #title-slide .subtitle {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin: 0 0 28px;
+  max-width: 900px;
+}
+
+.reveal #title-slide .subtitle a,
+.reveal #title-slide .author,
+.reveal #title-slide .author strong {
+  color: var(--kcui-white);
+}
+
+.reveal #title-slide .author {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Poglavja uporabljajo polno rdečo kompozicijo iz predloge. */
+.reveal .slides section.title-slide.level1 {
+  background-color: var(--kcui-coral);
+  background-image:
+    url("../branding/background-network.png"),
+    url("../branding/background-gradient.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--kcui-white);
+  padding: 240px 120px 150px 190px;
+}
+
+.reveal .slides section.title-slide.level1::before,
+.reveal .slides section.slide.level2::before {
+  background: url("../branding/kcui-symbol-white.png") center / contain no-repeat;
+  content: "";
+  height: 82px;
+  left: 25px;
+  position: absolute;
+  top: 34px;
+  width: 82px;
+  z-index: 2;
+}
+
+.reveal .slides section.title-slide.level1::after,
+.reveal .slides section.slide.level2::after {
+  background-color: var(--kcui-navy);
+  background-image: url("../branding/gzs-logo-white.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 140px auto;
+  bottom: 0;
+  content: "";
+  height: 116px;
+  position: absolute;
+  right: 70px;
+  width: 240px;
+  z-index: 2;
+}
+
+.reveal .slides section.title-slide.level1 h1 {
+  color: var(--kcui-white);
+  font-size: 66px;
+  margin: 0;
+  max-width: 1180px;
+}
+
+.reveal .slides section.title-slide.level1 h1::before {
+  background: var(--kcui-navy);
+  content: "";
+  display: block;
+  height: 4px;
+  margin-bottom: 18px;
+  width: 160px;
+}
+
+/* Običajna vsebinska stran: bel list z rdečim levim pasom. */
+.reveal .slides section.slide.level2 {
+  background: var(--kcui-white);
+  box-shadow: inset var(--kcui-rail) 0 0 var(--kcui-coral);
+  color: var(--kcui-navy);
+  padding: 54px 90px 132px 190px;
+}
+
+.reveal .slides section.slide.level2 > :not(h2) {
+  position: relative;
+  z-index: 1;
+}
+
+.reveal .columns {
+  align-items: flex-start;
+  display: flex;
+  gap: 42px;
+  width: 100%;
+}
+
+.reveal .column {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.reveal img {
+  border: 0;
+  box-shadow: none;
+  display: block;
+  margin: 0.35em auto;
+  max-height: 610px;
+  max-width: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
+.reveal .column img {
+  max-height: 540px;
+}
+
+.reveal code {
+  color: var(--kcui-burgundy);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.reveal pre {
+  background: var(--kcui-navy);
+  border-left: 8px solid var(--kcui-coral);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--kcui-white);
+  font-size: 20px;
+  line-height: 1.28;
+  margin: 0.65em 0;
+  max-height: 560px;
+  overflow: auto;
+  padding: 22px 26px;
+  width: auto;
+}
+
+.reveal pre code {
+  color: inherit;
+  max-height: none;
+}
+
+.reveal table {
+  border-collapse: collapse;
+  font-size: 24px;
+  margin: 0.7em auto;
+}
+
+.reveal table th {
+  background: transparent;
+  color: var(--kcui-navy);
+}
+
+.reveal table th,
+.reveal table td {
+  border: 1px solid var(--kcui-light);
+  padding: 0.28em 0.48em;
+}
+
+.reveal blockquote {
+  background: color-mix(in srgb, var(--kcui-light), white 60%);
+  border-left: 8px solid var(--kcui-coral);
+  box-shadow: none;
+  font-style: normal;
+  margin: 0.8em 0;
+  padding: 0.45em 0.8em;
+  width: auto;
+}
+
+.reveal .slide-number {
+  background: color-mix(in srgb, var(--kcui-navy), transparent 18%);
+  bottom: auto;
+  border-radius: 3px;
+  color: var(--kcui-white);
+  font-family: Calibri, Arial, sans-serif;
+  font-size: 16px;
+  padding: 3px 8px;
+  right: 30px;
+  top: 18px;
+  z-index: 50;
+}
+
+.reveal .slide-number a,
+.reveal .slide-number a:hover {
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+}
+
+.reveal .progress {
+  color: var(--kcui-coral);
+  height: 6px;
+}
+
+.reveal .progress span {
+  background: var(--kcui-coral);
+}
+
+.reveal .controls {
+  color: var(--kcui-coral);
+}
+
+@media print {
+  .reveal .slides section {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

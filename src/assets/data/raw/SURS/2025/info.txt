@@ -1,0 +1,3 @@
+ACRONYM        English                                           Slovenian                                         
+-------------------------------------------------------------------------------------------------------------------
+tot_p          Population > number of population > total         Prebivalstvo > število prebivalcev > skupaj       

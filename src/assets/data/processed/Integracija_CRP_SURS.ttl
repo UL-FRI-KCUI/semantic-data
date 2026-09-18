@@ -1,0 +1,16 @@
+@prefix crp: <https://pzsi.sigov.si/datamodel/ns/crp#> .
+@prefix sursTBox: <https://onto.mdp.gov.si/shema/> .
+@prefix sursABox: <https://onto.mdp.gov.si/obcina/> .
+@prefix wd: <https://www.wikidata.org/entity/> .
+
+sursTBox:Obcina rdfs:subClassOf crp:Obcina .
+
+crp:Obcina_1 owl:sameAs sursABox:ajdovscina .
+crp:Obcina_11 owl:sameAs sursABox:celje .
+crp:Obcina_61 owl:sameAs sursABox:ljubljana .
+crp:Obcina_70 owl:sameAs sursABox:maribor .
+
+crp:Obcina_1 owl:sameAs wd:Q331701 .
+crp:Obcina_11 owl:sameAs wd:Q3441823 .
+crp:Obcina_61 owl:sameAs wd:Q3434113 .
+crp:Obcina_70 owl:sameAs wd:Q3435104 .
