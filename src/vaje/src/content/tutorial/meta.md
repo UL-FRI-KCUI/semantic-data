@@ -2,6 +2,7 @@
 type: tutorial
 logoLink: /
 parts:
+  - 0-semantika-na-spletu
   - 1-od-tabele-do-grafa
   - 2-model-in-povezave
   - 3-poizvedovanje
@@ -18,5 +19,5 @@ i18n:
   resetButtonText: 'Ponastavi'
 meta:
   title: 'Interaktivne vaje — semantični podatki'
-  description: 'Šest vodenih vaj za prehod od tabelaričnih podatkov do povezanega grafa in poizvedb SPARQL.'
+  description: 'Sedem vodenih vaj od JSON-LD na spletu do povezanega grafa in poizvedb SPARQL.'
 ---

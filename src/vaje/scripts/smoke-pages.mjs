@@ -8,6 +8,7 @@ const repositoryBase = '/semantic-data';
 const portalBase = `${repositoryBase}/vaje/`;
 const portalRoutes = [
   '',
+  'semantika-na-spletu/json-ld/kaj-pove-json-ld/',
   'od-tabele-do-grafa/podatki/kaj-nam-tsv-ne-pove/',
   'od-tabele-do-grafa/podatki/tsv-v-rdf/',
   'od-tabele-do-grafa/podatki/popravi-turtle/',
@@ -84,7 +85,7 @@ try {
     if (!response?.ok()) problems.push(`route did not return HTTP 200: ${route || '/'}`);
 
     if (route === '') {
-      if (await page.locator('.exercise-card').count() !== 6) problems.push('portal does not contain six exercise cards');
+      if (await page.locator('.exercise-card').count() !== 7) problems.push('portal does not contain seven exercise cards');
     } else {
       await page.locator('.exercise-shell').waitFor();
       await page.getByTestId('check').waitFor({ state: 'visible' });

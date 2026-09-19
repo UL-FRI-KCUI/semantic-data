@@ -538,7 +538,7 @@ view-toggle {
   color: #cbd2d8;
 }
 
-.tsv-sample,
+.source-sample,
 .solution-panel pre {
   margin: 0 !important;
   padding: 16px 18px !important;
@@ -594,6 +594,15 @@ view-toggle {
   border-radius: 3px;
   background: white;
   color: var(--navy);
+}
+
+.form-grid .field-wide {
+  grid-column: 1 / -1;
+}
+
+.jsonld-sample {
+  max-height: 360px;
+  overflow: auto;
 }
 
 .question-label {
@@ -808,6 +817,10 @@ view-toggle {
   .form-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .form-grid .field-wide {
+    grid-column: auto;
   }
 
   .exercise-grid {

@@ -1,4 +1,5 @@
 export type LessonId =
+  | 'kaj-pove-json-ld'
   | 'pomen-tsv'
   | 'tsv-v-rdf'
   | 'popravi-turtle'
@@ -16,7 +17,14 @@ export interface ExerciseDefinition {
   hint: string;
   starter: string;
   solution: string;
-  mode: 'concepts' | 'turtle' | 'sparql';
+  mode: 'schemaorg' | 'concepts' | 'turtle' | 'sparql';
+  source?: {
+    label: string;
+    detail: string;
+    content: string;
+    ariaLabel: string;
+    format: 'jsonld' | 'tsv';
+  };
   showGraph?: boolean;
 }
 
@@ -29,8 +37,43 @@ const prefixes = `@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 export const exercises: ExerciseDefinition[] = [
   {
-    id: 'pomen-tsv',
+    id: 'kaj-pove-json-ld',
     number: 1,
+    title: 'Kaj pove JSON-LD?',
+    eyebrow: 'JSON-LD + schema.org',
+    description: 'Razložite ključne dele zapisa in na schema.org preverite razred ter tipe lastnosti.',
+    href: 'semantika-na-spletu/json-ld/kaj-pove-json-ld/',
+    hint: 'Na strani NewsArticle najprej poglejte hierarhijo razredov. Pri lastnostih datePublished in publisher nato preverite stolpec »Expected Type«.',
+    starter: '',
+    solution: `@context: določa uporabljeni besednjak in preslikavo izrazov v URI-je.
+@type: opisani primerek pripada razredu NewsArticle.
+Hierarhija: Thing > CreativeWork > Article > NewsArticle.
+datePublished: pričakovani tip je Date ali DateTime.
+publisher: pričakovani tip je Organization ali Person.`,
+    mode: 'schemaorg',
+    source: {
+      label: 'Posnetek JSON-LD · RTV Slovenija',
+      detail: 'Didaktično skrajšan zapis',
+      ariaLabel: 'Skrajšan posnetek JSON-LD članka RTV Slovenija',
+      format: 'jsonld',
+      content: `{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage"
+  },
+  "headline": "Von der Leyen: Naša pot je jasna ...",
+  "datePublished": "2026-09-16 06:53:59",
+  "publisher": {
+    "@type": "Organization",
+    "name": "RTV Slovenija"
+  }
+}`,
+    },
+  },
+  {
+    id: 'pomen-tsv',
+    number: 2,
     title: 'Kaj nam TSV ne pove?',
     eyebrow: 'Raven 3 ★',
     description: 'Določite tipe stolpcev in odkrijte kontekst, ki v tabeli manjka.',
@@ -43,7 +86,7 @@ export const exercises: ExerciseDefinition[] = [
   },
   {
     id: 'tsv-v-rdf',
-    number: 2,
+    number: 3,
     title: 'TSV v RDF-trojčke',
     eyebrow: 'Raven 4 ★',
     description: 'Vrstico za Ajdovščino pretvorite v štiri RDF-trojčke s polnimi URI-ji.',
@@ -59,7 +102,7 @@ export const exercises: ExerciseDefinition[] = [
   },
   {
     id: 'popravi-turtle',
-    number: 3,
+    number: 4,
     title: 'Popravi Turtle',
     eyebrow: 'Turtle',
     description: 'Odpravite napake v predponah, ločilih, jeziku in tipu literala.',
@@ -82,7 +125,7 @@ obcina:ajdovscina a shema:Obcina ;
   },
   {
     id: 'formaliziraj-obcino',
-    number: 4,
+    number: 5,
     title: 'Formaliziraj občino',
     eyebrow: 'OWL + RDFS',
     description: 'Opredelite razrede ter podatkovne in objektne lastnosti.',
@@ -117,7 +160,7 @@ shema:imaMeritevPrebivalcev a owl:ObjectProperty ;
   },
   {
     id: 'povezi-vira',
-    number: 5,
+    number: 6,
     title: 'Poveži podatkovna vira',
     eyebrow: 'Raven 5 ★',
     description: 'Povežite razred občine in štiri pare občin v virih CRP in SURS.',
@@ -146,7 +189,7 @@ crp:Obcina_70 owl:sameAs sursABox:maribor .`,
   },
   {
     id: 'sparql-nad-grafom',
-    number: 6,
+    number: 7,
     title: 'SPARQL nad povezanim grafom',
     eyebrow: 'SPARQL 1.1',
     description: 'Poiščite večje občine prek povezav identitete CRP ↔ SURS.',

@@ -39,7 +39,7 @@ export default function PortalHome({ baseUrl }: { baseUrl: string }) {
           <span className="summary-number">{completed}/{exercises.length}</span>
           <span className="summary-label">opravljenih vaj</span>
         </div>
-        <div className="progress-track" role="progressbar" aria-valuemin={0} aria-valuemax={6} aria-valuenow={completed} aria-label={`${completed} od 6 vaj opravljenih`}>
+        <div className="progress-track" role="progressbar" aria-valuemin={0} aria-valuemax={exercises.length} aria-valuenow={completed} aria-label={`${completed} od ${exercises.length} vaj opravljenih`}>
           <span style={{ width: `${percentage}%` }} />
         </div>
         <button className="reset-all" type="button" onClick={resetAll}>Ponastavi napredek</button>

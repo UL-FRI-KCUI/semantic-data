@@ -23,4 +23,4 @@ npm run build
 
 Statični rezultat je v `dist/`. Vsebina lekcij je urejena kot deli, poglavja in lekcije v `src/content/tutorial/`, skupna interaktivnost pa je v `src/components/Exercise.tsx`.
 
-Napredek ostane samo v uporabnikovem brskalniku pod ključi `semantic-data:vaje:v1:<lesson-id>`.
+Napredek ostane samo v uporabnikovem brskalniku pod ključi `semantic-data:vaje:v1:<lesson-id>` oziroma pod obstoječimi različicami ključev posameznih vaj.

@@ -5,12 +5,14 @@ import { emptyConceptAnswers, validateConceptAnswers, type ConceptAnswers } from
 import { exerciseById, municipalitiesTsv, type LessonId } from '../lib/exercises';
 import { clearProgress, readProgress, writeProgress } from '../lib/progress';
 import { validateTurtle } from '../lib/rdf';
+import { emptySchemaOrgAnswers, validateSchemaOrgAnswers, type SchemaOrgAnswers } from '../lib/schemaorg';
 import type { SparqlRow } from '../lib/sparql';
 
 export default function Exercise({ lessonId }: { lessonId: LessonId }) {
   const exercise = exerciseById[lessonId];
   const [code, setCode] = useState(exercise.starter);
   const [answers, setAnswers] = useState<ConceptAnswers>(emptyConceptAnswers);
+  const [schemaOrgAnswers, setSchemaOrgAnswers] = useState<SchemaOrgAnswers>(emptySchemaOrgAnswers);
   const [hintShown, setHintShown] = useState(false);
   const [solutionShown, setSolutionShown] = useState(false);
   const [completed, setCompleted] = useState(false);
@@ -26,6 +28,7 @@ export default function Exercise({ lessonId }: { lessonId: LessonId }) {
     const saved = readProgress(localStorage, lessonId);
     if (saved?.draft !== undefined) setCode(saved.draft);
     if (saved?.conceptAnswers) setAnswers({ ...emptyConceptAnswers, ...saved.conceptAnswers } as ConceptAnswers);
+    if (saved?.schemaOrgAnswers) setSchemaOrgAnswers({ ...emptySchemaOrgAnswers, ...saved.schemaOrgAnswers } as SchemaOrgAnswers);
     if (saved) {
       setHintShown(saved.hintShown);
       setSolutionShown(saved.solutionShown);
@@ -44,17 +47,21 @@ export default function Exercise({ lessonId }: { lessonId: LessonId }) {
       completed,
       draft: code,
       conceptAnswers: answers,
+      schemaOrgAnswers,
       hintShown,
       solutionShown,
     });
-  }, [answers, code, completed, hintShown, lessonId, solutionShown]);
+  }, [answers, code, completed, hintShown, lessonId, schemaOrgAnswers, solutionShown]);
 
   async function checkAnswer() {
     setChecking(true);
     setRows([]);
     let result: { ok: boolean; message: string; rows?: SparqlRow[] };
 
-    if (exercise.mode === 'concepts') {
+    if (exercise.mode === 'schemaorg') {
+      const message = validateSchemaOrgAnswers(schemaOrgAnswers);
+      result = message ? { ok: false, message } : { ok: true, message: 'Pravilno — JSON-LD poveže spletni članek z razredom in lastnostmi besednjaka schema.org.' };
+    } else if (exercise.mode === 'concepts') {
       const message = validateConceptAnswers(answers);
       result = message ? { ok: false, message } : { ok: true, message: 'Pravilno — struktura tabele je jasna, njen pomen in kontekst pa nista vgrajena v podatke.' };
     } else if (exercise.mode === 'sparql') {
@@ -75,6 +82,7 @@ export default function Exercise({ lessonId }: { lessonId: LessonId }) {
     clearProgress(localStorage, lessonId);
     setCode(exercise.starter);
     setAnswers(emptyConceptAnswers);
+    setSchemaOrgAnswers(emptySchemaOrgAnswers);
     setHintShown(false);
     setSolutionShown(false);
     setCompleted(false);
@@ -86,15 +94,78 @@ export default function Exercise({ lessonId }: { lessonId: LessonId }) {
     setAnswers((current) => ({ ...current, [key]: value }));
   }
 
+  function setSchemaOrg<K extends keyof SchemaOrgAnswers>(key: K, value: SchemaOrgAnswers[K]) {
+    setSchemaOrgAnswers((current) => ({ ...current, [key]: value }));
+  }
+
+  const source = exercise.source ?? {
+    label: 'Podatkovni izsek · SURS 2025',
+    detail: '4 od 212 občin',
+    content: municipalitiesTsv,
+    ariaLabel: 'Izsek podatkov TSV',
+    format: 'tsv' as const,
+  };
+
   return (
     <div className="exercise-shell" data-lesson-id={lessonId}>
       <div className="source-strip">
-        <span>Podatkovni izsek · SURS 2025</span>
-        <span>4 od 212 občin</span>
+        <span>{source.label}</span>
+        <span>{source.detail}</span>
       </div>
-      <pre className="tsv-sample" aria-label="Izsek podatkov TSV">{municipalitiesTsv}</pre>
+      <pre className={`source-sample ${source.format}-sample`} aria-label={source.ariaLabel}>{source.content}</pre>
 
-      {exercise.mode === 'concepts' ? (
+      {exercise.mode === 'schemaorg' ? (
+        <fieldset className="concept-form" data-testid="schemaorg-form">
+          <legend>Razložite zapis in preverite uporabljene pojme</legend>
+          <div className="form-grid">
+            <label>
+              <span>Kaj določa <code>@context</code>?</span>
+              <select data-testid="context-meaning" value={schemaOrgAnswers.contextMeaning} onChange={(event) => setSchemaOrg('contextMeaning', event.target.value)}>
+                <option value="">Izberite …</option>
+                <option value="vocabulary">Uporabljeni besednjak in preslikavo izrazov</option>
+                <option value="page-language">Jezik besedila na spletni strani</option>
+                <option value="validation-service">Storitev za preverjanje zapisa</option>
+              </select>
+            </label>
+            <label>
+              <span>Kaj pomeni <code>@type: NewsArticle</code>?</span>
+              <select data-testid="type-meaning" value={schemaOrgAnswers.typeMeaning} onChange={(event) => setSchemaOrg('typeMeaning', event.target.value)}>
+                <option value="">Izberite …</option>
+                <option value="instance-class">Opisani primerek pripada razredu NewsArticle</option>
+                <option value="file-format">Datoteka je zapisana v formatu NewsArticle</option>
+                <option value="publisher-role">Izdajatelj članka ima vlogo NewsArticle</option>
+              </select>
+            </label>
+            <label className="field-wide">
+              <span>Katera je hierarhija razreda <code>NewsArticle</code>?</span>
+              <select data-testid="hierarchy" value={schemaOrgAnswers.hierarchy} onChange={(event) => setSchemaOrg('hierarchy', event.target.value)}>
+                <option value="">Izberite …</option>
+                <option value="thing-creativework-article-newsarticle">Thing &gt; CreativeWork &gt; Article &gt; NewsArticle</option>
+                <option value="thing-organization-newsarticle">Thing &gt; Organization &gt; NewsArticle</option>
+                <option value="creativework-webpage-newsarticle">CreativeWork &gt; WebPage &gt; NewsArticle</option>
+              </select>
+            </label>
+            <label>
+              <span>Kateri tip pričakuje <code>datePublished</code>?</span>
+              <select data-testid="date-type" value={schemaOrgAnswers.datePublishedType} onChange={(event) => setSchemaOrg('datePublishedType', event.target.value)}>
+                <option value="">Izberite …</option>
+                <option value="date-datetime">Date ali DateTime</option>
+                <option value="text">Samo Text</option>
+                <option value="integer">Integer</option>
+              </select>
+            </label>
+            <label>
+              <span>Kateri tip pričakuje <code>publisher</code>?</span>
+              <select data-testid="publisher-type" value={schemaOrgAnswers.publisherType} onChange={(event) => setSchemaOrg('publisherType', event.target.value)}>
+                <option value="">Izberite …</option>
+                <option value="organization-person">Organization ali Person</option>
+                <option value="text">Samo Text</option>
+                <option value="webpage">Samo WebPage</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+      ) : exercise.mode === 'concepts' ? (
         <fieldset className="concept-form">
           <legend>Razvrstite podatke in označite manjkajoči kontekst</legend>
           <div className="form-grid">

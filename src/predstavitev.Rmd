@@ -209,6 +209,13 @@ Pri delavnici bomo uporabljali zelo preproste razlage pojmov.
 - iskanje,
 - povezovanje vsebin.
 
+<div class="exercise-promo-compact">
+  <p class="exercise-promo-label"><strong>INTERAKTIVNA VAJA (7–8 MIN)</strong></p>
+  <p class="exercise-promo-title">
+    <a href="./vaje/semantika-na-spletu/json-ld/kaj-pove-json-ld/" target="_blank" rel="noopener">Kaj pove JSON-LD? ↗</a>
+  </p>
+</div>
+
 ::: columns
 
 :::: column
@@ -263,11 +270,9 @@ v obliki besednjakov in ontologij, kot so:
 – in **DCAT (Data Catalog Vocabulary)**,
 ki se uporablja predvsem za opis podatkovnih naborov v katalogih odprtih podatkov.
 
-**DEMO v živo:**  
-– odprem članek na RTV Slovenija,  
-– pokažem izvorno kodo strani,  
-– izpostavim del z `application/ld+json`,  
-– in povežem pojme iz kode s pojmi na prosojnici.
+**INTERAKTIVNA VAJA 1 (7–8 min):** »Kaj pove JSON-LD?«. Udeleženci v lokalnem posnetku prepoznajo `@context` in `@type`, nato na schema.org preverijo hierarhijo `NewsArticle` ter pričakovane tipe lastnosti `datePublished` in `publisher`.
+
+Po skupnem pregledu odprem [novico Predstavništva Evropske komisije v Sloveniji](https://slovenia.representation.ec.europa.eu/novice-dogodki/novice/govor-o-stanju-v-uniji-2026-2026-09-16_sl), v izvorni kodi poiščem `application/ld+json` in pokažem ločena zapisa `BreadcrumbList` ter `NewsArticle`. Živi primer je dodaten korak; uspešno dokončanje vaje ni odvisno od zunanje strani.
 :::
 
 # 2. Od izvornih podatkov (1 ★) do odprtih podatkov (3 ★)
@@ -392,7 +397,7 @@ Ta primer lepo ponazarja raven 3 ★: podatki so odprti in strojno berljivi, ven
 
 **Za računalniško obdelavo to pomeni, da je treba ta pomen interpretirati ročno ali z dodatno logiko, saj ni formalne, enolične povezave med stolpci in njihovim pomenom. Zato podatki še niso primerni za avtomatsko povezovanje z drugimi viri.**
 
-**INTERAKTIVNA VAJA 1 (5–7 min):** odpremo portal in rešimo »Kaj nam TSV ne pove?«. Po preverjanju skupaj primerjamo identifikator, podatkovni tip in manjkajoči kontekst meritve.
+**INTERAKTIVNA VAJA 2 (5–7 min):** odpremo portal in rešimo »Kaj nam TSV ne pove?«. Po preverjanju skupaj primerjamo identifikator, podatkovni tip in manjkajoči kontekst meritve.
 :::
 
 ## Omejitve ravni 3 ★
@@ -655,7 +660,7 @@ Pri pretvorbi v RDF vsake vrstice ne pretvorimo v eno celico, ampak v več RDF t
 
 Eden izmed trojčkov določa tip entitete, ostali trojčki pa opisujejo posamezne lastnosti, kot so naziv ali število prebivalcev.
 
-**INTERAKTIVNA VAJA 2 (7–9 min):** »TSV v RDF-trojčke«. Udeleženci iz vrstice za Ajdovščino sestavijo štiri ločene trojčke s polnimi URI-ji, brez predpon in podpičij. Imena lastnosti so navedena v navodilu vaje; predpone in krajši zapis sledijo pozneje.
+**INTERAKTIVNA VAJA 3 (7–9 min):** »TSV v RDF-trojčke«. Udeleženci iz vrstice za Ajdovščino sestavijo štiri ločene trojčke s polnimi URI-ji, brez predpon in podpičij. Imena lastnosti so navedena v navodilu vaje; predpone in krajši zapis sledijo pozneje.
 :::
 
 ## 🧑‍💻 RDF trojčki – polni zapis
@@ -795,7 +800,7 @@ Tak zapis je krajši, a ohranja popolnoma enak pomen, zato se v praksi uporablja
 
 Omeni še uporabo vejice `,`, če v novi vrstici izpustimo osebek in povedek.
 
-**INTERAKTIVNA VAJA 3 (7–9 min):** »Popravi Turtle«. Udeleženci naj najprej uporabijo povratno informacijo parserja, šele nato namig.
+**INTERAKTIVNA VAJA 4 (7–9 min):** »Popravi Turtle«. Udeleženci naj najprej uporabijo povratno informacijo parserja, šele nato namig.
 :::
 
 ## Od tabele do grafa
@@ -1497,7 +1502,7 @@ Takšen zapis je veliko bolj fleksibilen kot tabelarični pristop in omogoča na
 
 Celotna datoteka z nadgrajenim modelom in preoblikovanimi podatki je na voljo v datoteki `SURS_obcine_dp_op.ttl`, ki jo lahko uporabimo za nadaljnje poizvedbe in analize.
 
-**INTERAKTIVNA VAJA 4 (10–12 min):** »Formaliziraj občino«. Po uspešnem preverjanju si skupaj ogledamo graf razredov in lastnosti.
+**INTERAKTIVNA VAJA 5 (10–12 min):** »Formaliziraj občino«. Po uspešnem preverjanju si skupaj ogledamo graf razredov in lastnosti.
 :::
 
 # 5. Raven 5 ★: povezani podatki in zunanji viri
@@ -1984,7 +1989,7 @@ Zelo pomemben korak je tudi povezava z Wikidata. Ker ima CRP že povezavo owl:sa
 
 To lepo pokaže bistvo ravni 5 ★: podatki niso več izolirani, ampak postanejo del širšega, povezanega ekosistema, kjer se informacije združujejo prek povezav – ne prek kopiranja podatkov.
 
-**INTERAKTIVNA VAJA 5 (8–10 min):** »Poveži podatkovna vira«. Udeleženci uporabijo prikazano previdnejšo povezavo `sursTBox:Obcina rdfs:subClassOf crp:Obcina` in z `owl:sameAs` povežejo štiri pare občin. Pari so navedeni v navodilu vaje.
+**INTERAKTIVNA VAJA 6 (8–10 min):** »Poveži podatkovna vira«. Udeleženci uporabijo prikazano previdnejšo povezavo `sursTBox:Obcina rdfs:subClassOf crp:Obcina` in z `owl:sameAs` povežejo štiri pare občin. Pari so navedeni v navodilu vaje.
 :::
 
 ## 🧑‍💻 Razširitev povezovanja – več občin, en ekosistem

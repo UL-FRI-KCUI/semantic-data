@@ -160,6 +160,35 @@ body {
   letter-spacing: 0.08em;
 }
 
+.reveal .exercise-promo-compact {
+  border-top: 4px solid var(--kcui-coral);
+  position: absolute;
+  right: 90px;
+  text-align: left;
+  top: 165px;
+  width: 600px;
+}
+
+.reveal .exercise-promo-compact p {
+  margin: 0;
+}
+
+.reveal .exercise-promo-compact .exercise-promo-label {
+  margin-top: 12px !important;
+}
+
+.reveal .exercise-promo-compact .exercise-promo-title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.reveal .exercise-promo-compact strong {
+  color: var(--kcui-coral);
+  font-size: 17px;
+  letter-spacing: 0.08em;
+}
+
 /* Naslovnica: rdeče ozadje, mreža in podpisniki iz uradne KCUI predloge. */
 .reveal .slides #title-slide {
   background-color: var(--kcui-coral);
@@ -308,6 +337,11 @@ body {
 .reveal .slides section.slide.level2 > :not(h2) {
   position: relative;
   z-index: 1;
+}
+
+.reveal .slides section.slide.level2 > .exercise-promo-compact {
+  position: absolute;
+  z-index: 2;
 }
 
 .reveal .columns {

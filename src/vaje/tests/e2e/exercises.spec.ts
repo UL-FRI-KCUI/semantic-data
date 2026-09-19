@@ -20,18 +20,55 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => localStorage.clear());
 });
 
-test('portal prikaže šest vaj, napredek in tipkovniško dostopne povezave', async ({ page }) => {
+test('portal prikaže sedem vaj, napredek in tipkovniško dostopne povezave', async ({ page }) => {
   await page.reload();
   await expect(page.getByRole('heading', { name: /Od tabele do/ })).toBeVisible();
-  await expect(page.locator('.exercise-card')).toHaveCount(6);
+  await expect(page.locator('.exercise-card')).toHaveCount(7);
   await expect(page.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '0');
+  await expect(page.getByRole('progressbar')).toHaveAttribute('aria-valuemax', '7');
   const firstExerciseLink = page.locator('.exercise-card a').first();
   await firstExerciseLink.focus();
   await expect(firstExerciseLink).toBeFocused();
   await expect(firstExerciseLink).toHaveCSS('outline-style', 'solid');
 });
 
-test('vaja 1: napačen odgovor, namig, rešitev, ponastavitev in trajen uspeh', async ({ page }) => {
+test('vaja 1: JSON-LD, schema.org, živi primer in trajen uspeh', async ({ page }) => {
+  await page.goto('semantika-na-spletu/json-ld/kaj-pove-json-ld/');
+
+  await expect(page.getByLabel('Skrajšan posnetek JSON-LD članka RTV Slovenija')).toContainText('"@type": "NewsArticle"');
+  await expect(page.getByLabel('Skrajšan posnetek JSON-LD članka RTV Slovenija')).not.toContainText('ob_id');
+
+  for (const name of ['NewsArticle', 'datePublished', 'publisher']) {
+    await expect(page.getByRole('link', { name, exact: true })).toHaveAttribute('target', '_blank');
+    await expect(page.getByRole('link', { name, exact: true })).toHaveAttribute('rel', 'noopener');
+  }
+  const liveLink = page.getByRole('link', { name: 'novico Predstavništva Evropske komisije v Sloveniji' });
+  await expect(liveLink).toHaveAttribute('target', '_blank');
+  await expect(liveLink).toHaveAttribute('href', /slovenia\.representation\.ec\.europa\.eu/);
+
+  await page.getByTestId('check').click();
+  await expect(page.getByTestId('feedback')).toContainText('@context');
+  await page.getByTestId('hint').click();
+  await expect(page.getByTestId('hint-text')).toContainText('Expected Type');
+  await page.getByTestId('show-solution').click();
+  await expect(page.getByTestId('solution')).toContainText('Thing > CreativeWork > Article > NewsArticle');
+  await expect(page.getByTestId('completed')).toHaveCount(0);
+  await page.getByTestId('reset').click();
+
+  await page.getByTestId('context-meaning').selectOption('vocabulary');
+  await page.getByTestId('type-meaning').selectOption('instance-class');
+  await page.getByTestId('hierarchy').selectOption('thing-creativework-article-newsarticle');
+  await page.getByTestId('date-type').selectOption('date-datetime');
+  await page.getByTestId('publisher-type').selectOption('organization-person');
+  await page.getByTestId('check').click();
+  await expect(page.getByTestId('feedback')).toContainText('Pravilno');
+  await expect(page.getByTestId('completed')).toBeVisible();
+  await page.reload();
+  await expect(page.getByTestId('completed')).toBeVisible();
+  await expect(page.getByTestId('context-meaning')).toHaveValue('vocabulary');
+});
+
+test('vaja 2: napačen odgovor, namig, rešitev, ponastavitev in trajen uspeh', async ({ page }) => {
   await page.goto('od-tabele-do-grafa/podatki/kaj-nam-tsv-ne-pove/');
   await page.getByTestId('check').click();
   await expect(page.getByTestId('feedback')).toContainText('ob_id');
@@ -54,7 +91,7 @@ test('vaja 1: napačen odgovor, namig, rešitev, ponastavitev in trajen uspeh', 
   await expect(page.getByTestId('completed')).toBeVisible();
 });
 
-test('vaja 2 prikaže polne URI-je in začne brez predpon', async ({ page }) => {
+test('vaja 3 prikaže polne URI-je in začne brez predpon', async ({ page }) => {
   await page.goto('od-tabele-do-grafa/podatki/tsv-v-rdf/');
   const propertyTable = page.getByRole('table');
   await expect(propertyTable).toContainText('idObcinaSurs');
@@ -66,7 +103,7 @@ test('vaja 2 prikaže polne URI-je in začne brez predpon', async ({ page }) => 
   await expect(editor).not.toContainText(';');
 });
 
-test('vaja 5 poda štiri pare občin in rešitev iz prikazanih povezav', async ({ page }) => {
+test('vaja 6 poda štiri pare občin in rešitev iz prikazanih povezav', async ({ page }) => {
   await page.goto('model-in-povezave/ontologije/povezi-vira/');
   const pairs = page.getByRole('table');
   await expect(pairs).toContainText('Obcina_1');

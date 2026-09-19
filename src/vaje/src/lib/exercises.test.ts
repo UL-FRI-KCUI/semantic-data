@@ -4,6 +4,7 @@ import { exerciseById } from './exercises';
 import { clearProgress, progressKey, readProgress, writeProgress } from './progress';
 import { parseTurtle, validateTurtle } from './rdf';
 import { runSparql, validateSparql } from './sparql';
+import { emptySchemaOrgAnswers, validateSchemaOrgAnswers } from './schemaorg';
 
 class MemoryStorage {
   private values = new Map<string, string>();
@@ -11,6 +12,28 @@ class MemoryStorage {
   setItem(key: string, value: string) { this.values.set(key, value); }
   removeItem(key: string) { this.values.delete(key); }
 }
+
+describe('JSON-LD in schema.org', () => {
+  const correct = {
+    contextMeaning: 'vocabulary',
+    typeMeaning: 'instance-class',
+    hierarchy: 'thing-creativework-article-newsarticle',
+    datePublishedType: 'date-datetime',
+    publisherType: 'organization-person',
+  };
+
+  it('sprejme vseh pet pravilnih odgovorov', () => {
+    expect(validateSchemaOrgAnswers(correct)).toBe('');
+  });
+
+  it('vrne ciljno povratno informacijo za vsak napačen odgovor', () => {
+    expect(validateSchemaOrgAnswers(emptySchemaOrgAnswers)).toContain('@context');
+    expect(validateSchemaOrgAnswers({ ...correct, typeMeaning: 'file-format' })).toContain('@type');
+    expect(validateSchemaOrgAnswers({ ...correct, hierarchy: 'thing-organization-newsarticle' })).toContain('hierarhiji');
+    expect(validateSchemaOrgAnswers({ ...correct, datePublishedType: 'text' })).toContain('datePublished');
+    expect(validateSchemaOrgAnswers({ ...correct, publisherType: 'text' })).toContain('publisher');
+  });
+});
 
 describe('pomenska vaja', () => {
   it('zahteva pravilna tipa in vse tri manjkajoče pomenske razsežnosti', () => {
@@ -77,6 +100,7 @@ describe('lokalni napredek', () => {
   it('uporablja različico ključa, shrani zaključek in ga ponastavi', () => {
     const storage = new MemoryStorage();
     expect(progressKey('pomen-tsv')).toBe('semantic-data:vaje:v1:pomen-tsv');
+    expect(progressKey('kaj-pove-json-ld')).toBe('semantic-data:vaje:v1:kaj-pove-json-ld');
     expect(progressKey('tsv-v-rdf')).toBe('semantic-data:vaje:v2:tsv-v-rdf');
     expect(progressKey('popravi-turtle')).toBe('semantic-data:vaje:v2:popravi-turtle');
     expect(progressKey('povezi-vira')).toBe('semantic-data:vaje:v2:povezi-vira');
@@ -89,5 +113,25 @@ describe('lokalni napredek', () => {
     expect(readProgress(storage, 'pomen-tsv')?.completed).toBe(true);
     clearProgress(storage, 'pomen-tsv');
     expect(readProgress(storage, 'pomen-tsv')).toBeNull();
+  });
+
+  it('shrani in obnovi odgovore vaje schema.org', () => {
+    const storage = new MemoryStorage();
+    const schemaOrgAnswers = {
+      contextMeaning: 'vocabulary',
+      typeMeaning: 'instance-class',
+      hierarchy: 'thing-creativework-article-newsarticle',
+      datePublishedType: 'date-datetime',
+      publisherType: 'organization-person',
+    };
+    writeProgress(storage, 'kaj-pove-json-ld', {
+      completed: true,
+      hintShown: false,
+      solutionShown: false,
+      schemaOrgAnswers,
+    });
+    expect(readProgress(storage, 'kaj-pove-json-ld')?.schemaOrgAnswers).toEqual(schemaOrgAnswers);
+    clearProgress(storage, 'kaj-pove-json-ld');
+    expect(readProgress(storage, 'kaj-pove-json-ld')).toBeNull();
   });
 });
