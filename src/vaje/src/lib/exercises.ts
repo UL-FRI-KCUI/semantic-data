@@ -5,6 +5,7 @@ export type LessonId =
   | 'popravi-turtle'
   | 'formaliziraj-obcino'
   | 'povezi-vira'
+  | 'od-podatkov-do-povezanega-grafa'
   | 'sparql-nad-grafom';
 
 export interface ExerciseDefinition {
@@ -17,7 +18,7 @@ export interface ExerciseDefinition {
   hint: string;
   starter: string;
   solution: string;
-  mode: 'schemaorg' | 'concepts' | 'turtle' | 'sparql';
+  mode: 'schemaorg' | 'concepts' | 'turtle' | 'capstone' | 'sparql';
   source?: {
     label: string;
     detail: string;
@@ -188,8 +189,20 @@ crp:Obcina_70 owl:sameAs sursABox:maribor .`,
     mode: 'turtle',
   },
   {
-    id: 'sparql-nad-grafom',
+    id: 'od-podatkov-do-povezanega-grafa',
     number: 7,
+    title: 'Od podatkov do povezanega grafa',
+    eyebrow: 'Zaključna vaja · ravni 3–5 ★',
+    description: 'V štirih korakih povežite izvorne podatke, ABox, TBox ter vire SURS, CRP in Wikidata.',
+    href: 'model-in-povezave/ontologije/od-podatkov-do-povezanega-grafa/',
+    hint: 'Vsak korak ima svoj namig.',
+    starter: '',
+    solution: '',
+    mode: 'capstone',
+  },
+  {
+    id: 'sparql-nad-grafom',
+    number: 8,
     title: 'SPARQL nad povezanim grafom',
     eyebrow: 'SPARQL 1.1',
     description: 'Poiščite večje občine prek povezav identitete CRP ↔ SURS.',

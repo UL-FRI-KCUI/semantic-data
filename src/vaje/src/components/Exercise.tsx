@@ -1,5 +1,6 @@
 import CodeMirror from '@uiw/react-codemirror';
 import { useEffect, useRef, useState } from 'react';
+import CapstoneExercise from './CapstoneExercise';
 import GraphView from './GraphView';
 import { emptyConceptAnswers, validateConceptAnswers, type ConceptAnswers } from '../lib/concepts';
 import { exerciseById, municipalitiesTsv, type LessonId } from '../lib/exercises';
@@ -9,6 +10,11 @@ import { emptySchemaOrgAnswers, validateSchemaOrgAnswers, type SchemaOrgAnswers 
 import type { SparqlRow } from '../lib/sparql';
 
 export default function Exercise({ lessonId }: { lessonId: LessonId }) {
+  if (lessonId === 'od-podatkov-do-povezanega-grafa') return <CapstoneExercise />;
+  return <StandardExercise lessonId={lessonId} />;
+}
+
+function StandardExercise({ lessonId }: { lessonId: Exclude<LessonId, 'od-podatkov-do-povezanega-grafa'> }) {
   const exercise = exerciseById[lessonId];
   const [code, setCode] = useState(exercise.starter);
   const [answers, setAnswers] = useState<ConceptAnswers>(emptyConceptAnswers);

@@ -1,6 +1,7 @@
 import type { LessonId } from './exercises';
 import type { ConceptAnswers } from './concepts';
 import type { SchemaOrgAnswers } from './schemaorg';
+import type { CapstoneProgress } from './capstone';
 
 export const PROGRESS_PREFIX = 'semantic-data:vaje:v1:';
 
@@ -9,6 +10,7 @@ export interface LessonProgress {
   draft?: string;
   conceptAnswers?: Partial<ConceptAnswers>;
   schemaOrgAnswers?: Partial<SchemaOrgAnswers>;
+  capstoneProgress?: Partial<CapstoneProgress>;
   hintShown: boolean;
   solutionShown: boolean;
   updatedAt: string;
@@ -33,6 +35,7 @@ export function readProgress(storage: StorageLike, lessonId: LessonId): LessonPr
       draft: typeof value.draft === 'string' ? value.draft : undefined,
       conceptAnswers: value.conceptAnswers,
       schemaOrgAnswers: value.schemaOrgAnswers,
+      capstoneProgress: value.capstoneProgress,
       hintShown: Boolean(value.hintShown),
       solutionShown: Boolean(value.solutionShown),
       updatedAt: typeof value.updatedAt === 'string' ? value.updatedAt : '',

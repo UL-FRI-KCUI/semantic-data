@@ -41,7 +41,7 @@ function missing(message: string): ValidationResult {
   return { ok: false, message };
 }
 
-export function validateTurtle(lessonId: Exclude<LessonId, 'pomen-tsv' | 'sparql-nad-grafom'>, code: string): ValidationResult {
+export function validateTurtle(lessonId: Exclude<LessonId, 'pomen-tsv' | 'kaj-pove-json-ld' | 'od-podatkov-do-povezanega-grafa' | 'sparql-nad-grafom'>, code: string): ValidationResult {
   const parsed = parseOrError(code);
   if (!Array.isArray(parsed)) return parsed;
   const quads = parsed;

@@ -512,9 +512,15 @@ view-toggle {
 
 .exercise-shell {
   display: grid;
+  min-width: 0;
   gap: 18px;
   margin-top: 30px;
   padding-bottom: 36px;
+}
+
+.exercise-shell > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .source-strip,
@@ -556,6 +562,8 @@ view-toggle {
 .editor-panel,
 .graph-panel,
 .solution-panel {
+  min-width: 0;
+  max-width: 100%;
   margin: 0;
   padding: 0;
   border: 1px solid var(--line);
@@ -640,6 +648,7 @@ view-toggle {
 }
 
 .cm-editor {
+  max-width: 100%;
   font-size: 14px;
 }
 
@@ -778,6 +787,110 @@ view-toggle {
   background: var(--mist);
 }
 
+/* Večstopenjska zaključna vaja */
+.capstone-progress {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  color: var(--navy);
+  background: var(--mist);
+  border-left: 5px solid var(--coral);
+  font-weight: 800;
+}
+
+.capstone-progress span:last-child {
+  color: var(--ink-muted);
+  font-size: 14px;
+}
+
+.capstone-stepper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.capstone-stepper button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 10px 12px;
+  color: var(--navy);
+  background: white;
+  border: 1px solid var(--line);
+  text-align: left;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.capstone-stepper button > span {
+  display: grid;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  color: white;
+  background: var(--navy-soft);
+  border-radius: 50%;
+}
+
+.capstone-stepper button.is-active {
+  border-color: var(--red);
+  box-shadow: inset 0 -4px 0 var(--red);
+}
+
+.capstone-stepper button.is-complete > span {
+  background: var(--success);
+}
+
+.capstone-stepper button:disabled {
+  color: #8c969e;
+  background: #f7f8f8;
+  cursor: not-allowed;
+}
+
+.capstone-stepper button:disabled > span {
+  background: #aeb6be;
+}
+
+.capstone-panel {
+  border: 1px solid var(--line);
+  background: white;
+}
+
+.capstone-panel > .concept-form,
+.capstone-panel .editor-panel {
+  border: 0;
+}
+
+.capstone-editor-wrap > p {
+  margin: 0;
+  padding: 18px 20px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+  border-bottom: 1px solid var(--line);
+}
+
+.capstone-final-question {
+  display: grid;
+  gap: 9px;
+  padding: 20px;
+  color: var(--navy);
+  border-top: 1px solid var(--line);
+  font-weight: 800;
+}
+
+.capstone-final-question select {
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 36px 8px 12px;
+  color: var(--navy);
+  background: white;
+  border: 1px solid #9ba5ad;
+  border-radius: 3px;
+}
+
 @media (max-width: 980px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -788,6 +901,10 @@ view-toggle {
   }
 
   .exercise-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .capstone-stepper {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -825,6 +942,16 @@ view-toggle {
 
   .exercise-grid {
     grid-template-columns: 1fr;
+  }
+
+  .capstone-stepper {
+    grid-template-columns: 1fr;
+  }
+
+  .capstone-progress {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .progress-summary {

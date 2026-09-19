@@ -20,12 +20,12 @@ test.beforeEach(async ({ page }) => {
   await page.evaluate(() => localStorage.clear());
 });
 
-test('portal prikaže sedem vaj, napredek in tipkovniško dostopne povezave', async ({ page }) => {
+test('portal prikaže osem vaj, napredek in tipkovniško dostopne povezave', async ({ page }) => {
   await page.reload();
   await expect(page.getByRole('heading', { name: /Od tabele do/ })).toBeVisible();
-  await expect(page.locator('.exercise-card')).toHaveCount(7);
+  await expect(page.locator('.exercise-card')).toHaveCount(8);
   await expect(page.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '0');
-  await expect(page.getByRole('progressbar')).toHaveAttribute('aria-valuemax', '7');
+  await expect(page.getByRole('progressbar')).toHaveAttribute('aria-valuemax', '8');
   const firstExerciseLink = page.locator('.exercise-card a').first();
   await firstExerciseLink.focus();
   await expect(firstExerciseLink).toBeFocused();
@@ -116,6 +116,58 @@ test('vaja 6 poda štiri pare občin in rešitev iz prikazanih povezav', async (
   await expect(solution).toContainText('crp:Obcina_70 owl:sameAs sursABox:maribor');
   await expect(solution).not.toContainText('geo:Feature');
   await expect(solution).not.toContainText('skos:prefLabel');
+});
+
+test('vaja 7 vodi od vrstice SURS do povezanega grafa in obnovi napredek', async ({ page }) => {
+  await page.goto('model-in-povezave/ontologije/od-podatkov-do-povezanega-grafa/');
+
+  await expect(page.getByLabel('Podatkovna vrstica SURS za Kranj')).toContainText('052');
+  await expect(page.getByTestId('capstone-step-2')).toBeDisabled();
+  await page.getByTestId('check').click();
+  await expect(page.getByTestId('feedback')).toContainText('URI');
+  await page.getByTestId('hint').click();
+  await expect(page.getByTestId('hint-text')).toContainText('Oznaka 052');
+  await page.getByTestId('show-solution').click();
+  await expect(page.getByTestId('solution')).toContainText('ločen primerek');
+  await expect(page.getByTestId('completed')).toHaveCount(0);
+
+  await page.getByTestId('capstone-uri').selectOption('obcina-kranj');
+  await page.getByTestId('capstone-id-type').selectOption('string');
+  await page.getByTestId('capstone-measurement-model').selectOption('separate-resource');
+  await page.getByTestId('check').click();
+  await expect(page.getByTestId('capstone-step-2')).toBeEnabled();
+  await expect(page.getByTestId('capstone-abox-editor')).toBeVisible();
+
+  await page.getByTestId('show-solution').click();
+  await replaceEditor(page, await page.getByTestId('solution').innerText());
+  await page.getByTestId('check').click();
+  await expect(page.getByTestId('capstone-tbox-editor')).toBeVisible();
+
+  await page.getByTestId('show-solution').click();
+  await replaceEditor(page, await page.getByTestId('solution').innerText());
+  await page.getByTestId('check').click();
+  await expect(page.getByTestId('capstone-links-editor')).toBeVisible();
+
+  await page.getByTestId('show-solution').click();
+  await replaceEditor(page, await page.getByTestId('solution').innerText());
+  await page.getByTestId('capstone-identity-relation').selectOption('same-as-instances');
+  await page.getByTestId('check').click();
+  await expect(page.getByTestId('completed')).toBeVisible();
+  await expect(page.locator('.graph-panel')).toBeVisible();
+
+  await page.reload();
+  await expect(page.getByTestId('completed')).toBeVisible();
+  await expect(page.getByTestId('capstone-links-editor')).toBeVisible();
+  await expect(page.locator('.graph-panel')).toBeVisible();
+
+  await page.getByTestId('capstone-step-2').click();
+  await page.locator('.cm-content').click();
+  await page.keyboard.insertText(' ');
+  await expect(page.getByTestId('completed')).toHaveCount(0);
+  await expect(page.getByTestId('capstone-step-3')).toBeDisabled();
+  await page.getByTestId('reset').click();
+  await expect(page.getByTestId('capstone-step-2')).toBeDisabled();
+  await expect(page.getByTestId('capstone-uri')).toHaveValue('');
 });
 
 for (const lesson of codeLessons) {

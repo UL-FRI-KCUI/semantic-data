@@ -19,5 +19,5 @@ i18n:
   resetButtonText: 'Ponastavi'
 meta:
   title: 'Interaktivne vaje — semantični podatki'
-  description: 'Sedem vodenih vaj od JSON-LD na spletu do povezanega grafa in poizvedb SPARQL.'
+  description: 'Osem vodenih vaj od JSON-LD na spletu do povezanega grafa in poizvedb SPARQL.'
 ---

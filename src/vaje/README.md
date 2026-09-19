@@ -21,6 +21,6 @@ npm run test:e2e
 npm run build
 ```
 
-Statični rezultat je v `dist/`. Vsebina lekcij je urejena kot deli, poglavja in lekcije v `src/content/tutorial/`, skupna interaktivnost pa je v `src/components/Exercise.tsx`.
+Statični rezultat je v `dist/`. Vsebina lekcij je urejena kot deli, poglavja in lekcije v `src/content/tutorial/`. Enokoračne vaje uporablja skupna komponenta `src/components/Exercise.tsx`, zaključna vaja pa ima namensko večstopenjsko komponento.
 
 Napredek ostane samo v uporabnikovem brskalniku pod ključi `semantic-data:vaje:v1:<lesson-id>` oziroma pod obstoječimi različicami ključev posameznih vaj.

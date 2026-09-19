@@ -14,6 +14,7 @@ const portalRoutes = [
   'od-tabele-do-grafa/podatki/popravi-turtle/',
   'model-in-povezave/ontologije/formaliziraj-obcino/',
   'model-in-povezave/ontologije/povezi-vira/',
+  'model-in-povezave/ontologije/od-podatkov-do-povezanega-grafa/',
   'poizvedovanje/sparql/sparql-nad-grafom/',
 ];
 
@@ -85,7 +86,7 @@ try {
     if (!response?.ok()) problems.push(`route did not return HTTP 200: ${route || '/'}`);
 
     if (route === '') {
-      if (await page.locator('.exercise-card').count() !== 7) problems.push('portal does not contain seven exercise cards');
+      if (await page.locator('.exercise-card').count() !== 8) problems.push('portal does not contain eight exercise cards');
     } else {
       await page.locator('.exercise-shell').waitFor();
       await page.getByTestId('check').waitFor({ state: 'visible' });
