@@ -24,6 +24,7 @@ output:
         grid: false
 ---
 
+
 ## Od virov do pametnejših agentov {.motivation-infographic}
 
 ![](assets/infografika-5-zvezdic-in-agenti.png){.motivation-art}
@@ -49,7 +50,7 @@ Danes bomo ta prehod naredili korak za korakom: od tabele prek RDF-ja in ontolog
 5. Raven 5 ★: povezani podatki in zunanji viri
 6. Uporaba semantično opisanih podatkov s SPARQL
 7. Sklepanje: prehod od podatkov k znanju
-8. 🚧 TO-DO Vizualizacija (verjetno gre ven)
+8. Za konec: kdaj se semantika izplača
 
 ::: notes :::
 Najprej si bomo pogledali, zakaj sploh govorimo o semantičnem opisovanju podatkov in kakšen problem v praksi rešujemo.
@@ -64,6 +65,8 @@ V zadnjem delu pa bomo pokazali, kaj pridobimo s povezovanjem podatkov in kako i
 
 Posamezna poglavja bomo obravnavali z realnimi primeri in demonstracijami v urejevalniku besedil Visual Studio Code in urejevalniku ontologij Protégé.
 
+Na koncu pa bomo pogledali, kdaj se semantika izplača v praksi – z merljivimi primeri iz gospodarstva in z napotki, kako začeti.
+
 Začnimo torej pri vprašanju, zakaj klasični podatkovni pristopi danes pogosto ne zadoščajo.
 :::
 
@@ -74,10 +77,30 @@ Najprej postavimo kontekst:
 
 – zakaj klasični podatkovni pristopi niso več dovolj,  
 – zakaj imamo danes veliko podatkov, a malo uporabnih, da poiščemo odgovore,  
-– in zakaj je semantična interoperabilnost ključna za povezovanje sistemov.
+– in zakaj je semantična interoperabilnost ključna za povezovanje sistemov. 
 :::
 
-## 🚧 TO-DO Slavko uvod
+## GenUI in semantične tehnologije
+
+![](./gradivo/LLM_nacini_uporabe.svg)
+
+::: notes :::
+Preden se lotimo podatkov, postavimo okvir: kje v današnjih rešitvah z umetno inteligenco sploh nastopi semantika.
+
+Poglejmo štiri postavitve, ki jih danes srečamo v praksi.
+
+Prva, samo LLM. Model odgovarja iz tega, kar se je naučil med učenjem. Za pisanje besedil je to povsem dovolj, za poslovno odločanje pa ne: znanje je lahko zastarelo, predvsem pa odgovor nima vira, ki bi ga lahko preverili.
+
+Druga, LLM z relacijsko bazo. Model iz vprašanja tvori poizvedbo SQL in vrne prave, aktualne vrednosti. To je danes najpogostejša postavitev. Njena šibka točka je, da shema baze pomena ne nosi – stolpec s kratico kot POL_TYP_CD modelu ne pove ničesar in prav tu nastane večina napak.
+
+Tretja, LLM z grafom znanja. Podatki so opisani s pojmi in povezavami, model pa tvori poizvedbo SPARQL. Poleg odgovora dobimo tudi pot do izvornega trojčka, torej sledljivost. To je točno tisto, kar bomo danes gradili od začetka do konca.
+
+Četrta, agentni sistem. Agent ima prek strežnikov MCP na voljo več virov hkrati – graf znanja, relacijske baze, dokumente z vektorsko bazo in zunanje storitve – ter sam izbere, katero orodje bo uporabil. Ključna razlika je, da lahko poleg odgovora tudi ukrepa.
+
+In prav zato, ker agent ukrepa, potrebuje tipiziran model objektov, opredeljene dovoljene akcije in revizijsko sled. Semantika tu ni okras, ampak pogoj, da dejanju sploh lahko zaupamo.
+
+Namig za izvedbo: vprašajte dvorano, katero od teh štirih postavitev že uporabljajo. Praviloma se večina javi pri prvi in drugi – kar je dobra iztočnica za celoten dan.
+:::
 
 ## Namen delavnice
 
@@ -261,6 +284,7 @@ Pri delavnici bomo uporabljali zelo preproste razlage pojmov.
   }
 }
 ```
+
 
 ::::
 
@@ -2082,6 +2106,12 @@ To je bistvo ravni 5 ★: podatki postanejo del povezanega ekosistema, kjer nova
 
 ![](./gradivo/SPARQL_arhitektura.png)
 
+::: notes :::
+SPARQL je rekurzivna kratica za SPARQL Protocol and RDF Query Language. Poleg poizvedovalnega jezika definira tudi protokol s pravili za povezovanje odjemalskega programa na SPARQL vmesnik in izmenjavo podatkov preko HTTP.
+
+SPARQL 1.0 je bil kot uraden standard W3C objavljen v letu 2008, zadnja verzija 1.1 pa v letu 2013. Posodobljena verzija vsebuje tudi dodatne funkcionalnosti, kot je uporaba podpoizvedb, negacije, posodobitve grafa in iskanje preko poti lastnosti v grafih.
+::: 
+
 ## Predstavitev CRP kot graf
 
 ```turtle
@@ -2093,19 +2123,213 @@ To je bistvo ravni 5 ★: podatki postanejo del povezanega ekosistema, kjer nova
 
 ![](./gradivo/SPARQL_CRP_graf.png)
 
+::: notes :::
+SPARQL bomo lažje razumeli, če si bomo podatke predstavljali v obliki grafa. Trojčki, ki smo jih do sedaj zapisovali v datotekak TTL namreč tvorijo strukturo grafa. Naslednji zapis
+:::
+
 ## Širša predstavitev CRP v okolici specifičnega objekta
 
 ![](./gradivo/SPARQL_CRP_sirsi_graf.png)
 
+::: notes :::
+Če si predstavljamo še okolico teh konceptov, lahko ugotovimo, da bi graf izgledal nekako takole.
+:::
+
+## Poizvedovanje s SPARQL nad CRP
+
+:::: columns
+::: column
+
+> Okolje Protégé ponuja tudi možnost poizvedovanja s SPARQL (Window -> Tabs -> SPARQL Query). 
+
+> V Protégé odprimo datoteko [🐢 CRP.ttl ↗](./assets/data/processed/CRP.ttl){target="\_blank"} in izvedimo spodnjo poizvedbo:
+
+```SPARQL
+SELECT ?osebek ?povedek ?predmet
+
+WHERE {
+    ?osebek ?povedek ?predmet .
+}
+```
+
+:::
+::: column
+
+> 🧑🏻‍🎓 Kaj predstavlja rezultat poizvedbe? 
+
+![](./gradivo/Protege_SPARQL.png)
+
+:::
+::::
+
+::: notes :::
+Rezultat poizvedbe so vsi trojčki, ki se nahajajo v naši ontologiji.
+:::
+
+## 🧑‍💻 Osnovno iskanje vsebine v CRP
+
+:::: columns
+::: column
+
+- Izrazi s `?` so **spremenljivke**,
+- SPARQL poišče **vse podgrafe**, ki se ujemajo z vzorcem,
+- poiščimo vse povezave, ki izhajajo iz `crp:Obcina_32`:
+
+```SPARQL
+SELECT ?povedek ?predmet
+
+WHERE {
+    <https://pzsi.sigov.si/datamodel/ns/crp#Obcina_32>
+        ?povedek ?predmet .
+}
+```
+
+:::
+::: column
+
+- Pri daljših poizvedbah si tudi tu pomagamo s **predponami**:
+
+```SPARQL
+PREFIX crp: <https://pzsi.sigov.si/datamodel/ns/crp#>
+
+SELECT ?povedek ?predmet
+
+WHERE {
+    crp:Obcina_32 ?povedek ?predmet .
+}
+```
+
+> 🧑🏻‍🎓 Zakaj sta obe poizvedbi enakovredni?
+
+:::
+::::
+
+::: notes :::
+Tu naredimo prvi korak od "izpiši vse" k ciljanemu iskanju.
+
+Poudarek: vse, kar se začne z vprašajem, je spremenljivka. SPARQL poskuša vzorec iz stavka WHERE preslikati na graf in vrne vsako ujemanje posebej.
+
+V prvi poizvedbi smo osebek fiksirali na konkretno občino, spremenljivki pa ostaneta povedek in predmet. Rezultat so torej vse povezave, ki izhajajo iz tega primerka.
+
+Druga poizvedba je popolnoma enakovredna prvi – predpona crp: je le okrajšava za isti imenski prostor, enako kot pri zapisu TTL. Pri daljših poizvedbah je berljivost bistveno boljša.
+
+Vprašanje za udeležence: zakaj sta poizvedbi enakovredni? Odgovor: ker se predpona pred izvajanjem razvije v polni URI – poizvedbi sta po razvoju identični.
+
+Namig za demonstracijo: obe poizvedbi poženemo v Protégé eno za drugo in pokažemo, da je rezultat isti.
+:::
+
+## 🧑‍💻 Rezultat iskanja po občini `crp:Obcina_32`
+
+:::: columns
+::: column
+
+```SPARQL
+SELECT ?povedek ?predmet
+
+WHERE {
+    <https://pzsi.sigov.si/datamodel/ns/crp#Obcina_32>
+        ?povedek ?predmet .
+}
+```
+
+:::
+::: column
+
+```SPARQL
+PREFIX crp: <https://pzsi.sigov.si/datamodel/ns/crp#>
+
+SELECT ?povedek ?predmet
+
+WHERE {
+    crp:Obcina_32 ?povedek ?predmet .
+}
+```
+:::
+::::
+
+![](./gradivo/Protege_SPARQL_rezultati.png)
+
+::: notes :::
+Rezultat so vsi povedki in predmeti, ki so vezani na občino z identifikatorjem 32 – to je Grosuplje.
+
+Na izpisu opozorimo na tri vrste vrstic:
+
+– rdf:type, ki pove, da gre za primerek razreda crp:Obcina in hkrati za owl:NamedIndividual,
+– crp:identifikator z vrednostjo 32,
+– crp:vrednost z imenom "Grosuplje" in jezikovno oznako @sl.
+
+To je pravzaprav isti opis, ki smo ga prej gledali v Protégéjevem pogledu Individuals, le da smo ga tokrat dobili s poizvedbo.
+
+Občino Grosuplje si zapomnimo – uporabljali jo bomo kot rdečo nit vse do poglavja o sklepanju, kjer ji bomo dodali še podatke SURS in župana iz DBpedie.
+:::
+
+## Od Wikipedije do DBpedie
+
+:::: columns
+::: column
+
+- **Wikipedija** – prosta enciklopedija:
+  - vsebina je namenjena **ljudem**,
+  - strukturirani so predvsem podatki v okencih _(angl. infobox)_.
+- **DBpedia** – javna **semantična baza**:
+  - vsebino črpa iz teh okenc,
+  - vsaka stran dobi svoj **URI**,
+  - podatke lahko izpišemo tudi v obliki **Turtle**.
+
+Ista vsebina, dva pogleda:
+
+- 🌐 [Wikipedija: Audi ↗](https://en.wikipedia.org/wiki/Audi){target="\_blank"}
+- 🌐 [DBpedia: Audi ↗](https://dbpedia.org/page/Audi){target="\_blank"}
+
+:::
+::: column
+
+![](./gradivo/SPARQL_DBpedia_wiki.png)
+
+:::
+::::
+
+::: notes :::
+Za prikaz osnovnih konceptov SPARQL si izposodimo javen primer iz DBpedie.
+
+Najprej pojasnimo razmerje med obema viroma. Wikipedija je prosta enciklopedija, njena vsebina pa je pisana za človeka – strojno je uporabno predvsem tisto, kar je v okencih tipa infobox, torej v tabeli na desni strani članka.
+
+DBpedia to strukturo zajame in jo objavi kot semantično bazo. Vsaka stran na Wikipediji dobi v DBpedii svoj vir s stabilnim URI-jem, njene lastnosti pa postanejo trojčki.
+
+Če odpremo obe povezavi vzporedno, je primerjava zelo nazorna: na levi je članek za človeka, na desni isti podatki kot semantični opis vira – in izpišemo jih lahko tudi v obliki Turtle, torej natanko v zapisu, ki smo ga uporabljali za CRP in SURS.
+
+Na sliki je desno okence infobox z vrsticami Company type, Industry in Predecessors. Prav takšne vrstice postanejo lastnosti, ki jih bomo čez nekaj prosojnic uporabili v poizvedbah – na primer dbo:industry z vrednostjo dbr:Automotive_industry.
+
+Poanta za udeležence: DBpedia ni ločen projekt od Wikipedije, ampak njen strojno berljiv odsev. In prav to je isti prehod, ki smo ga cel dan delali z lastnimi podatki – od zapisa za človeka do zapisa za stroj.
+:::
+
 ## Primer iz javnega grafa DBpedia
 
 ![](./gradivo/SPARQL_DBpedia_primer.png)
+
+::: notes :::
+Iz DBpedie zdaj izluščimo manjši del grafa znanja: August Horch je leta 1910 ustanovil podjetje Audi, ki se nahaja v Nemčiji.
+
+Vidimo tri primerke – August Horch, Audi in Nemčija – vsak je semantično opisan z lastnostmi, ki bodisi nosijo vrednost bodisi kažejo na drug primerek. Audi je tipa dbo:Company, August Horch pa dbo:Person.
+
+Poudarek: to je natanko ista struktura trojčkov, kot smo jo gradili za CRP in SURS – le da je javno dostopna in veliko večja.
+:::
+
 
 ## Javni endpoint omogoča poizvedovanje po DBpedii
 
 ![](./gradivo/SPARQL_DBpedia_endpoint.png)
 
 [**Odpri DBpedia SPARQL endpoint →**](https://dbpedia.org/sparql)
+
+::: notes :::
+DBpedia ponuja javno storitev za izvajanje poizvedb (angl. SPARQL endpoint) na naslovu https://dbpedia.org/sparql.
+
+Vmesnik je preprost: v polje vpišemo poizvedbo, izberemo obliko rezultata in poženemo. Ničesar ni treba namestiti.
+
+Če delamo v živo, priporočam, da udeleženci odprejo to stran vzporedno in poizvedbe izvajajo z nami – naslednjih nekaj prosojnic je zgrajenih tako, da vsaka doda en element k isti poizvedbi.
+:::
+
 
 ## SPARQL poizveduje z ujemanjem vzorcev
 
@@ -2121,9 +2345,27 @@ To je bistvo ravni 5 ★: podatki postanejo del povezanega ekosistema, kjer nova
 | `dbr:August_Horch` | `"August Horch"` |
 | `dbr:Audi`         | `"Audi AG"`      |
 
+::: notes :::
+Osnovni gradnik poizvedbe je vzorec trojčka. Zapišemo ga enako kot trojček v obliki Turtle, le da neznane dele nadomestimo s spremenljivkami.
+
+V primeru iščemo vse pare osebek–vrednost, povezane z lastnostjo dbp:name. Rezultat je tabela: vsaka vrstica je ena veljavna vezava spremenljivk.
+
+Pomembno je razumeti to miselno preobrazbo: poizvedba ni zaporedje korakov, ampak opis vzorca, ki ga baza poišče v grafu.
+:::
+
+
 ## Vzorec se ujema neposredno z deli grafa
 
 ![](./gradivo/SPARQL_ujemanje_vzorcev.png)
+
+::: notes :::
+Slika pokaže, kje v grafu se vzorec ujame.
+
+Vzorec z lastnostjo dbp:name se ujame na dveh mestih – pri primerku August Horch in pri primerku Audi. Zato ima rezultat dve vrstici.
+
+Analogija za udeležence: vzorec je kot šablona, ki jo polagamo čez graf; vsaka lega, kjer se šablona prilega, je ena vrstica rezultata.
+:::
+
 
 ## Konjunkcija poveže več vzorcev v en rezultat
 
@@ -2148,6 +2390,15 @@ To je bistvo ravni 5 ★: podatki postanejo del povezanega ekosistema, kjer nova
 :::
 ::::
 
+::: notes :::
+Več vzorcev zapišemo enega za drugim in jih ločimo s piko. Med njimi velja logični IN – veljati morajo vsi hkrati.
+
+Ključno je, da se ista spremenljivka v vseh treh vzorcih nanaša na isti vir. Spremenljivka ?subject torej mora biti hkrati nekaj, kar ima ime, kar je tipa dbo:Company in kar ima leto ustanovitve.
+
+Ker je vzorec s tremi pogoji precej bolj omejujoč, se v našem malem grafu ujame le podjetje Audi.
+:::
+
+
 ## Poizvedba SPARQL ima štiri osnovne dele
 
 :::: columns
@@ -2158,13 +2409,17 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbp: <http://dbpedia.org/property/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
 SELECT ?name ?foundingYear
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?subject dbp:name ?name .
   ?subject rdf:type dbo:Company .
   ?subject dbo:foundingYear ?foundingYear .
 }
 ```
+
+> Izvedite zgornjo poizvedbo na DBPedii. Kakšne rezultate dobite? So pričakovani?
 
 :::
 ::: column
@@ -2177,6 +2432,21 @@ WHERE {
 :::
 ::::
 
+::: notes :::
+Zdaj sestavimo prvo celotno poizvedbo. Ima štiri dele.
+
+PREFIX določi okrajšave imenskih prostorov – popolnoma enako kot v datotekah TTL. Polni URI zapišemo med lomljena oklepaja.
+
+SELECT določi, katere spremenljivke želimo v rezultatu.
+
+FROM določi graf, nad katerim poizvedujemo. Pri DBpedii ga lahko tudi izpustimo, saj poizvedujemo nad privzetim grafom.
+
+WHERE vsebuje grafne vzorce in pogoje, ki morajo veljati za vsak rezultat.
+
+Namig: če primerjamo s SQL, sta SELECT in WHERE znana, FROM pa ne izbira tabele, ampak graf.
+:::
+
+
 ## DBpedia ponuja javno storitev SPARQL
 
 :::: columns
@@ -2186,6 +2456,21 @@ WHERE {
 - Približno **900 milijonov dejstev**
 - Približno **400.000 organizacij**
 
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+SELECT ?name ?foundingYear
+
+FROM <http://dbpedia.org/>
+
+WHERE {
+  ?subject dbp:name ?name .
+  ?subject rdf:type dbo:Company .
+  ?subject dbo:foundingYear ?foundingYear .
+}
+```
+
 :::
 ::: column
 
@@ -2194,22 +2479,46 @@ WHERE {
 :::
 ::::
 
+::: notes :::
+Zdaj poizvedbo dejansko poženimo na https://dbpedia.org/sparql.
+
+Vprašanje udeležencem: so rezultati taki, kot ste pričakovali?
+
+Rezultatov je zelo veliko. Naš vzorec namreč opisuje poljubno podjetje z imenom in letom ustanovitve, takih pa je v DBpedii med približno 400.000 organizacijami ogromno. Celotna baza obsega okoli 900 milijonov dejstev.
+
+To je dober trenutek za poanto: pri velikem grafu vzorec sam po sebi ne zadošča – potrebujemo urejanje, omejevanje in filtriranje. Prav to bomo dodajali na naslednjih prosojnicah.
+:::
+
+
 ## `ORDER BY` in `LIMIT` urejata rezultate
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbp: <http://dbpedia.org/property/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
+
 SELECT ?name ?foundingYear
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?subject dbp:name ?name .
   ?subject rdf:type dbo:Company .
   ?subject dbo:foundingYear ?foundingYear .
 }
+
 ORDER BY ASC(?name)
 LIMIT 100
 ```
+
+::: notes :::
+Prvi poskus, da pridemo do zapisa za Audi, je urejanje in omejevanje.
+
+ORDER BY uredi rezultate – tu naraščajoče po imenu podjetja. LIMIT omeji izpis na prvih 100 vrstic.
+
+Ko pogledamo rezultate, vidimo težavo: nekatera podjetja imajo prazna imena, druga pa se leksikografsko uvrščajo precej pred Audi. Tako do iskanega zapisa še ne pridemo.
+:::
+
 
 ## `OFFSET` preskoči začetni del rezultatov
 
@@ -2217,17 +2526,32 @@ LIMIT 100
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbp: <http://dbpedia.org/property/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
+
 SELECT ?name ?foundingYear
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?subject dbp:name ?name .
   ?subject rdf:type dbo:Company .
   ?subject dbo:foundingYear ?foundingYear .
 }
+
 ORDER BY ASC(?name)
 LIMIT 100
 OFFSET 14800
 ```
+
+::: notes :::
+Z OFFSET preskočimo začetni del urejenih rezultatov. Če preskočimo približno 14.800 zadetkov, se Audi AG pojavi med naslednjimi stotimi.
+
+Opozorilo, ki ga velja povedati na glas: DBpedia je živa baza, zato ta številka ni zanesljiva. Stanje velja za 11. februar 2026 in se bo ob vaši izvedbi verjetno razlikovalo.
+
+Ob rezultatih opazimo še nekaj zanimivega: za Audi AG je zapisanih več različnih let ustanovitve, prvo je 1909. To je lepa iztočnica za pogovor o kakovosti javnih podatkov.
+
+Poanta prosojnice: ORDER BY, LIMIT in OFFSET so uporabni za listanje, ne pa za iskanje.
+:::
+
 
 ## `FILTER` omeji rezultate na izbrane vire
 
@@ -2235,16 +2559,31 @@ OFFSET 14800
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbp: <http://dbpedia.org/property/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
+
 SELECT ?name ?foundingYear
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?subject dbp:name ?name .
   ?subject rdf:type dbo:Company .
   ?subject dbo:foundingYear ?foundingYear .
+
   FILTER (?subject IN (dbr:Audi))
+
 }
+
 LIMIT 100
 ```
+
+::: notes :::
+Boljša pot je filtriranje.
+
+Ker točno vemo, kateri primerek iščemo – dbr:Audi –, z omejitvijo FILTER zahtevamo, da je osebek prav ta vir. Ostale omejitve lahko odstranimo.
+
+Enakovredna možnost je, da namesto spremenljivke ?subject kar neposredno zapišemo dbr:Audi v vzorce. Rezultat je isti; izbira je stvar berljivosti.
+:::
+
 
 ## `FILTER REGEX` filtrira besedilo
 
@@ -2252,16 +2591,33 @@ LIMIT 100
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbp: <http://dbpedia.org/property/>
 PREFIX dbo: <http://dbpedia.org/ontology/>
+
 SELECT ?name ?foundingYear
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?subject dbp:name ?name .
   ?subject rdf:type dbo:Company .
   ?subject dbo:foundingYear ?foundingYear .
+
   FILTER REGEX(?name, "^audi", "i")
+
 }
+
 LIMIT 100
 ```
+
+::: notes :::
+V praksi točnih URI-jev pogosto ne poznamo – ti so namenjeni predvsem organizaciji podatkov in si jih je težko zapomniti.
+
+Zato filtriramo po besedilu z regularnim izrazom. Izraz »^audi« vrne vsa imena, ki se začnejo z audi, zastavica »i« pa pomeni, da velikost črk ni pomembna.
+
+Uporabimo lahko poljubno standardno sintakso regularnih izrazov.
+
+Opomba za izvedbo: REGEX je počasnejši od natančnega ujemanja, ker mora preveriti vsako vrednost posebej.
+:::
+
 
 ## Obvezni vzorec izloči rezultate brez trgovalnega imena
 
@@ -2269,16 +2625,32 @@ LIMIT 100
 
 ```sparql
 SELECT ?name ?foundingYear ?tradingName
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?subject dbp:name ?name .
   ?subject rdf:type dbo:Company .
   ?subject dbo:foundingYear ?foundingYear .
+  
   ?subject dbo:tradingName ?tradingName .
   FILTER REGEX(?name, "^audi", "i")
+
 }
+
 LIMIT 100
 ```
+
+::: notes :::
+V opisu razreda dbo:Company na DBpedii najdemo lastnost dbo:tradingName. Dodajmo jo v poizvedbo kot običajen vzorec.
+
+Rezultat je prazen. Zakaj?
+
+Ker primerek dbr:Audi te lastnosti nima. Vzorec je obvezen, zato se celotna poizvedba ne more ujeti in ne vrne ničesar.
+
+To je pogosta in zelo poučna past: v grafu odsotnost podatka ni prazna vrednost, ampak odsotnost trojčka.
+:::
+
 
 ## `OPTIONAL` ohrani rezultate brez trgovalnega imena
 
@@ -2286,94 +2658,180 @@ LIMIT 100
 
 ```sparql
 SELECT ?name ?foundingYear ?tradingName
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?subject dbp:name ?name .
   ?subject rdf:type dbo:Company .
+
   ?subject dbo:foundingYear ?foundingYear .
   OPTIONAL { ?subject dbo:tradingName ?tradingName . }
+
   FILTER REGEX(?name, "^audi", "i")
 }
+
 LIMIT 100
 ```
 
-## Vzorce lahko sestavimo za domensko vprašanje
+::: notes :::
+Rešitev je ključna beseda OPTIONAL.
+
+Obvezni del vzorca se mora ujeti, neobvezni pa se doda le, če obstaja. Če ga ni, ostane spremenljivka nevezana, vrstica pa se kljub temu vrne.
+
+To je torej ustreznik levega zunanjega stika (LEFT OUTER JOIN) iz sveta relacijskih baz.
+
+Praktični nasvet: pri odprtih podatkih, kjer so zapisi neenakomerno izpolnjeni, je OPTIONAL pogosto edini način, da poizvedba sploh vrne uporaben rezultat.
+:::
+
+
+## Vzorce lahko sestavljamo
 
 [**Primer: Audi v DBpedii →**](https://dbpedia.org/page/Audi)
 
 ```sparql
 SELECT ?carCompanyName
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?carCompany rdfs:label ?carCompanyName .
   ?carCompany dbo:industry dbr:Automotive_industry .
   ?carCompany dbp:locationCountry dbr:Germany .
+
   FILTER (LANG(?carCompanyName) = "en")
 }
 ```
+
+::: notes :::
+Zdaj naredimo korak od tehnike k vsebinskemu vprašanju: koliko avtomobilskih proizvajalcev je v Nemčiji?
+
+Na strani za Audi najdemo lastnost dbo:industry z vrednostjo dbr:Automotive_industry in lastnost dbp:locationCountry za državo. Iz tega sestavimo vzorec.
+
+Brez omejitve dobimo isto podjetje večkrat – enkrat za vsak jezik oznake. Zato z FILTER omejimo oznake na angleščino in dobimo 9 podjetij.
+
+Dva praktična poudarka: del FROM lahko izpustimo, ker poizvedujemo po privzetem grafu DBpedie, funkcija LANG pa vrne jezikovno oznako literala – enako oznako smo pri CRP uporabljali za @sl.
+:::
+
 
 ## `UNION` združi alternativne vzorce
 
 ```sparql
 SELECT ?carCompanyName
+
 FROM <http://dbpedia.org/>
+
 WHERE {
   ?carCompany rdfs:label ?carCompanyName .
   ?carCompany dbo:industry dbr:Automotive_industry .
+
   { ?carCompany dbp:locationCountry dbr:Germany . }
   UNION
   { ?carCompany dbp:locationCountry dbr:Slovenia . }
+
   FILTER (LANG(?carCompanyName) = "en")
 }
 ```
 
-## Poizvedba lahko vrne podjetje in državo
+::: notes :::
+SPARQL podpira tudi logično disjunkcijo, torej ALI, s ključno besedo UNION.
+
+Skupni del vzorca zapišemo enkrat, nato pa v zavitih oklepajih navedemo alternativi, povezani z UNION.
+
+Poizvedba zdaj pomeni: podjetje iz avtomobilske industrije, ki se nahaja bodisi v Nemčiji bodisi v Sloveniji.
+
+Ko jo poženemo, ugotovimo, da se seznamu pridruži le eno dodatno podjetje z angleškim imenom iz Slovenije.
+:::
+
+
+## Avtomobilska podjetja po državah
 
 ```sparql
 SELECT ?carCompanyName ?countryName
+
 WHERE {
   ?carCompany rdfs:label ?carCompanyName .
   ?carCompany dbo:industry dbr:Automotive_industry .
   ?carCompany dbp:locationCountry ?country .
   ?country rdfs:label ?countryName .
+
   FILTER (
     LANG(?carCompanyName) = "en" &&
     LANG(?countryName) = "en"
   )
 }
 ```
+
+::: notes :::
+Zdaj poizvedbo posplošimo: namesto fiksne države uvedemo spremenljivko ?country in izpišemo še njeno oznako.
+
+Pogoj FILTER razširimo, da sta obe oznaki – ime podjetja in ime države – v angleščini. Dva pogoja povežemo z operatorjem &&.
+
+Rezultat zdaj zajema podjetja iz precejšnjega števila držav. S tem imamo osnovo, nad katero bomo v nadaljevanju računali agregate.
+:::
+
 
 ## `COUNT` izračuna agregat nad rezultati
 
 ```sparql
 SELECT (COUNT(DISTINCT ?carCompanyName) AS ?carCompanyNameCount)
+
 WHERE {
   ?carCompany rdfs:label ?carCompanyName .
   ?carCompany dbo:industry dbr:Automotive_industry .
   ?carCompany dbp:locationCountry ?country .
   ?country rdfs:label ?countryName .
+
   FILTER (
     LANG(?carCompanyName) = "en" &&
     LANG(?countryName) = "en"
   )
+
 }
 ```
+
+::: notes :::
+Vprašajmo se, koliko avtomobilskih podjetij je v prejšnjem rezultatu.
+
+Agregatne funkcije zapišemo v del SELECT, izračunani stolpec pa poimenujemo z AS.
+
+COUNT brez DISTINCT vrne 318, ker so nekatera podjetja povezana z več državami in jih zato preštejemo večkrat. Z DISTINCT jih preštejemo 310.
+
+Na voljo so tudi SUM, AVG, MIN, MAX in SAMPLE.
+
+Poudarek: razlika med 318 in 310 ni napaka baze, ampak posledica tega, da je isto podjetje lahko vezano na več držav.
+:::
+
 
 ## `GROUP BY` izračuna rezultat za vsako državo
 
 ```sparql
 SELECT ?countryName
        (COUNT(DISTINCT ?carCompanyName) AS ?carCompanyNameCount)
+
 WHERE {
   ?carCompany rdfs:label ?carCompanyName .
   ?carCompany dbo:industry dbr:Automotive_industry .
   ?carCompany dbp:locationCountry ?country .
   ?country rdfs:label ?countryName .
+
   FILTER (LANG(?carCompanyName) = "en" && LANG(?countryName) = "en")
 }
+
 GROUP BY ?countryName
 ORDER BY DESC(?carCompanyNameCount)
 ```
+
+::: notes :::
+Skupno število nam še ne pove ničesar o porazdelitvi po državah. Zato rezultate razdelimo v skupine z GROUP BY in agregat izračunamo znotraj vsake skupine.
+
+V delu GROUP BY navedemo spremenljivke, po katerih grupiramo – tu je to ime države. Rezultate uredimo padajoče po številu podjetij.
+
+Ob izvedbi ugotovimo, da je največ avtomobilskih podjetij registriranih v Združenih državah Amerike, sledi Kitajska.
+
+Pravilo, ki ga velja poudariti: vse spremenljivke v SELECT morajo biti bodisi v GROUP BY bodisi zavite v agregatno funkcijo.
+:::
+
 
 ## `GROUP_CONCAT` združi imena znotraj skupine
 
@@ -2381,16 +2839,28 @@ ORDER BY DESC(?carCompanyNameCount)
 SELECT ?countryName
        (COUNT(DISTINCT ?carCompanyName) AS ?carCompanyNameCount)
        (GROUP_CONCAT(?carCompanyName) AS ?carCompanyNames)
+
 WHERE {
   ?carCompany rdfs:label ?carCompanyName .
   ?carCompany dbo:industry dbr:Automotive_industry .
   ?carCompany dbp:locationCountry ?country .
   ?country rdfs:label ?countryName .
+
   FILTER (LANG(?carCompanyName) = "en" && LANG(?countryName) = "en")
 }
+
 GROUP BY ?countryName
 ORDER BY DESC(?carCompanyNameCount)
 ```
+
+::: notes :::
+Zdaj nas zanima, katera podjetja sploh so v posamezni skupini.
+
+GROUP_CONCAT vzame vse vrednosti znotraj skupine in jih zlepi v en sam niz. V našem primeru tako poleg števila dobimo še seznam imen podjetij po državah.
+
+Ločilo lahko določimo sami z argumentom SEPARATOR; privzeto je presledek.
+:::
+
 
 ## `HAVING` filtrira izračunane skupine
 
@@ -2398,17 +2868,31 @@ ORDER BY DESC(?carCompanyNameCount)
 SELECT ?countryName
        (COUNT(DISTINCT ?carCompanyName) AS ?carCompanyNameCount)
        (GROUP_CONCAT(?carCompanyName) AS ?carCompanyNames)
+
 WHERE {
   ?carCompany rdfs:label ?carCompanyName .
   ?carCompany dbo:industry dbr:Automotive_industry .
   ?carCompany dbp:locationCountry ?country .
   ?country rdfs:label ?countryName .
+
   FILTER (LANG(?carCompanyName) = "en" && LANG(?countryName) = "en")
 }
+
 GROUP BY ?countryName
 HAVING (COUNT(?carCompanyName) > 5)
 ORDER BY DESC(?carCompanyNameCount)
 ```
+
+::: notes :::
+Zadnji gradnik: kaj, če želimo filtrirati po izračunani vrednosti?
+
+Pogojev nad agregati ne moremo pisati v FILTER znotraj WHERE, ker takrat agregat še ni izračunan. Zanje je namenjen del HAVING, ki pride za GROUP BY.
+
+Tu izpišemo le države z več kot petimi avtomobilskimi podjetji. Rezultat vsebuje 13 držav, med njimi vse dobro znane avtomobilske proizvajalke.
+
+To je naša končna poizvedba – od preprostega vzorca smo prišli do agregirane analize nad javnim grafom znanja.
+:::
+
 
 ## SPARQL 1.1 podpira tudi druge vrste operacij
 
@@ -2419,7 +2903,24 @@ ORDER BY DESC(?carCompanyNameCount)
   - `DESCRIBE`
 - Posodabljanje podatkov: `INSERT DATA`
 - Zahtevnejši vzorci
+  - gnezdene poizvedbe
+  - `BIND` za izračun novih vrednosti
+  - poti lastnosti (angl. property paths) za sprehode po grafu
+  - `SERVICE` za federirane poizvedbe
 - Preverjanje podatkov s **SHACL**
+
+::: notes :::
+Na kratko povzemimo, česa nismo obravnavali, da udeleženci vedo, kam gledati naprej.
+
+Poleg SELECT obstajajo še: CONSTRUCT, ki iz rezultatov zgradi nov graf RDF po predlogi; ASK, ki samo preveri, ali vzorec sploh obstaja, in vrne da ali ne; ter DESCRIBE, ki vrne opis izbranega vira – podobno, kot smo videli na strani za Audi.
+
+Podatke lahko tudi spreminjamo, na primer z INSERT DATA.
+
+Med zahtevnejšimi vzorci so vgnezdene poizvedbe, BIND za izračun novih vrednosti, poti lastnosti (angl. property paths) za sprehode po grafu in SERVICE za federirane poizvedbe – tega bomo uporabili čez nekaj prosojnic.
+
+Omenimo še SHACL, standard W3C za validacijo vsebine grafa RDF: z njim opišemo omejitve, ki jih morajo podatki izpolnjevati, in nato preverimo skladnost.
+:::
+
 
 ## SPARQL lahko uporabljamo tudi iz Pythona
 
@@ -2428,69 +2929,961 @@ ORDER BY DESC(?carCompanyNameCount)
 
 [**Odpri zvezek `SPARQL_in_Python.ipynb` →**](./gradivo/SPARQL_in_Python.ipynb)
 
-## SPARQL lahko izvajamo nad lastno bazo GraphDB
+> Če nimate nameščenega Pythona, lahko zvezek poženete v storitvi [**Google Colab →**](http://colab.google.com/).
+
+::: notes :::
+SPARQL ni omejen na spletne vmesnike – uporabljamo ga lahko tudi programsko, podobno kot SQL pri relacijskih bazah.
+
+Priložen je delovni zvezek Jupyter, ki ga lahko poženete lokalno ali v storitvi Google Colab. Prikazuje programsko uporabo javnih storitev SPARQL.
+
+Poanta za javno upravo: rezultat poizvedbe je običajna podatkovna struktura, ki jo lahko takoj vključimo v obstoječi podatkovni postopek – od priprave poročila do polnjenja aplikacije.
+:::
+
+
+## Semantične podatke hranimo v namenskih bazah
+
+:::: columns
+::: column
+
+- Primeri baz RDF s podporo SPARQL:
+  - **GraphDB** _(uporabimo na delavnici)_,
+  - Apache Jena Fuseki,
+  - Amazon Neptune,
+  - Oracle Graph Database.
+
+:::
+::: column
+
+- Kaj pridobimo v primerjavi s Protégé?
+  - **trajno hrambo** večjih grafov,
+  - **storitev SPARQL** za odjemalce,
+  - **sklepanje** ob uvozu podatkov,
+  - **federirane poizvedbe** preko več virov.
+
+:::
+::::
+
+::: notes :::
+Do zdaj smo poizvedovali v Protégé, ki je urejevalnik ontologij in ne podatkovna baza. Za resno rabo potrebujemo namensko bazo RDF, ki jim pogosto rečemo tudi trojčkovne baze.
+
+Naštete so štiri: GraphDB, ki ga bomo uporabili, odprtokodni Apache Jena Fuseki ter oblačni rešitvi Amazon Neptune in Oracle Graph Database.
+
+Vse naštete znajo hraniti trojčke in izpostaviti storitev SPARQL, razlikujejo pa se po zmogljivosti sklepanja in po licenčnem modelu.
+
+Desni stolpec je bistven: baza nam prinese trajno hrambo, dostop za druge aplikacije, sklepanje ob uvozu in možnost povezovanja z zunanjimi grafi. Prav ta dva zadnja elementa bosta osrednja tema nadaljevanja delavnice.
+:::
+
+## 🧑‍💻 Zagon baze GraphDB v okolju Docker
+
+:::: columns
+::: column
 
 ```bash
 docker run -p 127.0.0.1:7200:7200 \
   --name graphdb-instance-name-11 \
-  -t ontotext/graphdb:11.2.1
+  -t ontotext/graphdb:11.3.1
 ```
 
-- Lastna baza je dostopna na vratih `7200`.
-- **Federirane poizvedbe** povežejo podatke iz več storitev.
+- Vmesnik: 🌐 [http://localhost:7200](http://localhost:7200){target="\_blank"}
+- Ponovni zagon istega vsebnika:
+
+```bash
+docker start graphdb-instance-name-11
+```
+
+:::
+::: column
+
+![](./gradivo/GraphDB_vmesnik.png)
+
+> Za uporabo brezplačne verzije potrebujete licenco, ki jo lahko pridobite na spletni strani [https://www.ontotext.com/products/graphdb](https://www.ontotext.com/products/graphdb){target="\_blank"}.
+
+:::
+::::
+
+::: notes :::
+Bazo poženemo v Dockerju, da nam ni treba ničesar nameščati.
+
+Ukaz preslika vrata 7200 iz vsebnika na lokalni računalnik, vsebniku da ime in uporabi različico 11.2.1. Zapis 127.0.0.1 pomeni, da je baza dostopna samo z našega računalnika.
+
+Ko se baza vzpostavi, jo odpremo v brskalniku na naslovu localhost, vrata 7200.
+
+Za brezplačno različico potrebujete licenco, ki jo dobite na spletni strani Ontotexta – to povejte vnaprej, da udeleženci niso presenečeni.
+
+Praktičen namig: ukaz docker run vsebnik ustvari, zato ga poženemo samo prvič. Ko bazo ustavimo in jo želimo znova zagnati, uporabimo docker start z istim imenom – sicer dobimo napako, da vsebnik s tem imenom že obstaja.
+:::
+
+## 🧑‍💻 Nov repozitorij in nastavitve sklepanja
+
+:::: columns
+::: column
+
+- Ustvarimo nov **GraphDB Repository**,
+- v razdelku _Inference and Validation_:
+  - **odznačimo** _Disable owl:sameAs_,
+  - ohranimo _RDFS-Plus (Optimized)_.
+
+> 🧑🏻‍🎓 Zakaj je prav ta nastavitev pomembna za nadaljevanje?
+
+:::
+::: column
+
+![](./gradivo/GraphDB_repozitorij.png)
+
+:::
+::::
+
+::: notes :::
+Ta prosojnica je majhna po obsegu, a ključna za vse, kar sledi.
+
+Nastavitev Disable owl:sameAs moramo odznačiti, torej sklepanja o enakosti ne smemo izklopiti. Če ostane vklopljena, bo baza lastnost owl:sameAs sicer shranila, ne bo pa je upoštevala – in povezovanje CRP ter SURS, ki smo ga gradili v petem poglavju, v poizvedbah preprosto ne bo delovalo.
+
+Način sklepanja pustimo na RDFS-Plus (Optimized). Ta podpira rdfs:subClassOf, rdfs:subPropertyOf, owl:sameAs in owl:equivalentClass – torej natanko tisto, kar smo uporabili pri povezovanju virov.
+
+Odgovor na vprašanje: ker sicer v poglavju o sklepanju ne bomo videli nobenih novih, izpeljanih trojčkov.
+
+Opozorilo: nastavitve sklepanja se določijo ob ustvarjanju repozitorija in jih pozneje ni mogoče preprosto spremeniti – v tem primeru je treba repozitorij ustvariti na novo.
+:::
+
+## 🧑‍💻 Uvoz podatkov CRP in SURS
+
+:::: columns
+::: column
+
+- V meniju _Import_ izberemo repozitorij in naložimo:
+  - [🐢 CRP.ttl ↗](./assets/data/processed/CRP.ttl){target="\_blank"},
+  - [🐢 SURS_obcine_dp_op.ttl ↗](./assets/data/processed/SURS_obcine_dp_op.ttl){target="\_blank"}.
+- Uvoženih **10.575 trojčkov** _(Explicit)_,
+- dodatno izpeljanih **7.507 trojčkov** _(Inferred)_.
+
+:::
+::: column
+
+![](./gradivo/GraphDB_uvoz.png)
+
+:::
+::::
+
+::: notes :::
+Uvozimo obe datoteki, ki smo ju pripravili v prejšnjih poglavjih: register CRP in statistične podatke SURS.
+
+Najpomembnejša je številka v desnem stolpcu. Eksplicitno smo uvozili 10.575 trojčkov – to je natanko to, kar piše v datotekah. Poleg tega pa je baza sama dodala še 7.507 trojčkov, ki jih ni zapisal nihče.
+
+Od kod ti trojčki? Iz pravil sklepanja. Če na primer zapišemo, da je nek razred podrazred drugega, baza samodejno izpelje, da so vsi njegovi primerki tudi primerki nadrazreda.
+
+Temu pravimo materializacija: izpeljana dejstva se dejansko shranijo, zato so pri poizvedovanju takoj na voljo in jih ni treba računati sproti.
+
+Podrobneje si bomo to ogledali v naslednjem poglavju – zdaj si zapomnimo le številko 7.507, saj se bo kmalu spremenila.
+:::
+
+## 🧑‍💻 Ista poizvedba, druga baza
+
+:::: columns
+::: column
+
+```SPARQL
+PREFIX crp: <https://pzsi.sigov.si/datamodel/ns/crp#>
+
+SELECT ?povedek ?predmet
+
+WHERE {
+    crp:Obcina_32 ?povedek ?predmet .
+}
+```
+
+:::
+::: column
+
+- Poizvedba je **nespremenjena**,
+- spremenilo se je le **okolje izvajanja**,
+- podatki so zdaj v **bazi**, ne v urejevalniku.
+
+> 🧑🏻‍🎓 Kaj to pomeni za ponovno uporabo poizvedb?
+
+:::
+::::
+
+::: notes :::
+V zavihku SPARQL poženemo natanko tisto poizvedbo, ki smo jo na začetku poglavja izvedli v Protégé – tisto za občino z identifikatorjem 32.
+
+Rezultat je enak, kar je pravzaprav bistvo te prosojnice.
+
+Poanta: SPARQL je standard W3C, zato poizvedba ni vezana na konkretno orodje ali ponudnika. Isto poizvedbo lahko poženemo v Protégé, v GraphDB, prek javnega vmesnika ali iz programa v Pythonu.
+
+To je velika razlika glede na svet relacijskih baz, kjer se narečja SQL med ponudniki razlikujejo.
+
+Odgovor na vprašanje: poizvedbe lahko delimo, objavimo v dokumentaciji ali vključimo v aplikacijo, ne da bi jih bilo treba prilagajati okolju.
+:::
+
+## Federirane poizvedbe povežejo več grafov
+
+:::: columns
+::: column
+
+- Ukaz **`SERVICE`** izvede del poizvedbe nad **oddaljeno storitvijo** SPARQL,
+- podatkov **ni treba prenesti** v lastno bazo,
+- rezultati se **združijo v en odgovor**.
+
+:::
+::: column
+
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbp: <http://dbpedia.org/property/>
+
+SELECT ?subject ?name ?foundingYear
+
+WHERE {
+  SERVICE <https://dbpedia.org/sparql> {
+    ?subject dbp:name ?name .
+    ?subject rdf:type dbo:Company .
+    ?subject dbo:foundingYear ?foundingYear .
+    FILTER (?subject IN (dbr:Audi))
+  }
+}
+```
+
+:::
+::::
+
+::: notes :::
+Doslej smo poizvedovali bodisi nad javno DBpedio bodisi nad lastno bazo. Zdaj oboje združimo.
+
+Ukaz SERVICE pove, da se blok v zavitih oklepajih ne izvede lokalno, ampak na navedeni oddaljeni storitvi SPARQL. Rezultat se vrne in vključi v našo poizvedbo.
+
+Ta primer poženemo v naši bazi GraphDB, čeprav v njej ni prav nobenega podatka o Audiju – vse pride iz DBpedie.
+
+Zakaj je to pomembno za javni sektor? Zunanjih podatkov nam ni treba kopirati in vzdrževati. Poizvedujemo po viru, ki ga vzdržuje nekdo drug, in vedno dobimo njegovo trenutno stanje.
+
+Omejitve povejmo pošteno: federirana poizvedba je odvisna od razpoložljivosti in hitrosti oddaljene storitve, zato je smiselno oddaljeni del čim bolj omejiti – tukaj smo ga z ukazom FILTER omejili na en sam vir.
+:::
+
+## 🧑‍💻 Kdo je župan občine Grosuplje?
+
+:::: columns
+::: column
+
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX crp: <https://pzsi.sigov.si/datamodel/ns/crp#>
+PREFIX dbp: <http://dbpedia.org/property/>
+
+SELECT ?idObcine ?zupan
+
+WHERE {
+    SERVICE <https://dbpedia.org/sparql> {
+      ?subject dbp:officialName "Grosuplje"@en .
+      ?subject dbp:leaderName ?zupan .
+    }
+    ?obcina rdf:type crp:Obcina .
+    ?obcina crp:identifikator ?idObcine .
+    ?obcina crp:vrednost "Grosuplje"@sl .
+}
+```
+
+:::
+::: column
+
+- V CRP imamo **identifikator in ime** občine,
+- podatka o županu **nimamo**,
+- DBpedia ga ima: 🌐 [Grosuplje ↗](https://dbpedia.org/page/Grosuplje){target="\_blank"}.
+
+| `?idObcine` | `?zupan`        |
+| ----------: | --------------- |
+|        `32` | `"Peter Verlič"` |
+
+:::
+::::
+
+::: notes :::
+To je prosojnica, ki pokaže dodano vrednost celotnega dneva na enem primeru.
+
+V registru CRP imamo o občini Grosuplje shranjena le identifikator in ime. Podatka o županu ni – in tudi ne sodi v ta register.
+
+DBpedia pa ta podatek ima, saj ima Grosuplje svoj zapis, ki izhaja iz Wikipedije.
+
+Poizvedba ima zato dva dela: blok SERVICE poišče župana na DBpedii, spodnji del pa poišče identifikator v naši lokalni bazi. Rezultat je združen: identifikator 32 in ime župana Peter Verlič.
+
+Opozorilo na jezikovne oznake, ki je pomembno za razumevanje: na DBpedii iščemo z oznako @en, v CRP pa z oznako @sl. Ista občina, dva vira, dve jezikovni oznaki.
+
+Poudarek za razpravo: podatkov o županih nismo prepisali k sebi. Ostali so tam, kjer se vzdržujejo, mi pa smo jih povezali v trenutku poizvedbe.
+
+Vprašanje za udeležence: kje bi lahko tak pristop uporabili v svoji organizaciji?
+:::
 
 # 7. Sklepanje: prehod od podatkov k znanju
 
 Uporaba več podatkovnih virov in materializacija – SURS in CRP
 
+::: notes :::
+V zadnjem vsebinskem poglavju naredimo korak od podatkov k znanju.
+
+Do zdaj smo podatke opisali, povezali in nad njimi poizvedovali. Zdaj bomo pokazali, kako baza iz zapisanih dejstev sama izpelje nova dejstva – in zakaj to spremeni tisto, kar lahko vprašamo.
+
+Rdeča nit ostaja občina Grosuplje, delali pa bomo v bazi GraphDB, ki smo jo pripravili v prejšnjem poglavju.
+:::
+
 ## Sklepanje poveže podatke SURS in CRP
+
+Vira CRP in SURS nista povezana in primer podatkov izgleda sledeče:
 
 ![](./gradivo/Sklepanje_SURS_CRP.png)
 
-# 8. 🚧 TO-DO Vizualizacija (verjetno gre ven)
-
 ::: notes :::
-Sedaj si bomo ogledali primer vizualizacije na odprtih podatkih OPIS, in sicer pregledovalnika, ki je nastal kot prototip v ovkiru projekta Podatkovni zemljevid, kjer smo sodelovali z Ministrstvom za digitalno preobrazbo (MDP).
+Poglejmo, kaj je trenutno v naši bazi. Uvozili smo datoteki CRP in SURS, vendar vira med seboj nista povezana – na sliki sta to dve ločeni komponenti grafa.
+
+Na levi strani je SURS: razreda surs:Obcina in surs:MeritevPrebivalcev v delu TBox ter primerek obcina:Grosuplje z identifikatorjem 032, nazivom in meritvama za leti 2024 in 2025.
+
+Na desni je CRP: razred crp:Obcina in primerek crp:Obcina_32 z identifikatorjem 32 in imenom "Grosuplje" z jezikovno oznako @sl.
+
+Človek takoj vidi, da gre za isto občino. Baza tega ne ve – ničesar takega ji nismo povedali.
+
+Opozorimo še na razliko v identifikatorjih: SURS uporablja niz "032", CRP pa število 32. Prav to je tipična ovira pri povezovanju virov v praksi.
 :::
 
-## 🧑‍💻 DEMO: Razširitve orodja Protégé
+## 🧑‍💻 Vsak vir zase odgovori na svoj del vprašanja
 
 :::: columns
 ::: column
 
-- **OntoGraph**,
-- OWLViz,
-- ProtégéVOWL,
-- SOVA
+[🐢 CRP.ttl ↗](./assets/data/processed/CRP.ttl){target="\_blank"}
+
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX crp: <https://pzsi.sigov.si/datamodel/ns/crp#>
+
+SELECT ?imeObcineCRP ?idCRP
+WHERE {
+  ?obcinaCRP crp:vrednost ?imeObcineCRP .
+  ?obcinaCRP crp:identifikator ?idCRP .
+  ?obcinaCRP rdf:type crp:Obcina .
+  FILTER (?imeObcineCRP = "Grosuplje"@sl)
+}
+```
 
 :::
 ::: column
 
-![](./gradivo/OntoGraf.png)
+[🐢 SURS_obcine_dp_op.ttl ↗](./assets/data/processed/SURS_obcine_dp_op.ttl){target="\_blank"}
+
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX surs: <https://onto.mdp.gov.si/shema/>
+
+SELECT ?imeObcineSURS ?idSURS
+       ?letoMeritve ?steviloPrebivalcev
+WHERE {
+  ?obcinaSURS surs:naziv ?imeObcineSURS .
+  ?obcinaSURS surs:idObcinaSurs ?idSURS .
+  ?obcinaSURS rdf:type surs:Obcina .
+  ?obcinaSURS surs:imaMeritevPrebivalcev ?meritev .
+  ?meritev surs:leto ?letoMeritve .
+  ?meritev surs:vrednost ?steviloPrebivalcev .
+  FILTER (?imeObcineSURS = "Grosuplje")
+}
+```
+
 :::
 ::::
 
-## Uporabniški vmesnik Podatkovnega zemljevida
+::: notes :::
+Najprej pokažimo, da vsak vir zase brez težav odgovori na svoj del vprašanja.
 
-- Prototip aplikacije ponuja naslednje **osrednje funkcionalnosti**
-  - pregled **globalne sheme** podatkovnega zemljevida,
-  - pregled **sheme** posameznega/zibranih **vira**/ov,
-  - predogled **podatkov** posameznega/izbranih **vira**/ov,
-- ter **podporne funkcionalnosti**:
-  - **večjezičnost** (sl in en),
-  - **iskanje** (koncepti, povezava, vsi metapodatki),
-  - **skrivanje konceptov** (za bolj fokusiran pregled),
-  - **fokusiranje** na **izbran koncept** in prikaz konteksta.
+Leva poizvedba nad CRP vrne ime in identifikator občine Grosuplje. Desna nad SURS vrne naziv, identifikator SURS ter leto in število prebivalcev za vsako meritev.
 
-## 🧑‍💻 DEMO: Pregled globalne sheme (1/7)
+Bodimo pozorni na filtra, ki sta videti skoraj enaka, pa nista. Pri CRP moramo pisati "Grosuplje" z oznako @sl, pri SURS pa "Grosuplje" brez oznake. Literal z jezikovno oznako in literal brez nje v RDF nista ista vrednost.
+
+To je pogost vzrok za prazne rezultate. Če poizvedba ne vrne ničesar, najprej preverimo jezikovne oznake.
+
+Obe poizvedbi poženemo v GraphDB, da udeleženci vidita rezultata pred naslednjim korakom.
+:::
+
+## 🧑‍💻 Skupna poizvedba – rezultat je videti pravilen
 
 :::: columns
 ::: column
 
-- Izpostavljeni osrednji **koncepti**,
-  - npr. Katalog, Nabor podatkov, Distribucija, Shema,
-- izpostavljene pomembne **povezave**,
-  - med osrednjimi koncepti.
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX crp: <https://pzsi.sigov.si/datamodel/ns/crp#>
+PREFIX surs: <https://onto.mdp.gov.si/shema/>
+
+SELECT ?imeObcineCRP ?idCRP ?imeObcineSURS
+       ?idSURS ?letoMeritve ?steviloPrebivalcev
+WHERE {
+  ?obcinaCRP crp:vrednost ?imeObcineCRP .
+  ?obcinaCRP crp:identifikator ?idCRP .
+  ?obcinaCRP rdf:type crp:Obcina .
+  FILTER (?imeObcineCRP = "Grosuplje"@sl)
+
+  ?obcinaSURS surs:naziv ?imeObcineSURS .
+  ?obcinaSURS surs:idObcinaSurs ?idSURS .
+  ?obcinaSURS rdf:type surs:Obcina .
+  ?obcinaSURS surs:imaMeritevPrebivalcev ?meritev .
+  ?meritev surs:leto ?letoMeritve .
+  ?meritev surs:vrednost ?steviloPrebivalcev .
+  FILTER (?imeObcineSURS = "Grosuplje")
+}
+```
+
+:::
+::: column
+
+- Poizvedba združi **oba vzorca** v enem stavku `WHERE`,
+- rezultat vsebuje **identifikator CRP** in **število prebivalcev**.
+
+> 🧑🏻‍🎓 Je poizvedba res pravilna?
+
+:::
+::::
+
+::: notes :::
+Zdaj oba vzorca preprosto zapišemo v isti stavek WHERE.
+
+Rezultat je videti popolnoma v redu: dobimo identifikator iz CRP in število prebivalcev iz SURS, vse v eni vrstici.
+
+Vprašanje udeležencem naj visi v zraku nekaj sekund – naj sami poskusijo najti težavo. Odgovor razkrijemo na naslednji prosojnici.
+
+Namig, ki ga lahko ponudimo, če ni odziva: kaj povezuje spremenljivko ?obcinaCRP in spremenljivko ?obcinaSURS?
+:::
+
+## POZOR: to je kartezični produkt
+
+:::: columns
+::: column
+
+- Vzorca se ujemata nad **dvema nepovezanima** komponentama grafa,
+- med njima **ni nobene skupne spremenljivke**,
+- rezultat je **kartezični produkt** CRP × SURS.
+
+:::
+::: column
+
+- Tu deluje **po naključju**:
+  - filter v CRP pusti **eno samo** rešitev.
+- Brez filtra bi dobili **vse pare** občin CRP in SURS.
+
+:::
+::::
+
+::: notes :::
+Tu je odgovor in hkrati najpomembnejše opozorilo tega poglavja.
+
+Poizvedba ni povezala dveh virov. Zgolj poiskala je ujemanja dveh ločenih vzorcev nad dvema nepovezanima deloma grafa. Ker med vzorcema ni nobene skupne spremenljivke, se rezultat izračuna kot kartezični produkt.
+
+V našem primeru je rezultat videti pravilen samo zato, ker filter na strani CRP pusti eno samo rešitev. Ena vrstica krat dve meritvi je dve vrstici – in vse so videti smiselne.
+
+Če filtra odstranimo, se past takoj pokaže: več kot dvesto občin iz CRP krat več kot dvesto občin iz SURS pomeni več deset tisoč vrstic, od katerih je pravilnih le kakšnih dvesto.
+
+To je zelo pogosta napaka pri delu z več viri v enem grafu, in nevarna je prav zato, ker na majhnem primeru deluje.
+
+Nauk: povezava med viri mora biti zapisana v podatkih, ne v poizvedbi.
+:::
+
+## 🧑‍💻 Enakost zapišemo eksplicitno
+
+:::: columns
+::: column
+
+[🐢 Integracija_CRP_SURS_SPARQL.ttl ↗](./assets/data/processed/Integracija_CRP_SURS_SPARQL.ttl){target="\_blank"}
+
+```turtle
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix surs: <https://onto.mdp.gov.si/shema/> .
+@prefix crp:  <https://pzsi.sigov.si/datamodel/ns/crp#> .
+
+surs:Obcina owl:equivalentClass crp:Obcina .
+surs:naziv  owl:sameAs          crp:vrednost .
+```
+
+:::
+::: column
+
+- **Dva trojčka**, ki povesta, da gre za isti pojem:
+  - `owl:equivalentClass` – **razreda** sta enakovredna,
+  - `owl:sameAs` – **lastnosti** imata isti pomen.
+- Datoteko **uvozimo** v GraphDB.
+
+:::
+::::
+
+::: notes :::
+Rešitev je presenetljivo kratka: dva trojčka.
+
+Prvi pove, da sta razreda surs:Obcina in crp:Obcina enakovredna. Tu smo namenoma strožji kot v petem poglavju, kjer smo uporabili previdnejši rdfs:subClassOf – zdaj želimo, da povezava deluje v obe smeri.
+
+Drugi trojček pove, da lastnosti surs:naziv in crp:vrednost pomenita isto.
+
+Bodimo natančni pri poimenovanju: gre za enakost na ravni modela, torej TBox, ne na ravni posameznih občin. Nismo našteli 212 parov primerkov – povedali smo le, kako se ujemata modela.
+
+To datoteko zdaj uvozimo v GraphDB in poglejmo, kaj se zgodi s številom trojčkov.
+:::
+
+## 🧑‍💻 Materializacija: baza zapiše izpeljana dejstva
+
+:::: columns
+::: column
+
+- Uvožena **2 trojčka** _(Explicit)_,
+- izpeljanih **1.713 novih trojčkov**:
+  - iz **7.507** na **9.220** _(Inferred)_.
+- Izpeljana dejstva so **shranjena**, ne izračunana sproti.
+
+:::
+::: column
+
+![](./gradivo/GraphDB_sklepanje.png)
+
+:::
+::::
+
+::: notes :::
+To je najbolj nazoren trenutek celotne delavnice.
+
+Uvozili smo dva trojčka. Baza je iz njiju izpeljala 1.713 novih – število izpeljanih trojčkov je zraslo s 7.507 na 9.220.
+
+Zakaj toliko? Ker se pravilo uporabi na vsakem primerku posebej. Ker sta razreda enakovredna, je vsaka občina SURS zdaj tudi občina CRP in obratno. Ker sta lastnosti enaki, ima vsak naziv SURS zdaj tudi lastnost crp:vrednost.
+
+Temu pravimo materializacija: mehanizem sklepanja izpeljana dejstva dejansko zapiše v bazo, zato so pri poizvedovanju takoj na voljo.
+
+Prednost je hitrost poizvedb, cena pa prostor in čas ob uvozu. Alternativni pristop je sklepanje ob poizvedbi, ki ga nekatere baze prav tako podpirajo.
+
+Poanta, ki jo velja izreči na glas: znanja nismo prepisali – zapisali smo pravilo in baza je iz njega izpeljala posledice.
+:::
+
+## 🧑‍💻 Posledica: viri se v poizvedbi obnašajo kot eden
+
+:::: columns
+::: column
+
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX crp: <https://pzsi.sigov.si/datamodel/ns/crp#>
+PREFIX surs: <https://onto.mdp.gov.si/shema/>
+
+SELECT * WHERE {
+  ?obcina rdf:type surs:Obcina .
+  ?obcina surs:naziv ?nazivSURS .
+  ?obcina crp:vrednost ?nazivCRP .
+  ?obcina surs:imaMeritevPrebivalcev ?meritev .
+  ?meritev surs:leto ?letoMeritve .
+  ?meritev surs:vrednost ?vrednost .
+}
+```
+
+:::
+::: column
+
+- **Ena sama** spremenljivka `?obcina` za oba vira,
+- lastnost `crp:vrednost` deluje tudi nad **primerki SURS**,
+- **ni** kartezičnega produkta.
+
+> 🧑🏻‍🎓 Kje v poizvedbi je zdaj povezava med viroma?
+
+:::
+::::
+
+::: notes :::
+Primerjajmo to poizvedbo s tisto izpred nekaj prosojnic.
+
+Takrat smo potrebovali dve ločeni spremenljivki, ?obcinaCRP in ?obcinaSURS, med njima pa ni bilo povezave. Zdaj imamo eno samo spremenljivko ?obcina, ki hkrati nosi lastnosti iz obeh virov.
+
+Nad primerkom, ki je tipa surs:Obcina, lahko uporabimo lastnost crp:vrednost – čeprav tega trojčka ni zapisal nihče. Izpeljala ga je baza.
+
+Odgovor na vprašanje: povezave v poizvedbi ni več. Preselila se je v podatke, kamor tudi sodi. Poizvedba je zato krajša, berljivejša in ne more pasti v past kartezičnega produkta.
+
+To je natanko tisto, kar smo obljubili na začetku: ko so podatki semantično opisani in povezani, postanejo vprašanja preprostejša, ne bolj zapletena.
+:::
+
+## Kaj smo pridobili s sklepanjem?
+
+:::: columns
+::: column
+
+**Brez sklepanja**
+
+- Povezavo med viri nosi **poizvedba**,
+- vsak nov vir pomeni **daljšo poizvedbo**,
+- tveganje **kartezičnega produkta**.
+
+:::
+::: column
+
+**S sklepanjem**
+
+- Povezavo nosijo **podatki**,
+- pravilo zapišemo **enkrat**, velja za **vse primerke**,
+- nova dejstva so **preverljiva** in **izsledljiva**.
+
+:::
+::::
+
+::: notes :::
+Povzemimo poglavje.
+
+Brez sklepanja mora vsako povezavo med viri poznati tisti, ki piše poizvedbo. Z vsakim novim virom poizvedba raste, z njo pa tveganje napake.
+
+S sklepanjem pravilo zapišemo enkrat, na ravni modela, in velja za vse primerke – tudi za tiste, ki jih dodamo pozneje.
+
+Dodajmo pomembno opozorilo za javni sektor: sklepanje je močno orodje, zato mora biti zapis enakosti premišljen. Če napačno zapišemo, da sta dva pojma enaka, bo baza to napako razmnožila po vseh primerkih.
+
+Zato smo v petem poglavju pri povezovanju z zunanjimi viri uporabili previdnejši rdfs:subClassOf, tukaj, kjer sta pojma res ista, pa owl:equivalentClass.
+
+In prav to je tisti prehod od podatkov k znanju, ki ga obljublja naslov poglavja – ter hkrati osnova, na kateri lahko inteligentni agent iz uvodne infografike pripravi preverljiv odgovor.
+:::
+
+# 8. Za konec: kdaj se semantika izplača
+
+::: notes :::
+Zadnji del delavnice je namenjen prenosu v prakso.
+
+Doslej smo delali z javnimi podatki in orodji. Zdaj pa odgovorimo na vprašanje, ki ga v dvorani verjetno ima vsak: kdaj se to splača pri nas doma?
+
+Najprej si ogledamo en zaključen primer iz javne uprave, nato pa preidemo na merljive rezultate iz gospodarstva – predvsem tam, kjer se semantika srečuje z velikimi jezikovnimi modeli.
+
+Vsi primeri v nadaljevanju imajo navedene vire, da jih lahko preverite sami.
+:::
+
+## Kdaj se podjetju semantika izplača?
+
+:::: columns
+::: column
+
+**Izplača se, ko …**
+
+- isti pojem živi v **več sistemih** (ERP, CRM, PLM, spletna trgovina),
+- podatke **izmenjujete navzven** – z dobavitelji, kupci, regulatorjem,
+- se model **pogosto spreminja** (nove kategorije, trgi, jeziki),
+- nad podatki poganjate **LLM** in potrebujete **preverljive** odgovore.
+
+:::
+::: column
+
+**Ne izplača se, ko …**
+
+- gre za **en sam sistem** s stabilno shemo,
+- podatkov **ne izmenjujete** navzven,
+- so poizvedbe preproste in jih **SQL dobro pokrije**,
+- so podatki **enkratni** in se ne uporabijo ponovno.
+
+:::
+::::
+
+::: notes :::
+Bodimo pošteni: semantične tehnologije niso odgovor na vsako vprašanje in nihče vam ne bo hvaležen za ontologijo, ki rešuje neobstoječ problem.
+
+Leva stran so signali, da se naložba splača. Ključni je prvi: isti pojem v več sistemih. Če ima izdelek eno oznako v ERP, drugo v spletni trgovini in tretjo pri dobavitelju, potem to razliko nekdo že danes vsak dan ročno premošča – običajno v Excelu.
+
+Drugi signal je izmenjava navzven, saj se tam ne moremo dogovoriti samo sami s sabo.
+
+Tretji je pogosto spreminjanje modela: v relacijski bazi je nova kategorija sprememba sheme, v grafu je nov trojček.
+
+Četrti signal je najnovejši in za marsikoga najbolj zanimiv – uporaba jezikovnih modelov. O tem govorijo naslednje tri prosojnice.
+
+Desna stran je enako pomembna. Če imate en sistem s stabilno shemo in poizvedbe, ki jih SQL dobro pokrije, ostanite pri tem. Semantika je odgovor na raznolikost in izmenjavo, ne na velikost podatkov.
+:::
+
+## Utemeljitev 1: ontologija potroji točnost LLM nad bazo
+
+:::: columns
+::: column
+
+- Vprašanja v naravnem jeziku nad **poslovno bazo SQL**,
+  - domena zavarovalništva, vprašanja različnih težavnosti.
+- **GPT-4 neposredno nad shemo SQL**: ~**16 %** pravilnih,
+- ista vprašanja prek **grafa znanja**
+  _(ontologija + preslikave)_: ~**54 %**,
+- **isti model**, drugačen opis podatkov,
+- z **ontološkim preverjanjem** poizvedbe in
+  samodejnim popravkom: do ~**73 %** _(nadaljevanje študije)_.
+
+:::
+::: column
+
+> Razlika ni v modelu, ampak v **kontekstu**, ki ga model dobi.
+
+- 🔗 [arXiv:2311.07509 ↗](https://arxiv.org/abs/2311.07509){target="\_blank"} _(osnovni benchmark)_
+- 🔗 [arXiv:2405.11706 ↗](https://arxiv.org/abs/2405.11706){target="\_blank"} _(preverjanje in popravki)_
+
+:::
+::::
+
+::: notes :::
+To je najbolj citirana meritev na to temo in prihaja iz podjetja data.world.
+
+Postavili so preizkus: poslovna baza SQL iz zavarovalništva ter nabor vprašanj, kakršna resnično postavlja poslovni uporabnik, od preprostih do zahtevnih.
+
+Najprej so GPT-4 dali samo shemo SQL in vprašanje. Točnost je bila približno 16 odstotkov – v poslovnem okolju neuporabno.
+
+Nato so iste podatke opisali z ontologijo in preslikavami, torej natanko tako, kot smo delali danes, in ista vprašanja zastavili nad grafom znanja. Točnost je zrasla na približno 54 odstotkov.
+
+Ključni poudarek, ki ga velja izreči počasi: model je ostal isti. Spremenil se je samo opis podatkov.
+
+Zakaj je razlika tolikšna? Ker shema SQL pomena ne nosi. Stolpec z imenom POL_TYP_CD modelu ne pove ničesar, medtem ko ontologija pove, da gre za vrsto zavarovalne police in kako je ta povezana s stranko.
+
+Pošteno priznajmo tudi drugo plat: 54 odstotkov ni 95. To ni rešen problem, je pa trikratna izboljšava brez menjave modela.
+:::
+
+## Utemeljitev 2: semantični sloj prinese več kot menjava modela
+
+:::: columns
+::: column
+
+- 100 poslovnih vprašanj nad trgovsko shemo _(Contoso)_, 5 težavnostnih stopenj,
+- primerjava: **gola shema DDL** proti **shemi + 4 KB opisa** metrik in poslovnih pravil,
+- preizkušeni **trije jezikovni modeli**.
+
+:::
+::: column
+
+| Kontekst | Točnost |
+| ------------------------ | ------: |
+| Samo shema baze | ~46–51 % |
+| Shema + **semantični opis** | ~**68 %** |
+
+- **+17 do +23** odstotnih točk, `p < 0,002`,
+- **z opisom** so vsi trije modeli **statistično neločljivi**.
+
+- 🔗 [arXiv:2604.25149 ↗](https://arxiv.org/abs/2604.25149){target="\_blank"} · [koda ↗](https://github.com/cubedevinc/semantic-layer-benchmark){target="\_blank"}
+
+:::
+::::
+
+::: notes :::
+To je najnovejša in za vodstveno publiko morda najbolj prepričljiva meritev.
+
+Postavitev je preprosta: 100 vprašanj poslovnega analitika nad trgovsko shemo, od preprostih do ekspertnih. Model dobi bodisi samo shemo baze bodisi shemo plus približno štiri kilobajte opisa – torej kaj pomenijo metrike, katere so privzete tabele dejstev in kakšna so poslovna pravila.
+
+Brez opisa se vsi trije modeli gibljejo med 46 in 51 odstotki. Z opisom se vsi trije dvignejo na približno 68 odstotkov.
+
+Zdaj pa poanta, ki jo je vredno posebej poudariti: z dodanim opisom med modeli ni več statistično značilne razlike. Prisotnost semantičnega opisa pojasni skoraj vso razliko v uspešnosti, izbira modela pa ne.
+
+Za prosojnico to pomeni eno samo sporočilo: štirje kilobajti dobro zapisanega pomena so prinesli več kot menjava jezikovnega modela. In štirje kilobajti so približno ena stran besedila.
+
+Pošteno povejmo tudi ozadje: raziskavo je objavilo podjetje, ki prodaja semantični sloj. Zato je pomembno, da so objavili članek, kodo in statistični test, tako da je meritev ponovljiva – kar pri marketinških številkah ni običajno.
+:::
+
+## Utemeljitev 3: LinkedIn – podpora strankam z grafom znanja
+
+:::: columns
+::: column
+
+- Iz **zgodovinskih zahtevkov** zgradili graf znanja,
+  - ohranili **strukturo** zahtevka in **povezave** med njimi,
+- ob vprašanju poiščejo **podgraf**, ne le podobnega besedila.
+
+:::
+::: column
+
+**Rezultati proti klasičnemu RAG**
+
+- **+77,6 %** pri **MRR** _(kakovost priklica)_,
+- v produkciji ~**6 mesecev**:
+  - **−28,6 %** mediana časa do rešitve zahtevka.
+
+- 🔗 [SIGIR 2024, arXiv:2404.17723 ↗](https://arxiv.org/abs/2404.17723){target="\_blank"}
+
+:::
+::::
+
+::: notes :::
+Drugi primer je iz produkcije, ne iz laboratorija.
+
+LinkedIn je imel klasičen problem podpore strankam: arhiv preteklih zahtevkov obstaja, iskanje po njem pa temelji na podobnosti besedila. Zahtevek pa ni prosto besedilo – ima strukturo, torej opis, korake, rešitev, in povezave na sorodne zahtevke.
+
+Klasičen RAG to strukturo razbije na odseke besedila in jo s tem izgubi. Zato so iz zahtevkov zgradili graf znanja, ki strukturo in povezave ohrani, ob vprašanju pa iz njega poberejo ustrezen podgraf.
+
+Rezultat pri priklicu je bil za 77,6 odstotka boljši po meri MRR. Ampak najpomembnejša je druga številka: v pol leta uporabe v produkciji se je mediana časa do rešitve zahtevka znižala za 28,6 odstotka.
+
+To je poslovni kazalnik, ne akademski. Prav ta prevod – iz mere priklica v prihranjen čas – je tisto, kar prepriča vodstvo.
+
+Uporabna vzporednica za dvorano: enako strukturo imajo servisni nalogi, reklamacije, revizijske sledi in zahtevki za ponudbo.
+:::
+
+## Utemeljitev 4: finančni dokumenti – graf in vektorji skupaj
+
+:::: columns
+::: column
+
+- Transkripti **objav poslovnih rezultatov** (NVIDIA in BlackRock),
+- **vektorski RAG**: dober nad prostim besedilom, šibek pri **razmerjih med entitetami**,
+- **graf znanja**: močan pri strukturi, šibkejši pri **nestrukturiranem besedilu**,
+- **kombinacija prekaša oba** pristopa posamično.
+
+:::
+::: column
+
+> Graf znanja ni **zamenjava** za vektorsko iskanje, ampak njegova **dopolnitev**.
+
+- 🔗 [arXiv:2408.04948 ↗](https://arxiv.org/abs/2408.04948){target="\_blank"}
+- Sorodno – Microsoft **GraphRAG** (odprta koda):
+  - 🔗 [arXiv:2404.16130 ↗](https://arxiv.org/abs/2404.16130){target="\_blank"}
+
+:::
+::::
+
+::: notes :::
+Tretji primer je pomemben zato, ker popravi pogosto napačno predstavo.
+
+Raziskovalci iz NVIDIE in BlackRocka so delali s transkripti objav poslovnih rezultatov – dolgimi, nestrukturiranimi dokumenti, polnimi strokovnih izrazov.
+
+Primerjali so tri pristope. Vektorski RAG je dober pri prostem besedilu, a slab, kadar odgovor zahteva razumevanje razmerij med podjetji, osebami in številkami. Graf znanja je pri razmerjih močan, a sam po sebi slabše pokriva nestrukturirano besedilo. Kombinacija obojega je bila boljša od vsakega posebej, tako pri iskanju konteksta kot pri tvorjenju odgovora.
+
+Sporočilo je torej zelo praktično: ne gre za izbiro med vektorsko bazo in grafom znanja. Vektorji odgovorijo na vprašanje, kje o tem piše, graf pa na vprašanje, kako je to povezano in ali odgovor drži.
+
+Omenimo še Microsoftov GraphRAG, ki je odprtokoden in se je uveljavil za vprašanja nad celotno zbirko dokumentov, na primer katere so glavne teme. To so vprašanja, pri katerih klasičen RAG odpove, saj odgovor ni v nobenem posameznem odseku besedila.
+:::
+
+## Utemeljitev 5: najcenejši vstop – schema.org
+
+:::: columns
+::: column
+
+- **Lahka semantika** na spletnih straneh:
+  - izdelki, recepti, dogodki, delovna mesta,
+- brez ontologij in brez baze RDF,
+- Googlove **objavljene študije primerov**:
+  - Rotten Tomatoes: **+25 %** CTR na 100.000 straneh,
+  - Nestlé: **+82 %** CTR za strani z bogatimi rezultati,
+  - Food Network: **+35 %** obiskov.
+
+:::
+::: column
+
+> Isti strukturirani zapis danes berejo tudi **jezikovni modeli in agenti**.
+
+- 🔗 [developers.google.com/search/case-studies ↗](https://developers.google.com/search/case-studies){target="\_blank"}
+- 🔗 [schema.org ↗](https://schema.org/){target="\_blank"}
+
+:::
+::::
+
+::: notes :::
+Četrti primer je namenoma najbolj preprost, ker je za marsikatero podjetje v dvorani najhitreje uporabljiv.
+
+Schema.org je lahka semantika: v spletno stran dodamo strukturiran opis izdelka, dogodka ali delovnega mesta. Ni ontologije, ni baze RDF, ni novega sistema – le nekaj vrstic v obstoječi strani.
+
+Google objavlja študije primerov z merljivimi učinki. Rotten Tomatoes je označil 100.000 strani in izmeril 25 odstotkov višji delež klikov. Nestlé poroča o 82 odstotkov višjem deležu klikov za strani, ki se prikažejo kot bogat rezultat. Food Network poroča o 35 odstotkih več obiskov.
+
+To so seveda njihovi podatki in vključujejo tudi učinek boljšega prikaza v rezultatih iskanja – ampak mehanizem je isti, ki ga učimo ves dan: podatku dodamo eksplicitni pomen in stroj ga zna uporabiti.
+
+Za danes pa je pomembnejše nadaljevanje te zgodbe. Iste oznake, ki jih je nekdo dodal zaradi iskalnika, danes berejo tudi jezikovni modeli in agenti, ko iščejo ceno, zalogo ali datum dogodka. Naložba iz leta 2015 se je torej obrestovala drugič.
+:::
+
+## Kje to že deluje: trije zreli primeri
+
+:::: columns
+::: column
+
+**Farmacija** – najbolj zrel trg
+
+- AstraZeneca: graf povezanih biomedicinskih virov za hitrejše preverjanje hipotez,
+- lasten _Biomedical Insights KG_ iz besedil in strukturiranih virov.
+- 🔗 [Ontotext: študija primera ↗](https://www.ontotext.com/knowledgehub/case-studies/astrazeneca-early-hypotheses-testing-linked-data/){target="\_blank"}
+
+:::
+::: column
+
+**Proizvodnja** – najbližje slovenski publiki
+
+- Bosch: graf znanja za **nadzor varjenja** v avtomobilski proizvodnji (ISWC 2022),
+- danes: **LLM pomaga pisati preslikave** podatkov v graf (TGDK 2025).
+- 🔗 [Bosch: varjenje ↗](https://link.springer.com/chapter/10.1007/978-3-031-19433-7_45){target="\_blank"} · [LLM preslikave ↗](https://drops.dagstuhl.de/entities/document/10.4230/TGDK.3.3.5){target="\_blank"}
+
+:::
+::::
+
+::: notes :::
+Tri panoge, kjer to ni več raziskovalno vprašanje.
+
+Farmacija je najbolj zrel trg, ker je bila tam bolečina največja: podatki o genih, tarčah, boleznih in učinkovinah so razpršeni po desetinah javnih baz, vsaka s svojimi identifikatorji. AstraZeneca uporablja povezane biomedicinske vire za hitrejše preverjanje zgodnjih hipotez, hkrati pa gradi lasten graf iz znanstvenih besedil in strukturiranih virov.
+
+Proizvodnja je za to dvorano najbližja. Bosch je objavil serijo industrijskih primerov okoli nadzora varjenja – to je proces, kjer nastane ogromno heterogenih podatkov z različnih strojev, analiza kakovosti pa mora te podatke združiti.
+
+Posebej opozorite na časovni lok med obema Boschevima objavama. Leta 2022 so ontologijo in preslikave gradili ročno, leta 2025 pa objavijo delo, kjer preslikave iz proizvodnih podatkov v graf pomaga pisati jezikovni model. Torej prav tisto ročno delo, ki smo ga danes počeli v Protégé, postaja cenejše.
+
+Tretji tip so podpora strankam in interna vprašanja zaposlenih, ki smo ju videli pri LinkedInu.
+:::
+
+## Kaj je danes mogoče kupiti?
+
+| Kategorija | Primeri |
+| ------------------------------------ | ----------------------------------------------- |
+| Semantični sloj z agentom | [Stardog Voicebox ↗](https://www.stardog.com/voicebox/){target="\_blank"} |
+| Platforme RDF | [Graphwise ↗](https://graphwise.ai/){target="\_blank"} _(GraphDB + PoolParty)_, metaphacts, eccenca |
+| GraphRAG nad grafi lastnosti | [Neo4j ↗](https://neo4j.com/generativeai/){target="\_blank"}, FalkorDB |
+| Ontologija kot jedro platforme | [Palantir Foundry / AIP ↗](https://www.palantir.com/platforms/foundry/){target="\_blank"} |
+| Semantični sloj za poslovno analitiko | [Cube ↗](https://cube.dev/){target="\_blank"}, dbt Semantic Layer, AtScale |
+
+::: notes :::
+Ta prosojnica je namenjena vprašanju, ki v dvorani vedno pride: ali moramo to zgraditi sami?
+
+Ne. Trg je v zadnjih dveh letih dozorel, ponudba pa se je razdelila na šest kategorij.
+
+Omenimo nekaj poudarkov. Graphwise je nastal z združitvijo Ontotexta, ki dela GraphDB, in podjetja Semantic Web Company s produktom PoolParty – torej prav baze, ki smo jo danes zagnali, in orodja za upravljanje slovarjev.
+
+Palantir je za to publiko hvaležen primer. Njihova prodajna zgodba je dobesedno, da je ontologija kontekstni sloj, brez katerega agenti ne morejo varno ukrepati. To je teza semantičnega spleta, povedana brez ene same omembe RDF-ja – in prav zato jo vodstva kupujejo.
+
+Semantični sloj za poslovno analitiko je zanimiv tistim, ki nimajo grafa in ga tudi nočejo. Gre za opis metrik nad obstoječim skladiščem podatkov, ki ga jezikovni model kliče namesto pisanja SQL – to je meritev s prejšnje prosojnice.
+
+Za prvi poskus pa ni treba kupiti ničesar: Microsoftov GraphRAG, Apache Jena in brezplačna različica GraphDB zadoščajo za dokaz koncepta.
+:::
+
+## „Ali ni modeliranje predrago?"
+
+:::: columns
+::: column
+
+**Ugovor je bil dolga leta upravičen**
+
+- Ontologije so gradili **redki strokovnjaki**,
+- ročno pisanje **preslikav** je bilo drago,
+- vzdrževanje je zaostajalo za spremembami.
+
+:::
+::: column
+
+**Kar se je spremenilo**
+
+- LLM-ji **predlagajo** razrede, lastnosti in hierarhije,
+  - izziv [LLMs4OL ↗](https://sites.google.com/view/llms4ol2025){target="\_blank"} pri konferenci ISWC,
+- LLM-ji **pišejo preslikave** iz virov v graf _(Bosch, 2025)_,
+- človek **preverja**, ne tipka.
+
+:::
+::::
+
+::: notes :::
+To je najpogostejši ugovor in dolga leta je bil povsem upravičen.
+
+Gradnja ontologije je zahtevala redke strokovnjake, ročno pisanje preslikav iz virov v graf je bilo drago, vzdrževanje pa je zaostajalo za spremembami v sistemih. Prav zato je marsikateri projekt semantičnega spleta obtičal pri dokumentu, ki ga nihče ni posodabljal.
+
+Zanimivo pa je, da so isti jezikovni modeli, ki potrebujejo semantiko, hkrati tudi orodje, ki njeno izdelavo poceni.
+
+Danes modeli predlagajo razrede, lastnosti in hierarhije – obstaja celo redni izziv LLMs4OL pri konferenci ISWC, ki prav to sistematično meri. Pišejo preslikave iz obstoječih virov v graf, kar smo videli pri Boschu. In predlagajo poravnave med dvema modeloma, kadar povezujemo vire.
+
+Vloga človeka se je s tem premaknila: iz tipkanja v presojo. Model predlaga, strokovnjak potrdi ali zavrne.
+
+Povejmo pa tudi omejitev: prav zato, ker model predlaga hitro, je preverjanje nujno. Napačno zapisana enakost se, kot smo videli pri sklepanju, razmnoži po vseh primerkih.
+:::
+
+## Primer 1: Podatkovni zemljevid (UL FRI in MDP)
+
+:::: columns
+::: column
+
+- Prototip za **Ministrstvo za digitalno preobrazbo**,
+- nad slovenskim **portalom odprtih podatkov** (CKAN),
+- v **enem pogledu** prikaže:
+  - **shemo** (ontologijo) in
+  - **podatke** (primerke).
+- Temelji na **DCAT** in sorodnih slovarjih,
+- podatke bere iz vmesnika **SPARQL**.
+
+- 🌐 [Demo Podatkovnega zemljevida ↗](https://fri-mdp.github.io/Podatkovni-zemljevid-2023/pz-viewer/){target="\_blank"}
+- 📦 [github.com/FRI-MDP/ckan-datamap ↗](https://github.com/FRI-MDP/ckan-datamap){target="\_blank"}
 
 :::
 ::: column
@@ -2500,319 +3893,195 @@ Sedaj si bomo ogledali primer vizualizacije na odprtih podatkih OPIS, in sicer p
 :::
 ::::
 
-## 🧑‍💻 DEMO: Pregled globalne sheme (2/7)
+::: notes :::
+Podatkovni zemljevid je prototip, ki je nastal v sodelovanju z Ministrstvom za digitalno preobrazbo.
+
+Rešuje konkreten problem portala odprtih podatkov: portal pove, kateri nabori podatkov obstajajo, ne pove pa, kaj je v njih in kako so med seboj povezani. Uporabnik mora vsako datoteko odpreti in ugibati.
+
+Zemljevid namesto tega prikaže shemo – torej pojme in povezave med njimi – ter omogoči vpogled v dejanske podatke za izbrani pojem. Na sliki so osrednji koncepti: katalog, nabor podatkov, distribucija in shema.
+
+Tehnično gre za odjemalca v brskalniku, ki se poveže na vmesnik SPARQL in nariše, kar tam najde. Prav to pa pomeni, da ni vezan na naš portal – enako deluje nad poljubnim grafom.
+
+Komponenta je odprtokodna, povezava do repozitorija je na prosojnici. Če koga zanima uporaba nad lastnimi podatki, je to najlažja vstopna točka.
+:::
+
+## Primer 2: Jezikoslovni podatki (UL FRI, projekt LLM4DH)
 
 :::: columns
 ::: column
 
-- **Prehod z miško** povzroči **osredotočenost na izbrani koncept**,
-  - izpostavljenost konteksta sosednosti,
-    - prikazani zgolj odvisni koncepti in medsebojne povezave,
-  - dodatno se prikažejo nazivi povezav.
+- znanje o slovenskem jezikoslovju
+- 🌐 [Relacijska baza ↗](https://wiki.cjvt.si/books/digital-dictionary-database-of-slovene){target="\_blank"}
+- cilj - odgovarjati na *Kako bi razložili pojem »skupnost«?*, *Kaj so deležniške oblike glagola »skuhati«?*, *Navedi tožilnik množine za samostalnik »obraz«.*
+
+
+![](./gradivo/DSB-full.png)
 
 :::
 ::: column
 
-![](./gradivo/PZ_globalna_shema_2.png)
+
+![](./gradivo/DSB-distilled.png)
+
+![](./gradivo/DSB-ontolex.png)
 
 :::
 ::::
 
-## 🧑‍💻 DEMO: Pregled globalne sheme (3/7)
+## Zakaj je semantika pomembna za javno upravo?
 
 :::: columns
 ::: column
 
-- **Klik z miško** omogoči **prikaz podrobnosti izbranega koncepta**,
-  - identifikator (URI),
-  - definicija (skos:definition),
-  - opisni podatki,
-    - ragnirane podatkovne in objektne lastnosti,
-    - tip podatka,
-    - prikaz zgolj najpomembnejših podatkov,
+**Medsektorsko**
+
+- Isti pojem živi v **več registrih**:
+  - občina v CRP, SURS, prostorskih podatkih,
+- vsak register ima **svoj identifikator** in svoje ime,
+- brez skupnega pomena je vsaka izmenjava **nov projekt**.
 
 :::
 ::: column
 
-![](./gradivo/PZ_globalna_shema_3.png)
+**Meddržavno**
+
+- EU zahteva **pomensko interoperabilnost**:
+  - _Interoperable Europe Act_ – [Uredba (EU) 2024/903 ↗](https://eur-lex.europa.eu/eli/reg/2024/903/oj){target="\_blank"},
+  - načelo **samo enkrat** _(angl. once-only)_,
+- skupni slovarji: **DCAT-AP**, _Core Vocabularies_,
+- 🌐 [data.europa.eu ↗](https://data.europa.eu/){target="\_blank"}
 
 :::
 ::::
 
-## 🧑‍💻 DEMO: Pregled globalne sheme (4/7)
+::: notes :::
+Zakaj je to za javno upravo pomembnejše kot za marsikatero podjetje?
+
+Medsektorsko: isti pojem hkrati živi v več registrih, ki jih vodijo različni organi. Občino smo danes videli v CRP in v SURS – z različnima identifikatorjema in različnim zapisom imena. Ko povezavo enkrat zapišemo v podatke, velja za vse; če je ne, jo mora znova odkriti vsak projekt posebej.
+
+Meddržavno: povezovanje ni več stvar dobre volje, ampak predpisov. Akt o interoperabilni Evropi od javnih organov zahteva pomensko interoperabilnost čezmejnih storitev, načelo samo enkrat pa pomeni, da državljanu istega podatka ne smemo zahtevati dvakrat – kar je izvedljivo le, če se registri razumejo med seboj.
+
+Zato imamo skupne slovarje: DCAT-AP za kataloge odprtih podatkov, ki je tudi osnova našega Podatkovnega zemljevida, in Core Vocabularies za osnovne pojme, kot so oseba, podjetje in naslov.
+
+Praktična poanta za udeležence iz gospodarstva: če v javnem razpisu piše interoperabilnost, danes to praviloma pomeni prav te standarde.
+:::
+
+## Ontologija ni le za odgovore, ampak za agente
 
 :::: columns
 ::: column
 
-- **Klik z miško** omogoči **prikaz podrobnosti izbranega koncepta**,
-  - identifikator (URI),
-  - definicija (skos:definition),
-  - opisni podatki,
-    - ragnirane podatkovne in objektne lastnosti,
-    - tip podatka,
-    - prikaz zgolj najpomembnejših podatkov,
-      - možnost prikaza vseh.
+- Ko agent le **odgovarja**, je napaka neprijetna,
+- ko agent **ukrepa** – naroči, rezervira, spremeni zapis – je napaka **draga**.
+- Zato potrebuje:
+  - **tipiziran** objektni model,
+  - **dovoljene akcije** nad objekti,
+  - **revizijsko sled**, od kod podatek izvira.
 
 :::
 ::: column
 
-![](./gradivo/PZ_globalna_shema_4.png)
+> To je natanko tisto, kar smo risali na prvi prosojnici – le da je zdaj to prodajni argument, ne raziskovalna ideja.
+
+![](assets/infografika-5-zvezdic-in-agenti.png){width="88%"}
 
 :::
 ::::
 
-## 🧑‍💻 DEMO: Pregled globalne sheme (5/7)
+::: notes :::
+S tem sklenemo krog, ki smo ga odprli s prvo prosojnico.
+
+Dokler jezikovni model samo odgovarja, je napaka neprijetna – uporabnik jo opazi in popravi. Ko pa agent začne ukrepati, torej naročati, rezervirati ali spreminjati zapise, postane napaka draga in pogosto nevidna.
+
+Agent, ki mu to dovolimo, potrebuje tri stvari. Prvič, tipiziran objektni model, da ve, kaj je naročilo in kaj stranka. Drugič, opredeljene dovoljene akcije nad temi objekti. In tretjič, revizijsko sled, iz katere je razvidno, na podlagi katerih dejstev je ukrepal.
+
+To je hkrati klasična teza semantičnega spleta in današnja prodajna zgodba platform, kot je Palantir.
+
+Zato je zaključek delavnice isti kot njen začetek: semantični graf ni cilj sam po sebi. Je podlaga, na kateri je agentu sploh mogoče zaupati dejanje, ne le odgovora.
+:::
+
+## Podatkovni prostori: semantika kot pogoj za vstop
 
 :::: columns
 ::: column
 
-- Vse **dodatne funkcionalnosti** so na voljo preko **desnega klika z miško** na izbrani koncept,
-  - fokus,
-  - pregled,
-  - skrij,
-  - podrobnosti,
-  - razišči podatke.
+- **Catena-X** _(avtomobilska industrija)_ in **Manufacturing-X**:
+  - podatkovni modeli so **standardizirani** (SAMM),
+  - odprta koda: **Eclipse Tractus-X**.
+- **Digitalni potni list izdelka** _(DPP)_:
+  - [Uredba o baterijah (EU) 2023/1542 ↗](https://eur-lex.europa.eu/eli/reg/2023/1542/oj){target="\_blank"},
+  - od **18. 2. 2027**: QR in potni list za baterije na trgu EU.
 
 :::
 ::: column
 
-![](./gradivo/PZ_globalna_shema_5.png)
+> Za dobavitelja to ni več tehnološka izbira, ampak **pogoj za posel**.
+
+- 🌐 [catena-x.net ↗](https://catena-x.net/){target="\_blank"}
+- 🌐 [eclipse-tractusx ↗](https://github.com/eclipse-tractusx){target="\_blank"}
 
 :::
 ::::
 
-## 🧑‍💻 DEMO: Pregled globalne sheme (6/7)
+::: notes :::
+Zadnji vsebinski argument je najmočnejši za slovensko gospodarstvo, še posebej za avtomobilske dobavitelje.
+
+Podatkovni prostori so dogovorjena okolja za izmenjavo podatkov med podjetji, kjer vsak ostane lastnik svojih podatkov. Catena-X je tak prostor za avtomobilsko industrijo, Manufacturing-X pa isto idejo širi na predelovalno industrijo.
+
+Ključno za nas je tole: v Catena-X podatkovni modeli niso stvar dogovora med dvema partnerjema, ampak so standardizirani in objavljeni v obliki semantičnih modelov. Uporabljajo Semantic Aspect Meta Model, imenovan SAMM, referenčne implementacije pa so odprtokodne v projektu Eclipse Tractus-X.
+
+Zraven pa pride še regulativa. Uredba o baterijah zahteva, da ima od 18. februarja 2027 vsaka zadevna baterija na trgu EU kodo QR, ki vodi do digitalnega potnega lista izdelka. Podoben okvir se pripravlja za druge skupine izdelkov.
+
+Poanta za dvorano je preprosta: če ste dobavitelj v takšni verigi, se o obliki podatkov ne boste pogajali. Dobili boste model in rok. Podjetja, ki svoje podatke že razumejo in imajo urejene identifikatorje, bodo takrat samo pripravila preslikavo. Ostala bodo urejala podatke pod pritiskom roka.
+
+Vprašanje za razpravo: ali kdo od vas že dobiva takšne zahteve od kupcev?
+:::
+
+## Napotki: kako in kdaj začeti
 
 :::: columns
 ::: column
 
-- Podpora za večjezičnost vključuje **uporabniški vmesnik** in vse **metapodatke**,
-  - nazivi, podatkovne in objektne lastnosti.
+**Kdaj**
+
+1. Začnite pri **enem vprašanju**, ki danes zahteva ročno združevanje virov.
+2. Semantiko dodajte **nad obstoječe sisteme**, ne namesto njih.
+3. Najprej **dogovor o pojmih**, šele nato tehnologija.
+4. Če podatkov ne izmenjujete in je shema statična – **počakajte**.
 
 :::
 ::: column
 
-![](./gradivo/PZ_globalna_shema_6.png)
+**Kako**
+
+5. **Uporabite obstoječe slovarje** – schema.org, DCAT, SAMM, domenske ontologije.
+6. **Stabilni identifikatorji** so pomembnejši od izbire formata.
+7. Pri LLM: **graf za dejstva in sledljivost**, vektorji za besedilo.
+8. Spremljajte **podatkovne prostore svoje panoge** – modeli so tam že dogovorjeni.
 
 :::
 ::::
 
-## 🧑‍💻 DEMO: Pregled globalne sheme (7/7)
+::: notes :::
+Za konec osem napotkov, ki jih udeleženci lahko odnesejo domov.
 
-:::: columns
-::: column
+Prvi in najpomembnejši: začnite pri enem vprašanju, ki danes zahteva ročno delo. Ne pri ontologiji podjetja. Če nekdo vsak mesec ročno združuje tri izvoze, je to vaš prvi primer uporabe.
 
-- Podpora za večjezičnost vključuje **uporabniški vmesnik** in vse **metapodatke**,
-  - nazivi, podatkovne in objektne lastnosti.
+Drugi: semantika ne nadomešča sistemov. ERP ostane, kjer je – nad njim zgradimo pomenski sloj. Obstajajo tudi pristopi z virtualnim grafom, kjer podatki ostanejo v relacijski bazi, poizvedbe pa se prevedejo sproti.
 
+Tretji: najtežji del ni tehnologija, ampak dogovor, kaj pomeni stranka, izdelek, dobava. Ta pogovor se splača, tudi če na koncu ne uporabite RDF.
+
+Četrti: če nimate niti izmenjave niti sprememb modela, mirno počakajte. Bolje je, kot delati ontologijo brez uporabnika.
+
+Peti: ne izumljajte svojih slovarjev. Za splet obstaja schema.org, za kataloge DCAT, za proizvodnjo modeli Catena-X, skoraj vsaka panoga pa ima svoje.
+
+Šesti: če od danes odnesete eno samo stvar, naj bo to identifikator. Stabilen in enolični identifikator je temelj; format lahko vedno spremenite, zgodovino identifikatorjev pa težko popravite.
+
+Sedmi: pri jezikovnih modelih uporabite oboje. Graf naj nosi dejstva in sledljivost, torej od kod odgovor izvira, vektorji pa naj pokrivajo prosto besedilo.
+
+Osmi: preverite, kaj se dogaja v podatkovnem prostoru vaše panoge. Tam so modeli pogosto že dogovorjeni – in prej ali slej jih boste morali uporabiti.
+
+Hvala za sodelovanje. Vse gradivo, podatki in vaje ostanejo dostopni na naslovu s prve prosojnice.
 :::
-::: column
 
-![](./gradivo/PZ_globalna_shema_7.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme posameznega vira (1/5)
-
-:::: columns
-::: column
-
-- Za posamezen nabor podatkov je na voljo
-  - distribucija,
-  - shema,
-    - s pripadajočimi metapodatki (atributi, zaloge vrednosti, omejitve).
-
-:::
-::: column
-
-![](./gradivo/PZ_shema_vira_1.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme posameznega vira (2/5)
-
-:::: columns
-::: column
-
-- Za posamezen **nabor podatkov** je na voljo
-  - distribucija,
-  - shema,
-    - s pripadajočimi metapodatki (atributi, zaloge vrednosti, omejitve).
-
-:::
-::: column
-
-![](./gradivo/PZ_shema_vira_2.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme posameznega vira (3/5)
-
-:::: columns
-::: column
-
-- Za posamezen nabor podatkov je na voljo
-  - **distribucija**,
-  - shema,
-    - s pripadajočimi metapodatki (atributi, zaloge vrednosti, omejitve).
-
-:::
-::: column
-
-![](./gradivo/PZ_shema_vira_3.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme posameznega vira (4/5)
-
-:::: columns
-::: column
-
-- Za posamezen nabor podatkov je na voljo
-  - distribucija,
-  - **shema**,
-    - s pripadajočimi metapodatki (atributi, zaloge vrednosti, omejitve).
-
-:::
-::: column
-
-![](./gradivo/PZ_shema_vira_4.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme posameznega vira (5/5)
-
-:::: columns
-::: column
-
-- Za posamezen nabor podatkov je na voljo
-  - distribucija,
-  - shema,
-    - s pripadajočimi **metapodatki** (atributi, zaloge vrednosti, omejitve).
-
-:::
-::: column
-
-![](./gradivo/PZ_shema_vira_5.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme in podatkov izbranih virov (1/6)
-
-:::: columns
-::: column
-
-- Sheme in podatki izbranih 5 virov,
-  - vladna gradiva,
-  - prometne nesreče,
-  - evidenca registriranih vozil,
-  - ERAR,
-  - povprečne bruto plače.
-
-:::
-::: column
-
-![](./gradivo/PZ_sheme_in_podatki_1.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme in podatkov izbranih virov (2/6)
-
-:::: columns
-::: column
-
-- Po podatkih lahko **iščemo**,
-  - v modalnem oku lahko vnesemo **iskalni niz**,
-
-:::
-::: column
-
-![](./gradivo/PZ_sheme_in_podatki_2.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme in podatkov izbranih virov (3/6)
-
-:::: columns
-::: column
-
-- Po podatkih lahko iščemo,
-  - v modalnem oku lahko vnesemo iskalni niz,
-    - npr. **Primorje**,
-  - **zadetki** se v tem primeru izpostavijo (črna barva),
-
-:::
-::: column
-
-![](./gradivo/PZ_sheme_in_podatki_3.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme in podatkov izbranih virov (4/6)
-
-:::: columns
-::: column
-
-- Po podatkih lahko iščemo,
-  - v modalnem oku lahko vnesemo iskalni niz,
-    - npr. Primorje,
-  - zadetki se v tem primeru izpostavijo (črna barva),
-  - po pregledu podrobnosti, opazimo, da se iskalni niz **Primorje** pojavlja v vrednosti atributa **dolžnik**,
-
-:::
-::: column
-
-![](./gradivo/PZ_sheme_in_podatki_4.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme in podatkov izbranih virov (5/6)
-
-:::: columns
-::: column
-
-- **Raziskujemo** lahko tudi **kontekst** najdenega podatka,
-  - je del del distribucije davčni dolžniki prejemniki javnih sredstev,
-  - ki spada v nabor podatkov ERAR,
-
-:::
-::: column
-
-![](./gradivo/PZ_sheme_in_podatki_5.png)
-
-:::
-::::
-
-## 🧑‍💻 DEMO: Pregled sheme in podatkov izbranih virov (6/6)
-
-:::: columns
-::: column
-
-- Raziskujemo lahko tudi kontekst najdenega podatka,
-  - je del del distribucije davčni dolžniki prejemniki javnih sredstev,
-  - ki spada v nabor podatkov ERAR,
-  - podatki so zajeti v skladu z opredeljeno s **shemo**,
-    - **v1.0.0** in
-    - zahtevanimi **metapodatki**.
-
-:::
-::: column
-
-![](./gradivo/PZ_sheme_in_podatki_6.png)
-
-:::
-::::
-
-## Prototip Podatkovnega zemljevida
-
-- 🌐 https://fri-mdp.github.io/Podatkovni-zemljevid-2023/pz-viewer/
+# 9. Diskusija: Ali lahko identificirate kak primer, kjer bi uporaba semantike bila za vaše podjetje ali organizacijo koristna?

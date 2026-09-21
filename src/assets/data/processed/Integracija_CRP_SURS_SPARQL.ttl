@@ -1,0 +1,6 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix surs: <https://onto.mdp.gov.si/shema/> .
+@prefix crp: <https://pzsi.sigov.si/datamodel/ns/crp#> .
+
+surs:Obcina owl:equivalentClass crp:Obcina .
+surs:naziv owl:sameAs crp:vrednost .
