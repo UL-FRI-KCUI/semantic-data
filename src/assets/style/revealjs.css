@@ -344,6 +344,42 @@ body {
   z-index: 2;
 }
 
+/* Uvodna infografika: polna slika brez običajnega pasu in logotipov. */
+.reveal .slides section.slide.level2.motivation-infographic {
+  background: var(--kcui-navy);
+  box-shadow: none;
+  padding: 0;
+}
+
+.reveal .slides section.slide.level2.motivation-infographic::before,
+.reveal .slides section.slide.level2.motivation-infographic::after {
+  display: none;
+}
+
+.reveal .slides section.slide.level2.motivation-infographic h2 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.reveal .slides section.slide.level2.motivation-infographic > p {
+  height: 100%;
+  margin: 0;
+}
+
+.reveal .slides section.slide.level2.motivation-infographic .motivation-art {
+  height: 100%;
+  margin: 0;
+  max-height: none;
+  max-width: none;
+  object-fit: cover;
+  width: 100%;
+}
+
 .reveal .columns {
   align-items: flex-start;
   display: flex;

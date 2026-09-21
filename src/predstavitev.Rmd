@@ -24,6 +24,22 @@ output:
         grid: false
 ---
 
+## Od virov do pametnejših agentov {.motivation-infographic}
+
+![](assets/infografika-5-zvezdic-in-agenti.png){.motivation-art}
+
+::: notes :::
+To je zgodba današnje delavnice v eni sliki.
+
+Na levi imamo podatke, ki obstajajo, vendar so razpršeni po tabelah, bazah, dokumentih in zemljevidih. Vsak vir je zase uporaben, skupaj pa še ne govorijo istega jezika.
+
+Ko vire enolično poimenujemo, jim dodamo formalen pomen in jih povežemo, dobimo semantični graf oziroma podatke v obliki 5 ★.
+
+Tak graf ni cilj sam po sebi. Je zanesljiva osnova, na kateri lahko inteligentni agent poveže dejstva iz več virov, razume njihove odnose ter pripravi boljši in preverljiv odgovor ali dejanje.
+
+Danes bomo ta prehod naredili korak za korakom: od tabele prek RDF-ja in ontologije do povezanega grafa in poizvedovanja.
+:::
+
 ## Agenda
 
 1. Uvod: Zakaj semantično opisovanje podatkov?
