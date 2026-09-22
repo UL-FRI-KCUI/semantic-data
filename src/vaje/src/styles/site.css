@@ -134,6 +134,12 @@ input:focus-visible,
   filter: brightness(0) invert(1);
 }
 
+.presentation-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
 .presentation-link {
   color: white;
   text-decoration: none;
@@ -919,6 +925,21 @@ view-toggle {
 
   .portal-header {
     min-height: auto;
+  }
+
+  .presentation-actions {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .presentation-link {
+    font-size: 14px;
+    padding-inline: 6px;
+  }
+
+  .portal-logo img {
+    width: 140px;
   }
 
   .hero-grid {

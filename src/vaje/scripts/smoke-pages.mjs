@@ -24,6 +24,7 @@ const contentTypes = {
   '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.png': 'image/png',
+  '.pdf': 'application/pdf',
   '.svg': 'image/svg+xml',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
@@ -65,6 +66,11 @@ try {
   const presentationResponse = await presentation.goto(`${origin}${repositoryBase}/`, { waitUntil: 'domcontentloaded' });
   if (!presentationResponse?.ok()) throw new Error('Presentation entry point did not return HTTP 200.');
   await presentation.locator('.reveal').waitFor();
+
+  const pdfResponse = await presentation.request.get(`${origin}${repositoryBase}/predstavitev.pdf`);
+  if (!pdfResponse.ok()) throw new Error('Presentation PDF did not return HTTP 200.');
+  const pdfBody = await pdfResponse.body();
+  if (!pdfBody.subarray(0, 5).equals(Buffer.from('%PDF-'))) throw new Error('Presentation PDF is not a valid PDF file.');
   await presentation.close();
 
   const page = await browser.newPage();
@@ -87,6 +93,8 @@ try {
 
     if (route === '') {
       if (await page.locator('.exercise-card').count() !== 8) problems.push('portal does not contain eight exercise cards');
+      const pdfLink = page.locator('a[href="/semantic-data/predstavitev.pdf"]');
+      if (await pdfLink.count() !== 1) problems.push('portal does not contain the presentation PDF link');
     } else {
       await page.locator('.exercise-shell').waitFor();
       await page.getByTestId('check').waitFor({ state: 'visible' });

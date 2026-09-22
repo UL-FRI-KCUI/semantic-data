@@ -25,9 +25,9 @@ reload_chrome() {
 }
 
 render_and_refresh() {
-  echo "[$(date '+%H:%M:%S')] Obnovljam predstavitev iz $RMD_FILE..."
-  Rscript -e "rmarkdown::render('$RMD_FILE', quiet = TRUE)"
-  echo "[$(date '+%H:%M:%S')] Predstavitev je bila uspešno prevedena v HTML."
+  echo "[$(date '+%H:%M:%S')] Obnavljam HTML in PDF iz $RMD_FILE..."
+  ./build_predstavitev.sh
+  echo "[$(date '+%H:%M:%S')] Predstavitev je bila uspešno prevedena v HTML in PDF."
   reload_chrome
 }
 

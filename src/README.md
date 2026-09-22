@@ -1,14 +1,16 @@
 # Predstavitev delavnice
 
-Izvor predstavitve je `predstavitev.Rmd`, izhod pa je Reveal.js HTML v razmerju 16 : 9.
+Izvor predstavitve je `predstavitev.Rmd`, izhoda pa sta Reveal.js HTML in PDF v razmerju 16 : 9.
 
 ## Izgradnja
 
 V tej mapi zaženite:
 
 ```sh
-Rscript -e "rmarkdown::render('predstavitev.Rmd')"
+./build_predstavitev.sh
 ```
+
+Skript najprej ustvari `predstavitev.html`, nato pa iz iste predstavitve s tiskalnim načinom Reveal.js ustvari `predstavitev.pdf`. Potrebujete odvisnosti portala (`cd vaje && npm ci`) in Chromium za Playwright (`npx playwright install chromium`). PDF vsebuje en diapozitiv na stran in ne vsebuje govornih opomb.
 
 Ker predstavitev ni samostojna datoteka (`self_contained: false`), jo odprite prek lokalnega spletnega strežnika:
 
@@ -16,7 +18,7 @@ Ker predstavitev ni samostojna datoteka (`self_contained: false`), jo odprite pr
 python3 -m http.server 8000
 ```
 
-Nato obiščite <http://localhost:8000/predstavitev.html>. Pri objavi vedno prenesite `predstavitev.html`, `predstavitev_files/`, `assets/` in `gradivo/` skupaj.
+Nato obiščite <http://localhost:8000/predstavitev.html>. Pri objavi vedno prenesite `predstavitev.html`, `predstavitev.pdf`, `predstavitev_files/`, `assets/` in `gradivo/` skupaj.
 
 ## Interaktivne vaje
 

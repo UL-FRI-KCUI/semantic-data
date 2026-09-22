@@ -19,7 +19,10 @@ const base = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/`;
     <header class="portal-header" style={`--portal-network: url("${base}branding/background-network.png")`}>
       <nav class="portal-nav" aria-label="Glavna navigacija">
         <a href={base} class="portal-logo"><img src={`${base}branding/kcui-logo-horizontal.png`} alt="KCUI" /></a>
-        <a href="/semantic-data/" class="presentation-link">Odpri predstavitev <span aria-hidden="true">↗</span></a>
+        <div class="presentation-actions">
+          <a href="/semantic-data/" class="presentation-link">Odpri predstavitev <span aria-hidden="true">↗</span></a>
+          <a href="/semantic-data/predstavitev.pdf" class="presentation-link presentation-pdf">Prenesi PDF <span aria-hidden="true">↓</span></a>
+        </div>
       </nav>
       <div class="hero-grid">
         <div class="hero-copy">

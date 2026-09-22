@@ -22,5 +22,6 @@ Delavnica je namenjena predvsem podatkovnim inženirjem, skrbnikom podatkov, raz
 ## 📄 Gradivo
 
 - 🌐 [Predstavitev](https://ul-fri-kcui.github.io/semantic-data/) – objavljena predstavitev Reveal.js
+- 📄 [Predstavitev PDF](https://ul-fri-kcui.github.io/semantic-data/predstavitev.pdf) – različica za prenos in tisk
 - 🧑‍💻 [Interaktivne vaje](https://ul-fri-kcui.github.io/semantic-data/vaje/) – vodene vaje v brskalniku
 - 📂 [src](src) – izvorna koda predstavitve in portala vaj

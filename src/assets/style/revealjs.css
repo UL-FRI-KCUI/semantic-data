@@ -497,4 +497,26 @@ body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+
+  html.print-pdf .reveal .slides #title-slide {
+    padding: 292px 90px 120px 560px !important;
+  }
+
+  html.print-pdf .reveal .slides section.title-slide.level1 {
+    padding: 240px 120px 150px 190px !important;
+  }
+
+  html.print-pdf .reveal .slides section.slide.level2 {
+    padding: 54px 90px 132px 190px !important;
+  }
+
+  html.print-pdf .reveal .slides section.slide.level2.motivation-infographic {
+    padding: 0 !important;
+  }
+
+  .slide-menu-button,
+  .slide-menu-wrapper,
+  #customcontrols {
+    display: none !important;
+  }
 }

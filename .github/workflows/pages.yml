@@ -71,13 +71,13 @@ jobs:
 
       - name: Render presentation
         working-directory: src
-        run: rmarkdown::render("predstavitev.Rmd")
-        shell: Rscript {0}
+        run: ./build_predstavitev.sh
 
       - name: Assemble Pages site
         run: |
           mkdir _site
           cp src/predstavitev.html _site/index.html
+          cp src/predstavitev.pdf _site/predstavitev.pdf
           cp -R src/predstavitev_files _site/
           cp -R src/assets _site/
           cp -R src/gradivo _site/

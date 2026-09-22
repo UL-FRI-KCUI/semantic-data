@@ -18,6 +18,9 @@ output:
       controls: true
       progress: true
       slideNumber: "c/t"
+      pdfMaxPagesPerSlide: 1
+      pdfSeparateFragments: false
+      showNotes: false
       chalkboard:
         boardmarkerWidth: 3
         chalkWidth: 3
